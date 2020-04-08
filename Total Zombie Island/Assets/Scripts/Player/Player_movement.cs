@@ -58,6 +58,11 @@ public class Player_movement : MonoBehaviour
         if (Input.GetButton("Jump"))
         {
             movement.y = jumping;
+            _animator.SetBool("Jump_b", true);
+        }
+        else
+        {
+            _animator.SetBool("Jump_b", false);
         }
 
         movement *= speed;
