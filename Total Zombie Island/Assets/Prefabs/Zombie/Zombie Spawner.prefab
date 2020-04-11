@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1925693546264548352}
   - component: {fileID: 1925693546264548353}
   m_Layer: 0
-  m_Name: Zombie Spawner 1
-  m_TagString: Untagged
+  m_Name: Zombie Spawner
+  m_TagString: Spawner
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,4 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ee05055ad8b05341b930f6cef3bbc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
+  zombiePrefab: {fileID: 3354176007042408165, guid: d85363387d70f20479d1bf598389f456,
+    type: 3}
+  localSpawnLimit: 5
+  spawnDelay: 10
+  spawnDistance: 10
+  spawnDisplacement: {x: 0, y: 0, z: 0}
+  debugging: 0
