@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpawnerController
   - Spawner
+  - SpawnArea
   layers:
   - Default
   - TransparentFX
