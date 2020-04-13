@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1930805839418229268}
   - component: {fileID: 1930805839418229271}
   m_Layer: 0
-  m_Name: Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Name: Spawner Controller
+  m_TagString: SpawnerController
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43,7 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34e39b8fa35589943a2c1736710a360c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 3
-  spawnDistance: 10
-  targetPlayer: {fileID: 0}
-  spawnLimit: 5
+  globalSpawnLimit: -1

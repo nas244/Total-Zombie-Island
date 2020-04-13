@@ -5,58 +5,45 @@ using UnityEngine;
 public class ZombieSpawner : MonoBehaviour
 {
     // define some public vars editable in Unity
-    [Tooltip("Specifies the master SpawnerController that controls this spawner.")]
-    public SpawnerController controller;
+    [Tooltip("Prefab that will be used to instantiate zombies.")]
+    public GameObject zombiePrefab;
+
+    // define some publics vars NOT editable in Unity
+    [System.NonSerialized]
+    public SpawnArea spawnArea;
 
     // Start is called before the first frame update
     void Start()
     {
-        // grab SpawnerController script from controller and store back in controller
-        controller = controller.GetComponent<SpawnerController>();
+        // check if we're in a spawn area
+        if (transform.parent && transform.parent.TryGetComponent<SpawnArea>(out spawnArea))
+        {
+            if (spawnArea.debugging) Debug.Log("\"" + this.name + "\" is member of spawn area.");
+        }
+        else
+        {
+            Debug.LogError("No spawn area detected for \"" + this.name + "\". Spawning won't work!");
+        }
+
+        // check if a zombie prefab has been set
+        if (!zombiePrefab) Debug.LogError("No Zombie Prefab specified for spawn point \"" + this.name + "\"! Spawning won't work!");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // check if the player is near by
-        if (DetectPlayer())
-        {
-            // check if spawnDelay has elapsed
-            if (controller.CheckSpawnDelay())
-            {
-                // check if the spawnLimit has been reached
-                if (controller.CheckSpawnLimit())
-                {
-                    // spawn a Zombie
-                    Spawn();
-                }
-            }
-        }
+
     }
 
-    // checks if the player is nearby within spawnDistance
-    bool DetectPlayer()
+    // spanws a new instance of zombiePrefab
+    public void Spawn()
     {
-        // check if the player is within spawnDistance of this instance of ZombieSpawner
-        if (Vector3.Distance(controller.targetPlayer.transform.position, this.transform.position) <= controller.spawnDistance)
-        {
-            return true;
-        }
-        
-        return false;
-    }
+        // if no zombiePrefab has been set, don't spawn
+        if (!zombiePrefab) return;
 
-    // spanws a new instance of enemyObject
-    void Spawn()
-    {
-        Debug.Log("Spawn called on spawner \""+ this.name + "\".");
-
-        // TODO: add code to instantiate a zombie
-
-        // update lastSpawnTime to now
-        controller.lastSpawnTime = Time.time;
-
-        // update spawnCount
-        controller.spawnCount++;
+        // instantiate a new zombie in the 3D world at the location of spawnPosition
+        GameObject newZombie = Instantiate(zombiePrefab, transform.position, Quaternion.identity);
+        newZombie.transform.parent = this.transform;
+        if (spawnArea && spawnArea.debugging) Debug.Log("Zombie spawned at \"" + this.name + "\".");
     }
 }
