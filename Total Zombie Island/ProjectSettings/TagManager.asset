@@ -7,6 +7,7 @@ TagManager:
   - SpawnerController
   - Spawner
   - SpawnArea
+  - zombie
   layers:
   - Default
   - TransparentFX

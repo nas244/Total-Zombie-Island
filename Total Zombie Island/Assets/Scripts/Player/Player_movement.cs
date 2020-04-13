@@ -16,18 +16,51 @@ public class Player_movement : MonoBehaviour
 
     public GameObject Main_Character;
 
+    [SerializeField]
+    private GameObject _weaponRoot;
+    [SerializeField]
+    private GameObject[] _weaponPrefabs;
+
+    private List<GameObject> _weapons;
+    private int _currentWeapon = 0;
+    private Weapon_Controller _weaponCtrl;
+
+    private vehicle_controller _vehicleCtrl;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         _animator = this.GetComponent<Animator>();
         _characterController = this.GetComponent<CharacterController>();
         _mainCamera = Camera.main;
+
+        _weapons = new List<GameObject>();
+        _weapons.Add(Instantiate(_weaponPrefabs[0], _weaponRoot.transform));
+
+        foreach(GameObject weapon in _weapons)
+        {
+            Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
+            Debug.Log("SetActive");
+            ctrl.SetAnimator(_animator);
+            ctrl.SetActive(false);
+
+        }
+
+        _weaponCtrl = _weapons[0].GetComponent<Weapon_Controller>();
+        _weaponCtrl.SetActive(true);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (_vehicleCtrl == null)
+        {
+            Movement();
+            Weapons();
+        }
+        vehicleupdate();
     }
 
     private void Movement()
@@ -75,5 +108,42 @@ public class Player_movement : MonoBehaviour
 
 
         _characterController.Move(movement * Time.deltaTime);
+    }
+
+    private void Weapons()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            StartCoroutine(_weaponCtrl.Fire(this.transform.forward));
+        }
+        else
+        {
+            _weaponCtrl.Stop();
+        }
+    }
+
+    private void vehicleupdate()
+    {
+        if(_vehicleCtrl == null)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                var colliders = Physics.OverlapSphere(Main_Character.transform.position, 2f);
+                foreach( var collider in colliders)
+                {
+                    var car = collider.GetComponent<vehicle_controller>();
+
+                    if(car != null)
+                    {
+                        _vehicleCtrl = car;
+                        Main_Character.transform.position = collider.transform.position;
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("In car");
+        }
     }
 }
