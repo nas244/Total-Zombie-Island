@@ -89,9 +89,11 @@ public class Weapon_Controller : MonoBehaviour
             {
                 effect = Instantiate(_bloodSplatter, hit.point, Quaternion.LookRotation(hit.normal));
             }
-
-            effect = Instantiate(_impactSpark, hit.point, Quaternion.LookRotation(hit.normal));
-
+            else
+            {
+                effect = Instantiate(_impactSpark, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            
             Destroy(effect, 1.0f);
         }
         //Debug.Log("Hit Location:");
