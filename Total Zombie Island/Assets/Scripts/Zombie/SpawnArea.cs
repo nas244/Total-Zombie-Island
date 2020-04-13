@@ -119,6 +119,9 @@ public class SpawnArea : MonoBehaviour
     // spawns a zombie on the child spawnpoint that is farthest from the player
     public void Spawn()
     {
+        // don't spawn if there aren't any spawners
+        if (spawners.Length <= 0) return;
+
         // find the farthest spawn point from the player
         ZombieSpawner spawnPoint = spawners[0];
         foreach (ZombieSpawner spawner in spawners)
