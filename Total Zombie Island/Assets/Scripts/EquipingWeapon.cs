@@ -48,7 +48,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(true);
-
+        Hand.gameObject.SetActive(false);
     }
     public void SMGWeapon ()
     {
@@ -75,7 +75,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(true);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
     public void SniperWeapon ()
@@ -89,7 +89,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
     public void Glauncher()
@@ -103,7 +103,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
     public void ARWeapon()
@@ -117,7 +117,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
     public void MinigunWeapon()
@@ -131,7 +131,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
     public void RPGWeapon()
@@ -145,7 +145,7 @@ public class EquipingWeapon : MonoBehaviour
         Pistol.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
-
+        Hand.gameObject.SetActive(false);
     }
 
 

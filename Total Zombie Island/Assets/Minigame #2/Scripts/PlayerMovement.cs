@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // init some vars editable in Unity
     [SerializeField] private float runSpeed;
+    [SerializeField] private GameObject weaponSlot;
 
     // init some vars NOT editable in Unity
     private Animator animator;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isAttacking = false;
     private bool detectingHit = false;
     private weaponTypes weaponType;
+    private EquipingWeapon equip;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -29,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
         // grab the animator
         gameObject.TryGetComponent<Animator>(out animator);
-        
+
+        // grab the equip script
+        equip = weaponSlot.GetComponent<EquipingWeapon>();
     }
 
     // Update is called once per frame
@@ -134,5 +138,26 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void EquipWeapon(string type)
+    {
+        switch (type)
+        {
+            case "Shotgun":
+                // equip the player's shotgun
+                equip.ShotgunWeapon();
+                break;
+            case "Katana":
+                // equip the player's katana
+                equip.HandWeapon();
+                break;
+            case "Minigun":
+                // equip the player's minigun
+                equip.MinigunWeapon();
+                break;
+        }
+
+        Debug.Log("Equipped \"" + type + "\".");
     }
 }
