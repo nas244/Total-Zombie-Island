@@ -13,9 +13,11 @@ public class Zombie : MonoBehaviour
     {
         // try to grab the zombie's animator component
         gameObject.TryGetComponent<Animator>(out anim);
+        if (!anim) Debug.LogError("Couldn't find animator for zombie!");
 
         // try to grab the Rigidbody component
         gameObject.TryGetComponent<Rigidbody>(out rb);
+        if (!rb) Debug.LogError("Couldn't find rigidbody for zombie!");
     }
 
     // Update is called once per frame
@@ -29,8 +31,10 @@ public class Zombie : MonoBehaviour
     {
         Debug.Log("Die has been called!");
 
-        // disable the animator component
+        // disable the root components
         anim.enabled = false;
+        gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 
         // enable the ragdoll
         RagdollEnable();
@@ -46,6 +50,7 @@ public class Zombie : MonoBehaviour
         foreach (BoxCollider box in gameObject.GetComponentsInChildren<BoxCollider>())
         {
             box.enabled = true;
+            Debug.Log("BoxCollider enabled.");
         }
 
         // enable all sphereColliders
