@@ -365,7 +365,7 @@ MonoBehaviour:
   _impactSpark: {fileID: 191114, guid: 48a83667d6d13e14ab5bc0aefb0a6a07, type: 3}
   _gunShot: {fileID: 0}
   _weaponAnim: 1
-  _fullAuto: 0
+  _fullAuto: 1
   _lineRenderer: {fileID: 254749681768837825}
 --- !u!1 &180380
 GameObject:

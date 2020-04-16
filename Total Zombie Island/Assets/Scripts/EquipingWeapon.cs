@@ -135,7 +135,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
 
-        _playerctrl._nextWeapon = 2;
+        _playerctrl._nextWeapon = 1;
     }
 
     public void MinigunWeapon()
