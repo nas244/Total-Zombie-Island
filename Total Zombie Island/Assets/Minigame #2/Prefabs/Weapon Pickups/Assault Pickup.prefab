@@ -369,6 +369,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: 965e421d30d6a2a419dfd5b3597456b8, type: 2}
   outlineMaterial: {fileID: 2100000, guid: f7d743d0f86a77d4fb66df66a54958fa, type: 2}
   weaponType: Assault
+  ammo: 30
 --- !u!1 &154304
 GameObject:
   m_ObjectHideFlags: 0

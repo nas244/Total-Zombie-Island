@@ -708,7 +708,8 @@ ModelImporter:
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Body_jnt' has translation animation that
-      will be discarded.\n"
+      will be discarded.\nEvent AttackEndEvent has a time (0.533333) outside the
+      clip's valid range (0.000000..0.533333). It will never be fired"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0

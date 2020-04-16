@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    // define some vars editable in Unity
+    [SerializeField] private int health;
+    [SerializeField] private int knockback;
+    [SerializeField] private GameObject bloodSplatter;
+    [SerializeField] private GameObject bloodSpot;
+
     // define some vars NOT editable in Unity
     private Animator anim;
     private Rigidbody rb;
@@ -26,31 +32,52 @@ public class Zombie : MonoBehaviour
         
     }
 
-    // fucntion called when the zombie dies
-    public void Die()
+    // function called when a zombie gets hit
+    public void Hurt(int damage)
     {
-        Debug.Log("Die has been called!");
+        Debug.Log("Zombie \"" + this.name + "\" has been hurt!");
+
+        // subtract from the zombie's health
+        health -= damage;
+
+        // instantiate blood splatter object on zombie
+        Destroy(Instantiate(bloodSplatter, bloodSpot.transform), 1.0f);
+
+        // knock the zombie back a bit
+        //Vector3 moveDirection = transform.forward * -knockback * 100;
+        //rb.AddForce(moveDirection);
+
+        // check if the zombie is dead
+        if (health <= 0)
+        {
+            // call Die on this zombie
+            Die();
+        }
+    }
+
+    // fucntion called when the zombie dies
+    void Die()
+    {
+        Debug.Log("Zombie \"" + this.name + "\" is dead!");
 
         // disable the root components
         anim.enabled = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
         gameObject.GetComponent<Rigidbody>().detectCollisions = false;
 
-        // enable the ragdoll
-        RagdollEnable();
-
         // unlock the X and Y axis'
         rb.constraints = RigidbodyConstraints.None;
 
+        // enable the ragdoll
+        RagdollEnable();
     }
 
-    public void RagdollEnable()
+    void RagdollEnable()
     {
         // enable all boxColliders
         foreach (BoxCollider box in gameObject.GetComponentsInChildren<BoxCollider>())
         {
             box.enabled = true;
-            Debug.Log("BoxCollider enabled.");
         }
 
         // enable all sphereColliders

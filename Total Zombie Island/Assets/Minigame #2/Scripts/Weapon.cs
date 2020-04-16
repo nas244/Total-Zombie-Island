@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material outlineMaterial;
     [SerializeField] private string weaponType;
+    [SerializeField] private int ammo;
 
     // define some vars NOT editable in Unity
     private Renderer renderer;
@@ -40,7 +41,7 @@ public class Weapon : MonoBehaviour
                 // if this object is selected, equip it
                 if (selected)
                 {
-                    player.GetComponent<PlayerMovement>().EquipWeapon(weaponType);
+                    player.GetComponent<PlayerMovement>().EquipWeapon(weaponType, ammo);
                     selected = false;
                     Destroy(gameObject);
                 }

@@ -37,6 +37,7 @@ Transform:
   - {fileID: 821396898646375981}
   - {fileID: 821396898711870704}
   - {fileID: 7838729068714567110}
+  - {fileID: 2260673988900021893}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -63,6 +64,36 @@ MonoBehaviour:
   Pistol: {fileID: 821396898711685070}
   _anim: {fileID: 0}
   MainChar: {fileID: 0}
+--- !u!1 &4345746027958942288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2260673988900021893}
+  m_Layer: 0
+  m_Name: ShotLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2260673988900021893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345746027958942288}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.109, y: -0.352, z: 0.056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 821396898245268802}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &241267401521219972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -441,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 186906, guid: c1d446be7c7f98a4a80cbf3b21f37f78, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 480920, guid: c1d446be7c7f98a4a80cbf3b21f37f78, type: 3}
       propertyPath: m_LocalPosition.x

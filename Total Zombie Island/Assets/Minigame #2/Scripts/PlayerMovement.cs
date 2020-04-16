@@ -6,7 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     // init some vars editable in Unity
     [SerializeField] private float runSpeed;
+    [SerializeField] private int startingHealth;
     [SerializeField] private GameObject weaponSlot;
+    [SerializeField] private GameObject shotLocation;
+    [SerializeField] private GameObject dirtSplatter;
+    [SerializeField] private GameObject ammoUI;
+    [SerializeField] private GameObject healthUI;
+    [SerializeField] private GameObject weaponUI;
 
     // init some vars NOT editable in Unity
     private Animator animator;
@@ -17,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private bool detectingHit = false;
     private weaponTypes weaponType = weaponTypes.NONE;
     private EquipingWeapon equip;
+    private int ammo = 0;
+    private int health;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -40,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
         // grab the equip script
         equip = weaponSlot.GetComponent<EquipingWeapon>();
 
+        // init health
+        health = startingHealth;
+
         // setup the animator
         animator.SetInteger("MeleeType_int", -1);
         animator.SetBool("Shoot_b", false);
@@ -52,7 +63,10 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         // check if the player is attacking
-        if (Input.GetMouseButton(0) && weaponType != weaponTypes.NONE) attackCalled = true;
+        if (Input.GetMouseButton(0) && weaponType != weaponTypes.NONE && ammo > 0) attackCalled = true;
+
+        // update the UI
+        UpdateUI();
     }
 
     // FixedUpdate is called once every fixedDeltaTime
@@ -75,6 +89,44 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetFloat("Speed_f", 0.0f);
         }
+    }
+
+    void UpdateUI()
+    {
+        // update the ammo UI
+        if (ammo > 0) ammoUI.GetComponent<TextMesh>().text = ammo.ToString();
+        else ammoUI.GetComponent<TextMesh>().text = "NO AMMO";
+
+        // update the health UI
+        healthUI.GetComponent<TextMesh>().text = health.ToString() + "/" + startingHealth.ToString();
+
+        // update the weapon text
+        string newText;
+        switch (weaponType)
+        {
+            case weaponTypes.NONE:
+                newText = "Fisticuffs";
+                break;
+            case weaponTypes.ASSAULT:
+                newText = "Assault Rifle";
+                break;
+            case weaponTypes.MINIGUN:
+                newText = "Minigun";
+                break;
+            case weaponTypes.SHOTGUN:
+                newText = "Shotgun";
+                break;
+            case weaponTypes.PISTOL:
+                newText = "Pistol";
+                break;
+            case weaponTypes.MELEE:
+                newText = "Katana";
+                break;
+            default:
+                newText = "Fisticuffs";
+                break;
+        }
+        weaponUI.GetComponent<TextMesh>().text = newText;
     }
 
     void Move()
@@ -117,6 +169,9 @@ public class PlayerMovement : MonoBehaviour
         // check if already attacking or if a weapon is equipped
         if (isAttacking) return;
 
+        // check if the player has any ammo left
+        if (ammo <= 0) return;
+
         // check if the player is looking left
         if (weaponType != weaponTypes.MELEE && gameObject.transform.eulerAngles.y == 0.0f)
         {
@@ -147,6 +202,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.SetBool("Shoot_b", true);
+            DetectHit();
+
+            // update the player's ammo count
+            ammo--;
         }
 
         // setup flags
@@ -166,38 +225,71 @@ public class PlayerMovement : MonoBehaviour
     // function called when the player's attack could hit something
     void AttackPeakEvent()
     {
-        // check if this is the first time this has been called
-        if (!detectingHit)
-        {
-            detectingHit = true;
+        DetectHit();
+    }
 
-            // use raycasting to detect a hit
-            RaycastHit hit;
-            if (Physics.Raycast (transform.position, transform.forward, out hit))
+    // detect if we hit a zombie
+    void DetectHit()
+    {
+        // check that we're supposed to be here
+        if (detectingHit) return;
+        detectingHit = true;
+
+        // check if this is a gunshot from the player's hand
+        RaycastHit hit;
+        if (weaponType != weaponTypes.MELEE && Physics.Raycast(shotLocation.transform.position, shotLocation.transform.forward, out hit))
+        {
+            Debug.DrawRay(shotLocation.transform.position, shotLocation.transform.forward, Color.red, 9999.0f, false);
+
+            // check if we hit a zombie
+            if (hit.collider.gameObject.CompareTag("zombie")) DamageZombie(hit.collider.gameObject);
+            else Destroy(Instantiate(dirtSplatter, hit.transform), 1.0f);
+        }
+
+        // otherwise check if this is a melee attack from the player's body
+        else if (weaponType == weaponTypes.MELEE && Physics.Raycast(transform.position, transform.forward, out hit))
+        {
+            if (hit.collider.gameObject.CompareTag("zombie"))
             {
-                // check if the object hit is a zombie
-                GameObject zombieObj = hit.collider.gameObject;
-                if (zombieObj.CompareTag("zombie"))
+                if (hit.distance < 3)
                 {
-                    switch (weaponType)
-                    {
-                        case weaponTypes.MELEE:
-                            // check to see if it was within distance
-                            if (hit.distance < 3)
-                            {
-                                // call Die on the zombie
-                                Debug.Log(zombieObj.name);
-                                zombieObj.GetComponent<Zombie>().Die();
-                            }
-                            break;
-                    }
+                    DamageZombie(hit.collider.gameObject);
+
+                    // update the player's ammo count
+                    ammo--;
+                    Debug.Log("Ammo: " + ammo.ToString());
                 }
             }
         }
     }
 
-    public void EquipWeapon(string type)
+    // deals damage to the first zombie in range of attack
+    void DamageZombie(GameObject zombieObj)
     {
+        Zombie zombie = zombieObj.GetComponent<Zombie>();
+        switch (weaponType)
+        {
+            case weaponTypes.MELEE:
+                zombie.Hurt(100);
+                break;
+            case weaponTypes.SHOTGUN:
+                zombie.Hurt(50);
+                break;
+            case weaponTypes.ASSAULT:
+                zombie.Hurt(25);
+                break;
+            case weaponTypes.MINIGUN:
+                zombie.Hurt(25);
+                break;
+            case weaponTypes.PISTOL:
+                zombie.Hurt(20);
+                break;
+        }
+    }
+
+    public void EquipWeapon(string type, int ammo)
+    {
+        // equp the player's new weapon
         switch (type)
         {
             case "Shotgun":
@@ -206,8 +298,8 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetInteger("WeaponType_int", 4);
                 weaponType = weaponTypes.SHOTGUN;
                 break;
-            case "Katana":
-                // equip the player's katana
+            case "Melee":
+                // equip the player's melee weapon
                 equip.HandWeapon();
                 animator.SetInteger("WeaponType_int", 12);
                 weaponType = weaponTypes.MELEE;
@@ -225,6 +317,9 @@ public class PlayerMovement : MonoBehaviour
                 weaponType = weaponTypes.ASSAULT;
                 break;
         }
+
+        // update the player's ammo
+        this.ammo = ammo;
 
         Debug.Log("Equipped \"" + type + "\".");
     }
