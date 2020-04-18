@@ -10,6 +10,10 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    private float _health;
+
+    private bool _isDead = false;
+
     private CharacterController _characterController;
 
     private Camera _mainCamera;
@@ -170,5 +174,22 @@ public class Player_movement : MonoBehaviour
 
             _weaponCtrl.SetActive(true);
         }
+    }
+
+    public IEnumerator Damage(float damage)
+    {
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            this.enabled = false;
+            _animator.SetBool("Death_b", true);
+
+            yield return new WaitForSeconds(5.0f);
+
+            _isDead = true;
+        }
+
+        yield break;
     }
 }

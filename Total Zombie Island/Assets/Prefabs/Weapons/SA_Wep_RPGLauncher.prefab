@@ -15,7 +15,7 @@ MonoBehaviour:
   _damage: 100
   _fireRate: 2
   _range: 100
-  _impactForce: 100
+  _impactForce: 50
   _shotLocation: {fileID: 1933026662172615249}
   _shotAnimDelayTime: 0.09
   _muzzleFlash: {fileID: 0}

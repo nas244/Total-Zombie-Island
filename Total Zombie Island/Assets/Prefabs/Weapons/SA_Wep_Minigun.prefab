@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 176706, guid: 7c0922489226a8a44aa4a7b63311f0e9, type: 3}
       propertyPath: m_Name
-      value: SA_Wep_Minigun (1)
+      value: SA_Wep_Minigun
       objectReference: {fileID: 0}
     - target: {fileID: 176706, guid: 7c0922489226a8a44aa4a7b63311f0e9, type: 3}
       propertyPath: m_IsActive
@@ -58,6 +58,11 @@ PrefabInstance:
     - target: {fileID: 407272, guid: 7c0922489226a8a44aa4a7b63311f0e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837507237000874581, guid: 7c0922489226a8a44aa4a7b63311f0e9,
+        type: 3}
+      propertyPath: _impactForce
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0922489226a8a44aa4a7b63311f0e9, type: 3}

@@ -88,6 +88,10 @@ public class Weapon_Controller : MonoBehaviour
             if (hit.transform.CompareTag("zombie"))
             {
                 effect = Instantiate(_bloodSplatter, hit.point, Quaternion.LookRotation(hit.normal));
+
+                hit.transform.gameObject.GetComponentInParent<Zombie_Controller>().Damage(_damage);
+
+                hit.rigidbody.AddForce(-hit.normal * _impactForce, ForceMode.Impulse);
             }
             else
             {
