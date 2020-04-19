@@ -11,7 +11,7 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
-    private float _health;
+    private float _health = 100;
 
     private bool _isDead = false;
 
