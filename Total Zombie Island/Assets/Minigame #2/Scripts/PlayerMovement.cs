@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject ammoUI;
     [SerializeField] private GameObject healthUI;
     [SerializeField] private GameObject weaponUI;
+    [SerializeField] private GameObject skin;
 
     // init some vars NOT editable in Unity
     private Animator animator;
@@ -25,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     private EquipingWeapon equip;
     private int ammo = 0;
     private int health;
+    private bool isHurt;
+    private float hurtTime;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -67,6 +70,19 @@ public class PlayerMovement : MonoBehaviour
 
         // update the UI
         UpdateUI();
+
+        // if the player is hurt, flash the player red
+        if (isHurt)
+        {
+            SkinnedMeshRenderer skinMesh = skin.GetComponent<SkinnedMeshRenderer>();
+            float t = (Time.time - hurtTime);
+            skinMesh.material.color = Color.Lerp(Color.white, Color.red, t);
+            skinMesh.material.color = Color.Lerp(Color.red, Color.white, t);
+            if (skinMesh.material.color == Color.white)
+            {
+                isHurt = false;
+            }
+        }
     }
 
     // FixedUpdate is called once every fixedDeltaTime
@@ -212,6 +228,15 @@ public class PlayerMovement : MonoBehaviour
         isAttacking = true;
     }
 
+    // called when a zombie attacks the player
+    public void Hurt(int damage)
+    {
+        isHurt = true;
+        hurtTime = Time.time;
+        health -= damage;
+        Debug.Log(health);
+    }
+
     // function called at the end of the attack animation
     void AttackEndEvent()
     {
@@ -297,29 +322,39 @@ public class PlayerMovement : MonoBehaviour
                 equip.ShotgunWeapon();
                 animator.SetInteger("WeaponType_int", 4);
                 weaponType = weaponTypes.SHOTGUN;
+                this.ammo = ammo;
                 break;
             case "Melee":
                 // equip the player's melee weapon
                 equip.HandWeapon();
                 animator.SetInteger("WeaponType_int", 12);
                 weaponType = weaponTypes.MELEE;
+                this.ammo = ammo;
                 break;
             case "Minigun":
                 // equip the player's minigun
                 equip.MinigunWeapon();
                 animator.SetInteger("WeaponType_int", 9);
                 weaponType = weaponTypes.MINIGUN;
+                this.ammo = ammo;
                 break;
             case "Assault":
                 // equip the player's assault gun
                 equip.ARWeapon();
                 animator.SetInteger("WeaponType_int", 2);
                 weaponType = weaponTypes.ASSAULT;
+                this.ammo = ammo;
+                break;
+            case "Health":
+                // update the player's health
+                if (ammo >= 100) health = 100;
+                else health += ammo;
+                break;
+            case "Ammo":
+                // update the player's ammo
+                this.ammo += ammo;
                 break;
         }
-
-        // update the player's ammo
-        this.ammo = ammo;
 
         Debug.Log("Equipped \"" + type + "\".");
     }

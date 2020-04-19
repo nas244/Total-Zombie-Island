@@ -36,7 +36,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // check if the player is close enough to pick it up
-            if (Vector3.Distance(player.transform.position, this.transform.position) <= 3.0f)
+            if ((player.transform.position.z - this.transform.position.z) <= 3.0f)
             {
                 // if this object is selected, equip it
                 if (selected)

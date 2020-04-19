@@ -43,7 +43,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 300
+  startingHealth: 0
   weaponSlot: {fileID: 4279174033930530037}
+  shotLocation: {fileID: 0}
+  dirtSplatter: {fileID: 0}
+  ammoUI: {fileID: 0}
+  healthUI: {fileID: 0}
+  weaponUI: {fileID: 0}
+  skin: {fileID: 8891322787344671073}
 --- !u!1001 &3460064394850171318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -274,6 +281,12 @@ Animator:
 --- !u!4 &8891322787344879273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 443792, guid: 17f67ce86fbcc4040bd07f5847372841,
+    type: 3}
+  m_PrefabInstance: {fileID: 8891322787344534329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8891322787344671073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 141912, guid: 17f67ce86fbcc4040bd07f5847372841,
     type: 3}
   m_PrefabInstance: {fileID: 8891322787344534329}
   m_PrefabAsset: {fileID: 0}

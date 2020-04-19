@@ -6,13 +6,20 @@ public class Zombie : MonoBehaviour
 {
     // define some vars editable in Unity
     [SerializeField] private int health;
-    [SerializeField] private int knockback;
+    [SerializeField] private int lookRadius;
+    [SerializeField] private int moveSpeed;
+    [SerializeField] private float attackDelay;
+    [SerializeField] private int attackDistance;
+    [SerializeField] private int attackDamage;
     [SerializeField] private GameObject bloodSplatter;
     [SerializeField] private GameObject bloodSpot;
 
     // define some vars NOT editable in Unity
     private Animator anim;
     private Rigidbody rb;
+    private GameObject target;
+    private bool targetDetected;
+    private float detectionTime;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +31,77 @@ public class Zombie : MonoBehaviour
         // try to grab the Rigidbody component
         gameObject.TryGetComponent<Rigidbody>(out rb);
         if (!rb) Debug.LogError("Couldn't find rigidbody for zombie!");
+
+        // try to find the target player
+        target = GameObject.FindGameObjectWithTag("Player");
+        if (!target) Debug.LogError("Could not find tagged \"Player\" object!");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // if the zombie isn't dead, chase the player
+        if (health > 0) Move();
+    }
+
+    // makes the zombie chase the player
+    private void Move()
+    {
+        Vector3 directionToTarget;
+        float distance = Vector3.Distance(target.transform.position, transform.position);
+
+        // Gives enemy a range that will cause it to move once the player enters it
+        if (distance <= lookRadius)
+        {
+            // if the enemy is within attackDistance range, attack the player
+            if (distance < attackDistance)
+            {
+                // check if we've detected the player already and it's been longer than attackDelay seconds
+                if (targetDetected && (Time.time - detectionTime) > attackDelay)
+                {
+                    // reset the detectionTime
+                    detectionTime = Time.time;
+
+                    // attack the player
+                    Attack();
+                }
+
+                // else if we have just discovered the player, wait to attack
+                else if (!targetDetected)
+                {
+                    targetDetected = true;
+                    detectionTime = Time.time;
+                }
+            }
+
+            // otherwise, move closer
+            else
+            {
+                // reset targetDetected
+                targetDetected = false;
+
+                // Rotate the enemy to always face the player. Locks every axis except Y so that it only rotates on Y axis. Change this for 3D sections
+                Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                transform.LookAt(targetPosition);
+
+                // Move enemy towards player
+                directionToTarget = (target.transform.position - transform.position).normalized;
+                rb.velocity = new Vector2(directionToTarget.z * moveSpeed, 0);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y, target.transform.position.z), moveSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    // attacks the player
+    void Attack()
+    {
+        Debug.Log("Attacked the player!");
+
+        // grab the PlayerMovement component from the player
+        PlayerMovement player = target.GetComponent<PlayerMovement>();
+
+        // call Hurt on the player for the specified amount of damage
+        player.Hurt(attackDamage);
     }
 
     // function called when a zombie gets hit
@@ -42,10 +114,6 @@ public class Zombie : MonoBehaviour
 
         // instantiate blood splatter object on zombie
         Destroy(Instantiate(bloodSplatter, bloodSpot.transform), 1.0f);
-
-        // knock the zombie back a bit
-        //Vector3 moveDirection = transform.forward * -knockback * 100;
-        //rb.AddForce(moveDirection);
 
         // check if the zombie is dead
         if (health <= 0)
