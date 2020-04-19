@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(CharacterController))]
@@ -71,6 +72,10 @@ public class Player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene("Sniping");
+        }
         if (_vehicleCtrl == null)
         {
             Movement();
@@ -194,5 +199,10 @@ public class Player_movement : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public float GetHealth()
+    {
+        return _health;
     }
 }
