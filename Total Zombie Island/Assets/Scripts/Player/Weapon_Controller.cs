@@ -44,6 +44,10 @@ public class Weapon_Controller : MonoBehaviour
     [SerializeField]
     private LineRenderer _lineRenderer;
 
+    private int _weaponIndex;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,13 +89,29 @@ public class Weapon_Controller : MonoBehaviour
             //Debug.DrawRay(_shotLocation.position, _shotLocation.forward * hit.distance, Color.yellow);
             GameObject effect;
 
-            if (hit.transform.CompareTag("zombie"))
+
+            if (_weaponIndex != 5 || _weaponIndex != 7)
             {
                 effect = Instantiate(_bloodSplatter, hit.point, Quaternion.LookRotation(hit.normal));
 
+                var colliders = Physics.OverlapSphere(hit.transform.position, 10f);
+
+                foreach (var collider in colliders)
+                {
+                    if (hit.transform.CompareTag("zombie"))
+                    {
+                        var zomb = collider.GetComponent<Zombie_Controller>();
+                        zomb.Damage(_damage);
+                    }
+                }
+            }
+            else if (hit.transform.CompareTag("zombie"))
+            {
                 hit.transform.gameObject.GetComponentInParent<Zombie_Controller>().Damage(_damage);
 
                 hit.rigidbody.AddForce(-hit.normal * _impactForce, ForceMode.Impulse);
+
+                effect = Instantiate(_bloodSplatter, hit.point, Quaternion.LookRotation(hit.normal));
             }
             else
             {
@@ -160,6 +180,11 @@ public class Weapon_Controller : MonoBehaviour
             }
            
         }
+    }
+
+    public void SetIndex(int index)
+    {
+        _weaponIndex = index;
     }
 }
 

@@ -51,13 +51,16 @@ public class Player_movement : MonoBehaviour
         _weapons.Add(Instantiate(_weaponPrefabs[7], _weaponRoot.transform));
         _weapons.Add(Instantiate(_weaponPrefabs[8], _weaponRoot.transform));
 
+        int index = 0;
+
         foreach (GameObject weapon in _weapons)
         {
             Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
             Debug.Log(weapon);
+            ctrl.SetIndex(index);
             ctrl.SetAnimator(_animator);
             ctrl.SetActive(false);
-
+            index += 1;
         }
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
