@@ -98,11 +98,14 @@ public class Weapon_Controller : MonoBehaviour
 
                 foreach (var collider in colliders)
                 {
-                    if (hit.transform.CompareTag("zombie"))
+                    
+                    var zomb = collider.GetComponent<Zombie_Controller>();
+                    if (zomb != null)
                     {
-                        var zomb = collider.GetComponent<Zombie_Controller>();
                         zomb.Damage(_damage);
                     }
+                    
+                    
                 }
             }
             else if (hit.transform.CompareTag("zombie"))
