@@ -112,10 +112,30 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.0000026207417
       objectReference: {fileID: 0}
+    - target: {fileID: 3037073922319869053, guid: d85363387d70f20479d1bf598389f456,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354176007030846427, guid: d85363387d70f20479d1bf598389f456,
+        type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354176007035052545, guid: d85363387d70f20479d1bf598389f456,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3354176007035052545, guid: d85363387d70f20479d1bf598389f456,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3354176007042139821, guid: d85363387d70f20479d1bf598389f456,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 122.55
+      value: 122.4
       objectReference: {fileID: 0}
     - target: {fileID: 3354176007042139821, guid: d85363387d70f20479d1bf598389f456,
         type: 3}

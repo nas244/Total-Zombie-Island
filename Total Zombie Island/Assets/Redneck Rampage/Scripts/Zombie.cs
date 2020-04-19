@@ -138,6 +138,9 @@ public class Zombie : MonoBehaviour
 
         // enable the ragdoll
         RagdollEnable();
+
+        // destory the zombie object after 5 seconds
+        Destroy(this, 5.0f);
     }
 
     void RagdollEnable()
