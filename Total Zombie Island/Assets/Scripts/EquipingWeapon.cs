@@ -43,8 +43,7 @@ public class EquipingWeapon : MonoBehaviour
         Shotgun.gameObject.SetActive(false);
         SMG.gameObject.SetActive(false);
         Hand.gameObject.SetActive(true);
-
-        _playerctrl._nextWeapon = 0;
+        if (_playerctrl) _playerctrl._nextWeapon = 0;
     }
     public void ShotgunWeapon ()
     {
@@ -58,7 +57,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(true);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 6;
+        if (_playerctrl) _playerctrl._nextWeapon = 6;
     }
     public void SMGWeapon ()
     {
@@ -72,7 +71,7 @@ public class EquipingWeapon : MonoBehaviour
         Hand.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         SMG.gameObject.SetActive(true);
-        _playerctrl._nextWeapon = 8;
+        if (_playerctrl) _playerctrl._nextWeapon = 8;
     }
 
     public void PistolWeapon ()
@@ -87,7 +86,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 3;
+        if (_playerctrl) _playerctrl._nextWeapon = 3;
     }
 
     public void SniperWeapon ()
@@ -102,7 +101,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 2;
+        if (_playerctrl) _playerctrl._nextWeapon = 2;
     }
 
     public void Glauncher()
@@ -117,7 +116,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 5;
+        if (_playerctrl) _playerctrl._nextWeapon = 5;
     }
 
     public void ARWeapon()
@@ -132,7 +131,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 1;
+        if (_playerctrl) _playerctrl._nextWeapon = 1;
     }
 
     public void MinigunWeapon()
@@ -147,7 +146,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 4;
+        if (_playerctrl) _playerctrl._nextWeapon = 4;
     }
 
     public void RPGWeapon()
@@ -162,7 +161,7 @@ public class EquipingWeapon : MonoBehaviour
         SMG.gameObject.SetActive(false);
         Shotgun.gameObject.SetActive(false);
         Hand.gameObject.SetActive(false);
-        _playerctrl._nextWeapon = 7;
+        if (_playerctrl) _playerctrl._nextWeapon = 7;
     }
 
 

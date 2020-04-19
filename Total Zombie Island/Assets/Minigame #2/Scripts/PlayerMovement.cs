@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int startingHealth;
     [SerializeField] private GameObject weaponSlot;
     [SerializeField] private GameObject shotLocation;
+    [SerializeField] private GameObject meleePoint;
     [SerializeField] private GameObject dirtSplatter;
     [SerializeField] private GameObject ammoUI;
     [SerializeField] private GameObject healthUI;
@@ -272,7 +273,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // otherwise check if this is a melee attack from the player's body
-        else if (weaponType == weaponTypes.MELEE && Physics.Raycast(transform.position, transform.forward, out hit))
+        else if (weaponType == weaponTypes.MELEE && Physics.Raycast(meleePoint.transform.position, meleePoint.transform.forward, out hit))
         {
             if (hit.collider.gameObject.CompareTag("zombie"))
             {
@@ -286,6 +287,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
+        Debug.DrawRay(meleePoint.transform.position, meleePoint.transform.forward, Color.red, 9999.0f, false);
     }
 
     // deals damage to the first zombie in range of attack
