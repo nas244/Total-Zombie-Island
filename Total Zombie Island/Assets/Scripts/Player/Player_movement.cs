@@ -10,6 +10,10 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    private float _health;
+
+    private bool _isDead = false;
+
     private CharacterController _characterController;
 
     private Camera _mainCamera;
@@ -23,6 +27,7 @@ public class Player_movement : MonoBehaviour
 
     private List<GameObject> _weapons;
     private int _currentWeapon = 0;
+    public int _nextWeapon = 0;
     private Weapon_Controller _weaponCtrl;
 
     private vehicle_controller _vehicleCtrl;
@@ -37,17 +42,25 @@ public class Player_movement : MonoBehaviour
 
         _weapons = new List<GameObject>();
         _weapons.Add(Instantiate(_weaponPrefabs[0], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[1], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[2], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[3], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[4], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[5], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[6], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[7], _weaponRoot.transform));
+        _weapons.Add(Instantiate(_weaponPrefabs[8], _weaponRoot.transform));
 
-        foreach(GameObject weapon in _weapons)
+        foreach (GameObject weapon in _weapons)
         {
             Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
-            Debug.Log("SetActive");
+            Debug.Log(weapon);
             ctrl.SetAnimator(_animator);
             ctrl.SetActive(false);
 
         }
 
-        _weaponCtrl = _weapons[0].GetComponent<Weapon_Controller>();
+        _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
 
     }
@@ -59,6 +72,7 @@ public class Player_movement : MonoBehaviour
         {
             Movement();
             Weapons();
+            WeaponSwitch();
         }
         vehicleupdate();
     }
@@ -136,7 +150,7 @@ public class Player_movement : MonoBehaviour
                     if(car != null)
                     {
                         _vehicleCtrl = car;
-                        Main_Character.transform.position = collider.transform.position;
+                        //Main_Character.t
                     }
                 }
             }
@@ -145,5 +159,37 @@ public class Player_movement : MonoBehaviour
         {
             Debug.Log("In car");
         }
+    }
+
+    private void WeaponSwitch()
+    {
+        if(_nextWeapon != _currentWeapon)
+        {
+            Debug.Log("Kill me");
+            _weaponCtrl.SetActive(false);
+
+            _currentWeapon = _nextWeapon;
+
+            _weaponCtrl = _weapons[_currentWeapon].GetComponent<Weapon_Controller>();
+
+            _weaponCtrl.SetActive(true);
+        }
+    }
+
+    public IEnumerator Damage(float damage)
+    {
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            this.enabled = false;
+            _animator.SetBool("Death_b", true);
+
+            yield return new WaitForSeconds(5.0f);
+
+            _isDead = true;
+        }
+
+        yield break;
     }
 }
