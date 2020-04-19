@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(CharacterController))]
@@ -51,13 +52,16 @@ public class Player_movement : MonoBehaviour
         _weapons.Add(Instantiate(_weaponPrefabs[7], _weaponRoot.transform));
         _weapons.Add(Instantiate(_weaponPrefabs[8], _weaponRoot.transform));
 
+        int index = 0;
+
         foreach (GameObject weapon in _weapons)
         {
             Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
             Debug.Log(weapon);
+            ctrl.SetIndex(index);
             ctrl.SetAnimator(_animator);
             ctrl.SetActive(false);
-
+            index += 1;
         }
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
@@ -68,6 +72,10 @@ public class Player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene("Sniping");
+        }
         if (_vehicleCtrl == null)
         {
             Movement();
@@ -191,5 +199,10 @@ public class Player_movement : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public float GetHealth()
+    {
+        return _health;
     }
 }
