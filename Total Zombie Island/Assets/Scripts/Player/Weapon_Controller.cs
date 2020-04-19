@@ -74,7 +74,7 @@ public class Weapon_Controller : MonoBehaviour
 
         yield return new WaitForSeconds(_shotAnimDelayTime);
 
-        //_gunShot.PlayOneShot(_gunShot.clip, 0.5f);
+        _gunShot.PlayOneShot(_gunShot.clip, 0.5f);
 
         RaycastHit hit;
 
@@ -90,7 +90,7 @@ public class Weapon_Controller : MonoBehaviour
             GameObject effect;
 
 
-            if (_weaponIndex != 5 || _weaponIndex != 7)
+            if (_weaponIndex == 5 || _weaponIndex == 7)
             {
                 effect = Instantiate(_bloodSplatter, hit.point, Quaternion.LookRotation(hit.normal));
 
