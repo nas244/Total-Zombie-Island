@@ -160,4 +160,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Overworld");
     }
+
+    public void ReplayScene()
+    {
+        SceneManager.LoadScene("Redneck Rampage");
+    }
 }
