@@ -24,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
     private bool attackCalled = false;
     private bool detectingHit = false;
     private weaponTypes weaponType = weaponTypes.NONE;
+    private int weaponDamage;
     private EquipingWeapon equip;
     private int ammo = 0;
     [System.NonSerialized] public int health;
     private bool isHurt;
     private float hurtTime;
     private GameManager gameManager;
+    private WeaponSpawner parentWeaponSpawner;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -307,28 +309,23 @@ public class PlayerMovement : MonoBehaviour
     void DamageZombie(GameObject zombieObj)
     {
         Zombie zombie = zombieObj.GetComponent<Zombie>();
-        switch (weaponType)
-        {
-            case weaponTypes.MELEE:
-                zombie.Hurt(100);
-                break;
-            case weaponTypes.SHOTGUN:
-                zombie.Hurt(50);
-                break;
-            case weaponTypes.ASSAULT:
-                zombie.Hurt(34);
-                break;
-            case weaponTypes.MINIGUN:
-                zombie.Hurt(25);
-                break;
-            case weaponTypes.PISTOL:
-                zombie.Hurt(20);
-                break;
-        }
+        zombie.Hurt(weaponDamage);
     }
 
-    public void EquipWeapon(string type, int ammo)
+    public void EquipWeapon(GameObject weapon)
     {
+        // grab some vars from weapon object
+        string type = weapon.GetComponent<Weapon>().weaponType;
+        int ammo = weapon.GetComponent<Weapon>().ammo;
+        int damage = weapon.GetComponent<Weapon>().damage;
+
+        // reeanble previous weaponSpawnerParent (if this isn't the first)
+        if (parentWeaponSpawner)
+        {
+            parentWeaponSpawner.enable = true;
+            parentWeaponSpawner.lastSpawnTime = Time.time;
+        }
+
         // equp the player's new weapon
         switch (type)
         {
@@ -337,28 +334,36 @@ public class PlayerMovement : MonoBehaviour
                 equip.ShotgunWeapon();
                 animator.SetInteger("WeaponType_int", 4);
                 weaponType = weaponTypes.SHOTGUN;
+                weaponDamage = damage;
                 this.ammo = ammo;
+                this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
                 break;
             case "Melee":
                 // equip the player's melee weapon
                 equip.HandWeapon();
                 animator.SetInteger("WeaponType_int", 12);
                 weaponType = weaponTypes.MELEE;
+                weaponDamage = damage;
                 this.ammo = ammo;
+                this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
                 break;
             case "Minigun":
                 // equip the player's minigun
                 equip.MinigunWeapon();
                 animator.SetInteger("WeaponType_int", 9);
                 weaponType = weaponTypes.MINIGUN;
+                weaponDamage = damage;
                 this.ammo = ammo;
+                this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
                 break;
             case "Assault":
                 // equip the player's assault gun
                 equip.ARWeapon();
                 animator.SetInteger("WeaponType_int", 2);
                 weaponType = weaponTypes.ASSAULT;
+                weaponDamage = damage;
                 this.ammo = ammo;
+                this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
                 break;
             case "Health":
                 // update the player's health

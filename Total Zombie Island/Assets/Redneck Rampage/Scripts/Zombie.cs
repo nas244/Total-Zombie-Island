@@ -5,12 +5,12 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     // define some vars editable in Unity
-    [SerializeField] private int health;
+    [SerializeField] public int health;
     [SerializeField] private int lookRadius;
     [SerializeField] private int moveSpeed;
     [SerializeField] private float attackDelay;
     [SerializeField] private int attackDistance;
-    [SerializeField] private int attackDamage;
+    [SerializeField] public int attackDamage;
     [SerializeField] private GameObject bloodSplatter;
     [SerializeField] private GameObject bloodSpot;
 

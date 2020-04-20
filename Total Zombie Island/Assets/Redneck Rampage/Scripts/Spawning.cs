@@ -15,16 +15,17 @@ public class Spawning : MonoBehaviour
     [SerializeField] private GameObject wavesUI;
 
     // define some vars NOT editable in Unity
-    private GameObject gameManager;
+    private GameManager gameManager;
     private int spawnCount;
     private int zombiesReamaining;
     private float lastSpawnTime;
+    private int wave;
 
     // Start is called before the first frame update
     void Start()
     {
         // grab the gameManager
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         // grab all active spawnpoints in scene and save their scripts
         spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
@@ -49,11 +50,40 @@ public class Spawning : MonoBehaviour
         // update the UI
         UpdateUI();
 
-        // if no more zombies remain, game over
+        // if no more zombies remain, move to next round or game over
         if (zombiesReamaining <= 0)
         {
-            gameManager.GetComponent<GameManager>().GameOver(true);
+            switch (wave)
+            {
+                case 1:
+                    gameManager.Wave2();
+                    break;
+                case 2:
+                    gameManager.Wave3();
+                    break;
+                case 3:
+                    gameManager.GameOver(true);
+                    break;
+            }
         }
+    }
+
+    // sets this instance of spawning to the specified values and resets all counters
+    public void Setup(int damage, int health, int limit, float delay, int wave)
+    {
+        // setup specified values
+        zombieDamage = damage;
+        zombieHealth = health;
+        spawnLimit = limit;
+        spawnDelay = delay;
+
+        // reset counters
+        spawnCount = 0;
+        zombiesReamaining = limit;
+        lastSpawnTime = Time.time;
+        this.wave = wave;
+
+        Debug.Log("Spawning reset.");
     }
 
     // updates the UI on the screen
@@ -63,7 +93,7 @@ public class Spawning : MonoBehaviour
         zombiesUI.GetComponent<TextMesh>().text = zombiesReamaining.ToString();
 
         // update wave counter
-        wavesUI.GetComponent<TextMesh>().text = "1/3";
+        wavesUI.GetComponent<TextMesh>().text = wave.ToString() + "/3";
     }
 
     void Spawn()
@@ -72,12 +102,17 @@ public class Spawning : MonoBehaviour
         GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Length)];
         GameObject zombie = Instantiate(zombiePrefab, spawnpoint.transform);
         zombie.transform.position = spawnpoint.transform.position;
+
+        // setup zombie attributes
         zombie.GetComponent<Zombie>().parentSpawner = this.gameObject;
-        Debug.Log("Zombie spawned at spawnpoint: \"" + spawnpoint.name + "\".");
+        zombie.GetComponent<Zombie>().health = zombieHealth;
+        zombie.GetComponent<Zombie>().attackDamage = zombieDamage;
 
         // reset the last spawn time and update spawn count
         lastSpawnTime = Time.time;
         spawnCount++;
+
+        Debug.Log("Zombie spawned at spawnpoint: \"" + spawnpoint.name + "\".");
     }
 
     public void UpdateCount()

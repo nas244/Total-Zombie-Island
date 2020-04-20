@@ -7,10 +7,12 @@ public class Weapon : MonoBehaviour
     // define some vars editable in Unity
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material outlineMaterial;
-    [SerializeField] private string weaponType;
-    [SerializeField] private int ammo;
+    [SerializeField] public string weaponType;
+    [SerializeField] public int ammo;
+    [SerializeField] public int damage;
 
     // define some vars NOT editable in Unity
+    [System.NonSerialized] public GameObject parentSpawner;
     private Renderer renderer;
     private Renderer[] children;
     private bool selected;
@@ -41,7 +43,7 @@ public class Weapon : MonoBehaviour
                 // if this object is selected, equip it
                 if (selected)
                 {
-                    player.GetComponent<PlayerMovement>().EquipWeapon(weaponType, ammo);
+                    player.GetComponent<PlayerMovement>().EquipWeapon(this.gameObject);
                     selected = false;
                     Destroy(gameObject);
                 }
