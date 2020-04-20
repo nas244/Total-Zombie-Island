@@ -11,9 +11,12 @@ public class Spawning : MonoBehaviour
     [SerializeField] private int spawnLimit;
     [SerializeField] private int zombieHealth;
     [SerializeField] private int zombieDamage;
+    [SerializeField] private GameObject zombiesUI;
+    [SerializeField] private GameObject wavesUI;
 
     // define some vars NOT editable in Unity
     private int spawnCount;
+    private int zombiesReamaining;
     private float lastSpawnTime;
 
     // Start is called before the first frame update
@@ -21,6 +24,9 @@ public class Spawning : MonoBehaviour
     {
         // grab all active spawnpoints in scene and save their scripts
         spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
+
+        // init some vars
+        zombiesReamaining = spawnLimit;
     }
 
     // Update is called once per frame
@@ -35,6 +41,19 @@ public class Spawning : MonoBehaviour
                 Spawn();
             }
         }
+
+        // update the UI
+        UpdateUI();
+    }
+
+    // updates the UI on the screen
+    void UpdateUI()
+    {
+        // update remaining zombies counter
+        zombiesUI.GetComponent<TextMesh>().text = zombiesReamaining.ToString();
+
+        // update wave counter
+        wavesUI.GetComponent<TextMesh>().text = "1/3";
     }
 
     void Spawn()
@@ -43,12 +62,17 @@ public class Spawning : MonoBehaviour
         GameObject spawnpoint = spawnpoints[Random.Range(0, spawnpoints.Length)];
         GameObject zombie = Instantiate(zombiePrefab, spawnpoint.transform);
         zombie.transform.position = spawnpoint.transform.position;
-        zombie.SetActive(false);
-        zombie.SetActive(true);
+        zombie.GetComponent<Zombie>().parentSpawner = this.gameObject;
         Debug.Log("Zombie spawned at spawnpoint: \"" + spawnpoint.name + "\".");
 
         // reset the last spawn time and update spawn count
         lastSpawnTime = Time.time;
         spawnCount++;
+    }
+
+    public void UpdateCount()
+    {
+        // decrement the zombies remaining counter
+        zombiesReamaining--;
     }
 }

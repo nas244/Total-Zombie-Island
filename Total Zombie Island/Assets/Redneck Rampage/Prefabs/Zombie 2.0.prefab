@@ -120,7 +120,7 @@ PrefabInstance:
     - target: {fileID: 3354176007030846427, guid: d85363387d70f20479d1bf598389f456,
         type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3354176007035052545, guid: d85363387d70f20479d1bf598389f456,
         type: 3}

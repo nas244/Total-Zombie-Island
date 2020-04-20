@@ -195,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
             // rotate the player to look left
             gameObject.transform.eulerAngles = new Vector3(
                 gameObject.transform.eulerAngles.x,
-                50,
+                55,
                 gameObject.transform.eulerAngles.z
             );
         }
@@ -235,7 +235,6 @@ public class PlayerMovement : MonoBehaviour
         isHurt = true;
         hurtTime = Time.time;
         health -= damage;
-        Debug.Log(health);
     }
 
     // function called at the end of the attack animation
@@ -261,12 +260,12 @@ public class PlayerMovement : MonoBehaviour
         if (detectingHit) return;
         detectingHit = true;
 
+        Debug.DrawRay(shotLocation.transform.position, shotLocation.transform.forward, Color.red, 9999.0f, false);
+
         // check if this is a gunshot from the player's hand
         RaycastHit hit;
         if (weaponType != weaponTypes.MELEE && Physics.Raycast(shotLocation.transform.position, shotLocation.transform.forward, out hit))
         {
-            Debug.DrawRay(shotLocation.transform.position, shotLocation.transform.forward, Color.red, 9999.0f, false);
-
             // check if we hit a zombie
             if (hit.collider.gameObject.CompareTag("zombie")) DamageZombie(hit.collider.gameObject);
             else Destroy(Instantiate(dirtSplatter, hit.transform), 1.0f);
@@ -283,7 +282,6 @@ public class PlayerMovement : MonoBehaviour
 
                     // update the player's ammo count
                     ammo--;
-                    Debug.Log("Ammo: " + ammo.ToString());
                 }
             }
         }
@@ -304,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
                 zombie.Hurt(50);
                 break;
             case weaponTypes.ASSAULT:
-                zombie.Hurt(25);
+                zombie.Hurt(34);
                 break;
             case weaponTypes.MINIGUN:
                 zombie.Hurt(25);

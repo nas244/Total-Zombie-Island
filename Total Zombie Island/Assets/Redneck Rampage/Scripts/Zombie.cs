@@ -20,6 +20,7 @@ public class Zombie : MonoBehaviour
     private GameObject target;
     private bool targetDetected;
     private float detectionTime;
+    [System.NonSerialized] public GameObject parentSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,13 @@ public class Zombie : MonoBehaviour
     {
         // if the zombie isn't dead, chase the player
         if (health > 0) Move();
+
+        // check if the zombie has noclipped through the map
+        if (health > 0 && transform.position.y < 0)
+        {
+            Destroy(this.gameObject);
+            Debug.Log("Zombie destroyed for leaving the map.");
+        }
     }
 
     // makes the zombie chase the player
@@ -95,8 +103,6 @@ public class Zombie : MonoBehaviour
     // attacks the player
     void Attack()
     {
-        Debug.Log("Attacked the player!");
-
         // grab the PlayerMovement component from the player
         PlayerMovement player = target.GetComponent<PlayerMovement>();
 
@@ -107,8 +113,6 @@ public class Zombie : MonoBehaviour
     // function called when a zombie gets hit
     public void Hurt(int damage)
     {
-        Debug.Log("Zombie \"" + this.name + "\" has been hurt!");
-
         // subtract from the zombie's health
         health -= damage;
 
@@ -126,8 +130,6 @@ public class Zombie : MonoBehaviour
     // fucntion called when the zombie dies
     void Die()
     {
-        Debug.Log("Zombie \"" + this.name + "\" is dead!");
-
         // disable the root components
         anim.enabled = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
@@ -139,8 +141,8 @@ public class Zombie : MonoBehaviour
         // enable the ragdoll
         RagdollEnable();
 
-        // destory the zombie object after 5 seconds
-        Destroy(this, 5.0f);
+        // if this zombie has been spawned, update parentSpawner
+        if (parentSpawner) parentSpawner.GetComponent<Spawning>().UpdateCount();
     }
 
     void RagdollEnable()
