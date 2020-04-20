@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // define some vars editable in Unity
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject lossUI;
+    [SerializeField] private GameObject winUI;
+    [SerializeField] private GameObject howtoplayUI;
+    [SerializeField] private GameObject mainUI;
+
     // define some vars NOT editable in Unity
     private GameObject spawner;
     private GameObject[] weaponSpawners;
@@ -18,13 +26,40 @@ public class GameManager : MonoBehaviour
         weaponSpawners = GameObject.FindGameObjectsWithTag("WeaponSpawner");
 
         // start game with Wave 1
-        Wave1();
+        HowToPlay();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void HowToPlay()
+    {
+        // pause game time
+        Time.timeScale = 0;
+
+        // disable the mainUI
+        mainUI.SetActive(false);
+
+        // show the how to play ui
+        howtoplayUI.SetActive(true);
+    }
+
+    public void DismissHowToPlay()
+    {
+        // hide the how to play UI
+        howtoplayUI.SetActive(false);
+
+        // show the mainUI
+        mainUI.SetActive(true);
+
+        // reset time scale
+        Time.timeScale = 1;
+
+        // start Wave 1
+        Wave1();
     }
 
     // sets up the game for Wave 1
@@ -91,6 +126,9 @@ public class GameManager : MonoBehaviour
     // function called when the game is over
     public void GameOver(bool victory)
     {
+        // disable player control
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameover = true;
+
         // if the player won, log to console victory
         if (victory) StartCoroutine(Victory());
         else StartCoroutine(Loss());
@@ -102,7 +140,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         // display victory screen
-        Debug.Log("You won!");
+        mainUI.SetActive(false);
+        winUI.SetActive(true);
+        gameOverUI.SetActive(true);
     }
 
     IEnumerator Loss()
@@ -111,6 +151,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         // display game over screen
-        Debug.Log("Game over, you lost!");
+        mainUI.SetActive(false);
+        lossUI.SetActive(true);
+        gameOverUI.SetActive(true);
+    }
+
+    public void ReturnToLevel()
+    {
+        SceneManager.LoadScene("Overworld");
     }
 }

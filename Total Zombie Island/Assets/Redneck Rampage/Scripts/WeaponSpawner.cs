@@ -51,6 +51,9 @@ public class WeaponSpawner : MonoBehaviour
             case 3:
                 weapon = Instantiate(assaultPrefab, this.transform);
                 break;
+            case 4:
+                weapon = Instantiate(katanaPrefab, this.transform);
+                break;
             default:
                 weapon = Instantiate(katanaPrefab, this.transform);
                 break;

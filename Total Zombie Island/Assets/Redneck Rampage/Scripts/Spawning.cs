@@ -52,9 +52,8 @@ public class Spawning : MonoBehaviour
         UpdateUI();
 
         // if no more zombies remain, move to next round or game over
-        if (!gameover && zombiesReamaining <= 0)
+        if (zombiesReamaining <= 0)
         {
-            gameover = true;
             switch (wave)
             {
                 case 1:
@@ -64,10 +63,13 @@ public class Spawning : MonoBehaviour
                     gameManager.Wave3();
                     break;
                 case 3:
-                    gameManager.GameOver(true);
+                    gameover = true;
                     break;
             }
         }
+
+        // if game over, call game over
+        if (gameover) gameManager.GameOver(true);
     }
 
     // sets this instance of spawning to the specified values and resets all counters

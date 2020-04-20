@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private float hurtTime;
     private GameManager gameManager;
     private WeaponSpawner parentWeaponSpawner;
-    private bool gameover = false;
+    [System.NonSerialized] public bool gameover = false;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -70,6 +70,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if gameover, disable all input and udpates
+        if (gameover) return;
+
         // get input from the player
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -93,13 +96,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // check if the player is dead
-        if (!gameover && health <= 0)
+        if (health <= 0)
         {
             // set gameover so this doesn't repeat
             gameover = true;
 
             // play the death animation
             animator.SetBool("Death_b", true);
+
+            // freeze the player model in place so the zombies don't push him around
+            rb.isKinematic = true;
 
             // call game over
             gameManager.GameOver(false);
