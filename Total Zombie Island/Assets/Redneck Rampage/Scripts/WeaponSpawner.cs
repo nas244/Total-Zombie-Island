@@ -39,7 +39,7 @@ public class WeaponSpawner : MonoBehaviour
 
         // determine which gun to spawn
         GameObject weapon;
-        int chance = Random.Range(1, 4);
+        int chance = Random.Range(1, 5);
         switch (chance)
         {
             case 1:

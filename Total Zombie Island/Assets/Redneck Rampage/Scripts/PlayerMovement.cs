@@ -34,6 +34,20 @@ public class PlayerMovement : MonoBehaviour
     private WeaponSpawner parentWeaponSpawner;
     [System.NonSerialized] public bool gameover = false;
 
+    // slots for gun sounds
+    [SerializeField] private GameObject audioSource;
+    [SerializeField] private AudioClip shotgunShot;
+    [SerializeField] private AudioClip rifleShot;
+    [SerializeField] private AudioClip minigunShot;
+    [SerializeField] private AudioClip swordAttack;
+
+    // slots for gun equip sounds
+    [SerializeField] private AudioClip medkitSound;
+    [SerializeField] private AudioClip shotgunPickup;
+    [SerializeField] private AudioClip riflePickup;
+    [SerializeField] private AudioClip katanaPickup;
+    [SerializeField] private AudioClip minigunPickup;
+
     // enumerator for weapon types
     enum weaponTypes {
         NONE,
@@ -244,6 +258,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            GunShot();
             animator.SetBool("Shoot_b", true);
             DetectHit();
 
@@ -276,6 +291,10 @@ public class PlayerMovement : MonoBehaviour
     // function called when the player's attack could hit something
     void AttackPeakEvent()
     {
+        // play the appropriate sound
+        GunShot();
+
+        // detect a hit
         DetectHit();
     }
 
@@ -343,6 +362,7 @@ public class PlayerMovement : MonoBehaviour
                 weaponDamage = damage;
                 this.ammo = ammo;
                 this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
+                audioSource.GetComponent<AudioSource>().PlayOneShot(shotgunPickup);
                 break;
             case "Melee":
                 // equip the player's melee weapon
@@ -352,6 +372,7 @@ public class PlayerMovement : MonoBehaviour
                 weaponDamage = damage;
                 this.ammo = ammo;
                 this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
+                audioSource.GetComponent<AudioSource>().PlayOneShot(katanaPickup);
                 break;
             case "Minigun":
                 // equip the player's minigun
@@ -361,6 +382,7 @@ public class PlayerMovement : MonoBehaviour
                 weaponDamage = damage;
                 this.ammo = ammo;
                 this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
+                audioSource.GetComponent<AudioSource>().PlayOneShot(minigunPickup);
                 break;
             case "Assault":
                 // equip the player's assault gun
@@ -370,11 +392,13 @@ public class PlayerMovement : MonoBehaviour
                 weaponDamage = damage;
                 this.ammo = ammo;
                 this.parentWeaponSpawner = weapon.GetComponent<Weapon>().parentSpawner.GetComponent<WeaponSpawner>();
+                audioSource.GetComponent<AudioSource>().PlayOneShot(riflePickup);
                 break;
             case "Health":
                 // update the player's health
                 if (ammo >= 100) health = 100;
                 else health += ammo;
+                audioSource.GetComponent<AudioSource>().PlayOneShot(medkitSound);
                 break;
             case "Ammo":
                 // update the player's ammo
@@ -383,5 +407,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Debug.Log("Equipped \"" + type + "\".");
+    }
+
+    // plays the appropriate sound for the weapon in the player's hand
+    public void GunShot()
+    {
+        switch (weaponType)
+        {
+            case weaponTypes.ASSAULT:
+                audioSource.GetComponent<AudioSource>().PlayOneShot(rifleShot);
+                break;
+            case weaponTypes.SHOTGUN:
+                audioSource.GetComponent<AudioSource>().PlayOneShot(shotgunShot);
+                break;
+            case weaponTypes.MELEE:
+                audioSource.GetComponent<AudioSource>().PlayOneShot(swordAttack);
+                break;
+            case weaponTypes.MINIGUN:
+                audioSource.GetComponent<AudioSource>().PlayOneShot(minigunShot);
+                break;
+        }
     }
 }
