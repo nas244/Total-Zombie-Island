@@ -13,6 +13,8 @@ public class Zombie : MonoBehaviour
     [SerializeField] public int attackDamage;
     [SerializeField] private GameObject bloodSplatter;
     [SerializeField] private GameObject bloodSpot;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] hurtSounds;
 
     // define some vars NOT editable in Unity
     private Animator anim;
@@ -139,6 +141,22 @@ public class Zombie : MonoBehaviour
     // fucntion called when the zombie dies
     void Die()
     {
+        // play a random death sound
+        float chance = Random.Range(0.0f, 10.0f);
+        if (chance < 2.5)
+        {
+            audioSource.PlayOneShot(hurtSounds[1]);
+        }
+        else if (chance < 5.0)
+        {
+            audioSource.PlayOneShot(hurtSounds[2]);
+        }
+        else
+        {
+            audioSource.PlayOneShot(hurtSounds[0]);
+        }
+        
+
         // disable the root components
         anim.enabled = false;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
