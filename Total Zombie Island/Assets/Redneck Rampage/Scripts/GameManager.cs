@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     // define some vars NOT editable in Unity
     private GameObject spawner;
     private GameObject[] weaponSpawners;
+    [System.NonSerialized] public bool canPause;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     public void HowToPlay()
     {
+        // make it so the player cannot pause
+        canPause = false;
+
         // pause game time
         Time.timeScale = 0;
 
@@ -49,6 +53,9 @@ public class GameManager : MonoBehaviour
 
     public void DismissHowToPlay()
     {
+        // enable player to pause
+        canPause = true;
+
         // hide the how to play UI
         howtoplayUI.SetActive(false);
 
@@ -129,6 +136,9 @@ public class GameManager : MonoBehaviour
         // disable player control
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameover = true;
 
+        // make it so the player cannot pause
+        canPause = false;
+
         // if the player won, log to console victory
         if (victory) StartCoroutine(Victory());
         else StartCoroutine(Loss());
@@ -158,6 +168,9 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToLevel()
     {
+        // reset time scale if needed
+        Time.timeScale = 1;
+
         SceneManager.LoadScene("Overworld");
     }
 
