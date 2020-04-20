@@ -9,6 +9,7 @@ public class Health_Controller : MonoBehaviour
     private Text _healthText;
 
     private float _health;
+    private float _stamina;
 
     private Player_movement _playerCtrl;
 
@@ -24,6 +25,7 @@ public class Health_Controller : MonoBehaviour
     void Update()
     {
         _health = _playerCtrl.GetHealth();
-        _healthText.text = "Health: " + _health.ToString();
+        _stamina = _playerCtrl.GetStamina();
+        _healthText.text = "Health: " + _health.ToString() + "\n" + "Stamina: " + _stamina.ToString("0");
     }
 }

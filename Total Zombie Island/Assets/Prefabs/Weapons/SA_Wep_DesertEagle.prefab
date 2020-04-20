@@ -201,6 +201,16 @@ PrefabInstance:
       propertyPath: _gunShot
       value: 
       objectReference: {fileID: 457811731005508553}
+    - target: {fileID: 1067821697842494868, guid: 6a97c5e28ad9dab439460ddb0b1fb191,
+        type: 3}
+      propertyPath: _bloodSplatter
+      value: 
+      objectReference: {fileID: 194062, guid: bb954c7832c9a9845b017b284d33fbc8, type: 3}
+    - target: {fileID: 1067821697842494868, guid: 6a97c5e28ad9dab439460ddb0b1fb191,
+        type: 3}
+      propertyPath: _impactSpark
+      value: 
+      objectReference: {fileID: 191114, guid: 48a83667d6d13e14ab5bc0aefb0a6a07, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a97c5e28ad9dab439460ddb0b1fb191, type: 3}
 --- !u!4 &8277945041897028114 stripped
