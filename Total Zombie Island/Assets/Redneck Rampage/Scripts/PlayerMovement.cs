@@ -286,8 +286,6 @@ public class PlayerMovement : MonoBehaviour
         if (detectingHit) return;
         detectingHit = true;
 
-        Debug.DrawRay(shotLocation.transform.position, shotLocation.transform.forward, Color.red, 9999.0f, false);
-
         // check if this is a gunshot from the player's hand
         RaycastHit hit;
         if (weaponType != weaponTypes.MELEE && Physics.Raycast(shotLocation.transform.position, shotLocation.transform.forward, out hit))
@@ -311,8 +309,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
-        Debug.DrawRay(meleePoint.transform.position, meleePoint.transform.forward, Color.red, 9999.0f, false);
     }
 
     // deals damage to the first zombie in range of attack
