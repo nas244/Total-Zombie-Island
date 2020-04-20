@@ -26,9 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private weaponTypes weaponType = weaponTypes.NONE;
     private EquipingWeapon equip;
     private int ammo = 0;
-    private int health;
+    [System.NonSerialized] public int health;
     private bool isHurt;
     private float hurtTime;
+    private GameManager gameManager;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -54,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
 
         // init health
         health = startingHealth;
+
+        // grab the game manager
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         // setup the animator
         animator.SetInteger("MeleeType_int", -1);
@@ -83,6 +87,16 @@ public class PlayerMovement : MonoBehaviour
             {
                 isHurt = false;
             }
+        }
+
+        // check if the player is dead
+        if (health <= 0)
+        {
+            // play the death animation
+            animator.SetBool("Death_b", true);
+
+            // call game over
+            gameManager.GameOver(false);
         }
     }
 

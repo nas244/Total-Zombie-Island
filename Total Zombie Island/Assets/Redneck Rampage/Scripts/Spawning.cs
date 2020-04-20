@@ -15,6 +15,7 @@ public class Spawning : MonoBehaviour
     [SerializeField] private GameObject wavesUI;
 
     // define some vars NOT editable in Unity
+    private GameObject gameManager;
     private int spawnCount;
     private int zombiesReamaining;
     private float lastSpawnTime;
@@ -22,6 +23,9 @@ public class Spawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // grab the gameManager
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+
         // grab all active spawnpoints in scene and save their scripts
         spawnpoints = GameObject.FindGameObjectsWithTag("Spawner");
 
@@ -44,6 +48,12 @@ public class Spawning : MonoBehaviour
 
         // update the UI
         UpdateUI();
+
+        // if no more zombies remain, game over
+        if (zombiesReamaining <= 0)
+        {
+            gameManager.GetComponent<GameManager>().GameOver(true);
+        }
     }
 
     // updates the UI on the screen

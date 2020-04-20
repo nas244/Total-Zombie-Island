@@ -70,8 +70,17 @@ public class Zombie : MonoBehaviour
                     // reset the detectionTime
                     detectionTime = Time.time;
 
-                    // attack the player
-                    Attack();
+                    // if the player isn't dead, attack
+                    if (target.GetComponent<PlayerMovement>().health > 0)
+                    {
+                        Attack();
+                    }
+
+                    // else play the feeding animation
+                    else
+                    {
+                        anim.Play("Zombie_Eating");
+                    }
                 }
 
                 // else if we have just discovered the player, wait to attack
