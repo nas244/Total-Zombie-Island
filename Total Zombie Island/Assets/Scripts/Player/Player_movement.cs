@@ -33,7 +33,7 @@ public class Player_movement : MonoBehaviour
 
     private vehicle_controller _vehicleCtrl;
 
-    private float _stamina;
+    private float _stamina = 100f;
     
 
     // Start is called before the first frame update
@@ -68,8 +68,6 @@ public class Player_movement : MonoBehaviour
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
-
-        _stamina = 100;
     }
 
     // Update is called once per frame

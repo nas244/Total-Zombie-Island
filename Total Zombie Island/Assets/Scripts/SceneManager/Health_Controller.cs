@@ -26,6 +26,6 @@ public class Health_Controller : MonoBehaviour
     {
         _health = _playerCtrl.GetHealth();
         _stamina = _playerCtrl.GetStamina();
-        _healthText.text = "Health: " + _health.ToString() + "\n" + "Stamina: " + _stamina.ToString();
+        _healthText.text = "Health: " + _health.ToString() + "\n" + "Stamina: " + _stamina.ToString("0");
     }
 }

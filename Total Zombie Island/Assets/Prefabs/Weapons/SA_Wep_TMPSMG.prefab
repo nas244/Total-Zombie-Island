@@ -148,8 +148,8 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 0}
   _flashLight: {fileID: 0}
   _muzzleFlashLight: {fileID: 0}
-  _bloodSplatter: {fileID: 194062, guid: 8c27aeead6d968e4ba986702d6b84335, type: 3}
-  _impactSpark: {fileID: 191114, guid: 834c99069a124aa439d5795c3579843b, type: 3}
+  _bloodSplatter: {fileID: 194062, guid: bb954c7832c9a9845b017b284d33fbc8, type: 3}
+  _impactSpark: {fileID: 191114, guid: 48a83667d6d13e14ab5bc0aefb0a6a07, type: 3}
   _gunShot: {fileID: 310135589402068225}
   _weaponAnim: 1
   _fullAuto: 0
