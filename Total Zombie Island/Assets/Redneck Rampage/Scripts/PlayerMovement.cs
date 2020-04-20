@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private float hurtTime;
     private GameManager gameManager;
     private WeaponSpawner parentWeaponSpawner;
+    private bool gameover = false;
 
     // enumerator for weapon types
     enum weaponTypes {
@@ -92,8 +93,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // check if the player is dead
-        if (health <= 0)
+        if (!gameover && health <= 0)
         {
+            // set gameover so this doesn't repeat
+            gameover = true;
+
             // play the death animation
             animator.SetBool("Death_b", true);
 

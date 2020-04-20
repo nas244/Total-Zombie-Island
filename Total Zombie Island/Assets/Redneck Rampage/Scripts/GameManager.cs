@@ -92,7 +92,25 @@ public class GameManager : MonoBehaviour
     public void GameOver(bool victory)
     {
         // if the player won, log to console victory
-        if (victory) Debug.Log("Game Over: Victory!");
-        else Debug.Log("Game Over: You died :(");
+        if (victory) StartCoroutine(Victory());
+        else StartCoroutine(Loss());
+    }
+
+    IEnumerator Victory()
+    {
+        // wait for 3 seconds
+        yield return new WaitForSeconds(3);
+
+        // display victory screen
+        Debug.Log("You won!");
+    }
+
+    IEnumerator Loss()
+    {
+        // wait for 3 seconds
+        yield return new WaitForSeconds(3);
+
+        // display game over screen
+        Debug.Log("Game over, you lost!");
     }
 }

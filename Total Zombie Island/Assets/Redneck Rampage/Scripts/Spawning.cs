@@ -20,6 +20,7 @@ public class Spawning : MonoBehaviour
     private int zombiesReamaining;
     private float lastSpawnTime;
     private int wave;
+    private bool gameover = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +52,9 @@ public class Spawning : MonoBehaviour
         UpdateUI();
 
         // if no more zombies remain, move to next round or game over
-        if (zombiesReamaining <= 0)
+        if (!gameover && zombiesReamaining <= 0)
         {
+            gameover = true;
             switch (wave)
             {
                 case 1:
