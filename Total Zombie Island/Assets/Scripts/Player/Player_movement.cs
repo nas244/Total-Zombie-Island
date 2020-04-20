@@ -32,6 +32,8 @@ public class Player_movement : MonoBehaviour
     private Weapon_Controller _weaponCtrl;
 
     private vehicle_controller _vehicleCtrl;
+
+    private float _stamina;
     
 
     // Start is called before the first frame update
@@ -67,6 +69,7 @@ public class Player_movement : MonoBehaviour
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
 
+        _stamina = 100;
     }
 
     // Update is called once per frame
@@ -75,6 +78,10 @@ public class Player_movement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F))
         {
             SceneManager.LoadScene("Sniping");
+        }
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
         }
         if (_vehicleCtrl == null)
         {
@@ -88,7 +95,8 @@ public class Player_movement : MonoBehaviour
     private void Movement()
     {
         float speed = 5.0f;
-        float turningspeed = 180f;
+        float running = 10f;
+        float turningspeed = 240f;
         float jumping = 1.0f;
 
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
@@ -98,9 +106,15 @@ public class Player_movement : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             float setspeed;
-
-            setspeed = .49f;
-
+            if (Input.GetKey(KeyCode.LeftShift) && _stamina > 0)
+            {
+                setspeed = 1.0f;
+            }
+            else
+            {
+                setspeed = .49f;
+            }
+            
             _animator.SetFloat("Speed_f", setspeed);
 
             movement = Main_Character.transform.rotation * moveDirection;
@@ -120,7 +134,20 @@ public class Player_movement : MonoBehaviour
             _animator.SetBool("Jump_b", false);
         }
 
-        movement *= speed;
+        if (Input.GetKey(KeyCode.LeftShift) && _stamina > 0)
+        {
+            movement *= running;
+            _stamina -= .5f;
+        }
+        else
+        {
+            movement *= speed;
+            if (_stamina < 100f)
+            {
+                _stamina += .05f;
+            }
+        }
+        
         movement.y -= 20.0f * Time.deltaTime;
 
         Main_Character.transform.Rotate(0, Input.GetAxis("Horizontal") * turningspeed * Time.deltaTime, 0);
@@ -165,6 +192,10 @@ public class Player_movement : MonoBehaviour
         }
         else
         {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                _vehicleCtrl = null;
+            }
             Debug.Log("In car");
         }
     }
@@ -196,6 +227,8 @@ public class Player_movement : MonoBehaviour
             yield return new WaitForSeconds(5.0f);
 
             _isDead = true;
+
+            SceneManager.LoadScene("Overworld");
         }
 
         yield break;
@@ -204,5 +237,10 @@ public class Player_movement : MonoBehaviour
     public float GetHealth()
     {
         return _health;
+    }
+
+    public float GetStamina()
+    {
+        return _stamina;
     }
 }
