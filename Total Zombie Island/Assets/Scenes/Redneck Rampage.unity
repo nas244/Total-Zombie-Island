@@ -12431,6 +12431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 616274224}
   mainUI: {fileID: 141450812}
+  audioSource: {fileID: 2147422034}
 --- !u!1001 &975809388
 PrefabInstance:
   m_ObjectHideFlags: 0

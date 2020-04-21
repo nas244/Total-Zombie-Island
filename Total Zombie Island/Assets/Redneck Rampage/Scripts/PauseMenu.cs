@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     // define som vars editable in Unity
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject mainUI;
+    [SerializeField] private AudioSource audioSource;
 
     // define some vars NOT editable in Unity
     private GameObject gameManager;
@@ -49,6 +50,9 @@ public class PauseMenu : MonoBehaviour
         // update paused
         paused = true;
 
+        // pause the audio
+        audioSource.Pause();
+
         // display the pause screen
         mainUI.SetActive(false);
         pauseMenuUI.SetActive(true);
@@ -61,6 +65,9 @@ public class PauseMenu : MonoBehaviour
 
         // update paused
         paused = false;
+
+        // resume the audio
+        audioSource.UnPause();
 
         // hide the pause menu
         pauseMenuUI.SetActive(false);
