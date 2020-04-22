@@ -111,6 +111,7 @@ public class Weapon_Controller : MonoBehaviour
             else if (hit.transform.CompareTag("zombie"))
             {
                 hit.transform.gameObject.GetComponentInParent<Zombie_Controller>().Damage(_damage);
+                Debug.Log(hit.transform.gameObject);
 
                 hit.rigidbody.AddForce(-hit.normal * _impactForce, ForceMode.Impulse);
 
