@@ -9,6 +9,7 @@ TagManager:
   - SpawnArea
   - zombie
   - drivable
+  - WeaponSpawner
   layers:
   - Default
   - TransparentFX

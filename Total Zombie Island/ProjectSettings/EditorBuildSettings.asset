@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sniping.unity
     guid: 04369fb899db60f48a62f06cb460ce80
+  - enabled: 1
+    path: Assets/Scenes/Redneck Rampage.unity
+    guid: d61745c33d7ac5d4c9834f177fa9cda6
   m_configObjects: {}
