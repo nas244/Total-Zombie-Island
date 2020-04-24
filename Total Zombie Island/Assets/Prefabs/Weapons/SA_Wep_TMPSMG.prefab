@@ -153,6 +153,8 @@ MonoBehaviour:
   _gunShot: {fileID: 310135589402068225}
   _weaponAnim: 1
   _fullAuto: 0
+  _clipSize: 20
+  _clipNum: 5
   _lineRenderer: {fileID: 5871263338190749093}
 --- !u!1001 &6407295846811767928
 PrefabInstance:

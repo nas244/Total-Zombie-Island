@@ -42,6 +42,13 @@ public class Weapon_Controller : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
+    private int _clipSize;
+    [SerializeField]
+    private int _clipNum;
+    public int _currentAmmo;
+    public int _currentClipNum;
+
+    [SerializeField]
     private LineRenderer _lineRenderer;
 
     private int _weaponIndex;
@@ -52,6 +59,8 @@ public class Weapon_Controller : MonoBehaviour
     void Start()
     {
         _nextShotTime = Time.time;
+        _currentAmmo = _clipSize;
+        _currentClipNum = _clipNum;
     }
 
     // Update is called once per frame
@@ -152,6 +161,8 @@ public class Weapon_Controller : MonoBehaviour
         _lineRenderer.enabled = true;
         yield return new WaitForEndOfFrame();
         _lineRenderer.enabled = false;
+
+        _currentAmmo -= 1;
     }
 
     public void Stop()
@@ -189,6 +200,20 @@ public class Weapon_Controller : MonoBehaviour
     public void SetIndex(int index)
     {
         _weaponIndex = index;
+    }
+
+    public IEnumerator Reload()
+    {
+        if(_currentClipNum > 0)
+        {
+            _animator.SetBool("Reload_b", true);
+            yield return new WaitForSeconds(1);
+            _currentAmmo = _clipSize;
+            _currentClipNum -= 1;
+            _animator.SetBool("Reload_b", false);
+            yield break;
+        }
+
     }
 }
 

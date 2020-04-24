@@ -281,6 +281,8 @@ MonoBehaviour:
   _gunShot: {fileID: 297906678116621557}
   _weaponAnim: 1
   _fullAuto: 0
+  _clipSize: 6
+  _clipNum: 6
   _lineRenderer: {fileID: 6902627381351728219}
 --- !u!1 &8873734637335003609
 GameObject:

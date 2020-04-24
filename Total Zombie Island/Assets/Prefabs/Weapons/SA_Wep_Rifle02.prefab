@@ -206,6 +206,16 @@ PrefabInstance:
       propertyPath: _impactSpark
       value: 
       objectReference: {fileID: 191114, guid: 48a83667d6d13e14ab5bc0aefb0a6a07, type: 3}
+    - target: {fileID: 6040376005436471996, guid: a2f3102b86dc6e242afa85e9f4546804,
+        type: 3}
+      propertyPath: _clipSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040376005436471996, guid: a2f3102b86dc6e242afa85e9f4546804,
+        type: 3}
+      propertyPath: _clipNum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2f3102b86dc6e242afa85e9f4546804, type: 3}
 --- !u!4 &3746636912037109925 stripped

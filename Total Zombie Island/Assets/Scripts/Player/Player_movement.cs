@@ -29,11 +29,13 @@ public class Player_movement : MonoBehaviour
     private List<GameObject> _weapons;
     private int _currentWeapon = 0;
     public int _nextWeapon = 0;
-    private Weapon_Controller _weaponCtrl;
+    public Weapon_Controller _weaponCtrl;
 
     private vehicle_controller _vehicleCtrl;
 
     private float _stamina = 100f;
+
+    private bool _reloading;
     
 
     // Start is called before the first frame update
@@ -68,6 +70,8 @@ public class Player_movement : MonoBehaviour
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
+
+        _reloading = true;
     }
 
     // Update is called once per frame
@@ -159,9 +163,23 @@ public class Player_movement : MonoBehaviour
 
     private void Weapons()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.R))
         {
-            StartCoroutine(_weaponCtrl.Fire(this.transform.forward));
+            if (_weaponCtrl._currentAmmo <= 0 || Input.GetKey(KeyCode.R))
+            {
+                if (_reloading)
+                {
+                    _reloading = false;
+                    StartCoroutine(_weaponCtrl.Reload());
+                }
+                
+            }
+            else 
+            {
+                _reloading = true;
+                StartCoroutine(_weaponCtrl.Fire(this.transform.forward));
+            }
+            
         }
         else
         {
