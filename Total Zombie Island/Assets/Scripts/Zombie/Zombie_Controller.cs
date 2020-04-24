@@ -49,6 +49,10 @@ public class Zombie_Controller : MonoBehaviour
 
     public GameObject MainChar;
 
+    public GameObject Score;
+
+    public Score_Controller _scoreCtrl;
+
     enum ZombieState
     {
         Patrol,
@@ -65,6 +69,9 @@ public class Zombie_Controller : MonoBehaviour
         MainChar = GameObject.Find("Main_Character");
         _playerPos = MainChar.transform;
         _playerCtrl = MainChar.GetComponent<Player_movement>();
+        Score = GameObject.Find("Score");
+        _scoreCtrl = Score.GetComponent<Score_Controller>();
+
         _nextAttackTime = Time.time;
 
         _health = 100f;
@@ -194,6 +201,7 @@ public class Zombie_Controller : MonoBehaviour
         {
             _dead = true;
             EnableRagdoll();
+            _scoreCtrl.inc_rating(0.25f);
         }
     }
 
