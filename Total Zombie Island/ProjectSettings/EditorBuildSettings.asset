@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Overworld.unity
     guid: 307a4a8b0741e534c9167a5dc5f72b91
   - enabled: 1
-    path: Assets/Scenes/Sniping.unity
+    path: Assets/Scenes/Sniper Minigame.unity
     guid: 04369fb899db60f48a62f06cb460ce80
   - enabled: 1
     path: Assets/Scenes/Redneck Rampage.unity

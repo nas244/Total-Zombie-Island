@@ -55,7 +55,6 @@ public class Interact_Prompt : MonoBehaviour
 
         _origin = _objectivePrefabs[_playerCtrl._currentObjective].transform.position;
         float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
-        Debug.Log(objdist);
         if (objdist <= _promptDist)
         {
             _showobj = true;
@@ -68,7 +67,7 @@ public class Interact_Prompt : MonoBehaviour
                 _interactprompt.text = "Press 'f' to start minigame!";
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    SceneManager.LoadScene("Sniping");
+                    SceneManager.LoadScene("Sniper Minigame");
                 }
             }
             else if (_show)
