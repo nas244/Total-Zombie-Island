@@ -69,7 +69,7 @@ public class Spawning : MonoBehaviour
         }
 
         // if game over, call game over
-        if (gameover) gameManager.GameOver(true);
+        if (gameover) StartCoroutine(gameManager.GameOver(true));
     }
 
     // sets this instance of spawning to the specified values and resets all counters

@@ -160,12 +160,15 @@ public class GameHandler : MonoBehaviour
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
             Destroy(GameObject.Find("Sound"), 3);
+            State_Data.Instance._currentObjective += 1;
+            State_Data.Instance._score += 1;
         }
 
         else
         {
             SoundManager.PlaySound(SoundManager.Sound.Fail);
             Destroy(GameObject.Find("Sound"), 2);
+            State_Data.Instance._score -= .5f;
         }
 
         yield return new WaitForSeconds(3f);

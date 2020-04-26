@@ -32,22 +32,45 @@ public class Warning_Prompt : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_mainChar.transform.position.x > _warningDist)
+        if(_playerCtrl._currentObjective != 3)
         {
-            _warningPrompt.enabled = true;
+            if (_mainChar.transform.position.x > _warningDist)
+            {
+                _warningPrompt.enabled = true;
+            }
+            else
+            {
+                _warningPrompt.enabled = false;
+            }
+            if (_mainChar.transform.position.x > _blowupDist && !_boom)
+            {
+                GameObject effect;
+
+                effect = Instantiate(_explosion, _mainChar.transform);
+                StartCoroutine(_playerCtrl.Damage(100));
+                _boom = true;
+                Destroy(effect, 1.0f);
+            }
         }
         else
         {
-            _warningPrompt.enabled = false;
-        }
-        if(_mainChar.transform.position.x > _blowupDist && !_boom)
-        {
-            GameObject effect;
+            if (_mainChar.transform.position.x > _warningDist + 50)
+            {
+                _warningPrompt.enabled = true;
+            }
+            else
+            {
+                _warningPrompt.enabled = false;
+            }
+            if (_mainChar.transform.position.x > _blowupDist + 50 && !_boom)
+            {
+                GameObject effect;
 
-            effect = Instantiate(_explosion, _mainChar.transform);
-            StartCoroutine(_playerCtrl.Damage(100));
-            _boom = true;
-            Destroy(effect, 1.0f);
+                effect = Instantiate(_explosion, _mainChar.transform);
+                StartCoroutine(_playerCtrl.Damage(100));
+                _boom = true;
+                Destroy(effect, 1.0f);
+            }
         }
     }
 }

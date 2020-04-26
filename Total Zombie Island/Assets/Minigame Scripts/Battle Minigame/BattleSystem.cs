@@ -726,9 +726,15 @@ public class BattleSystem : MonoBehaviour
 
             //PlayerPrefs.SetInt("Scene", PlayerPrefs.GetInt("Scene") + 1);
             //SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
+            State_Data.Instance._score += 1;
         } else if (state == BattleStates.LOST)
         {
             dialogueText.text = "Aww you're dead bro. Hate to see it...";
+            State_Data.Instance._score -= .5f;
         }
+
+        yield return new WaitForSeconds(3);
+        //Needs to be a Gameover
+        SceneManager.LoadScene("Overworld");
     }
 }

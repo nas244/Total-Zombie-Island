@@ -27,6 +27,8 @@ public class Interact_Prompt : MonoBehaviour
 
     [SerializeField]
     private GameObject[] _objectivePrefabs;
+    [SerializeField]
+    private GameObject[] _objectiveMarkers;
 
 
 
@@ -34,6 +36,18 @@ public class Interact_Prompt : MonoBehaviour
     void Start()
     {
         _playerCtrl = _Mainchar.GetComponent<Player_movement>();
+
+        for(int i = 0; i < 3; i++)
+        {
+            if(i == _playerCtrl._currentObjective)
+            {
+                _objectiveMarkers[i].SetActive(true);
+            }
+            else
+            {
+                _objectiveMarkers[i].SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -67,7 +81,24 @@ public class Interact_Prompt : MonoBehaviour
                 _interactprompt.text = "Press 'f' to start minigame!";
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    SceneManager.LoadScene("Sniper Minigame");
+                    _playerCtrl.Save_Data();
+                    if (_playerCtrl._currentObjective == 0)
+                    {
+                        SceneManager.LoadScene("Sniper Minigame");
+                    }
+                    else if (_playerCtrl._currentObjective == 1)
+                    {
+                        SceneManager.LoadScene("Redneck Rampage");
+                    }
+                    else if (_playerCtrl._currentObjective == 2)
+                    {
+                        SceneManager.LoadScene("Boss Battle Minigame");
+                    }
+                    else
+                    {
+                        //GameOver
+                    }
+                    
                 }
             }
             else if (_show)

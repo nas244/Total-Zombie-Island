@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             rb.isKinematic = true;
 
             // call game over
-            gameManager.GameOver(false);
+            StartCoroutine(gameManager.GameOver(false));
         }
     }
 

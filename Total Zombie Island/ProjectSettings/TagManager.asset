@@ -13,6 +13,12 @@ TagManager:
   - Obstacle
   - Building
   - Ammo_Box
+  - Enemy
+  - Ehealth
+  - Phealth
+  - Head
+  - Manager
+  - Health
   layers:
   - Default
   - TransparentFX

@@ -370,7 +370,7 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: f7d743d0f86a77d4fb66df66a54958fa, type: 2}
   weaponType: Assault
   ammo: 30
-  damage: 40
+  damage: 50
 --- !u!1 &154304
 GameObject:
   m_ObjectHideFlags: 0

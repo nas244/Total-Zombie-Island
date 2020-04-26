@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score_Controller : MonoBehaviour
 {
-    private float _rating;
+    public float _rating;
     private float _onscreen;
 
     [SerializeField]
@@ -13,7 +13,7 @@ public class Score_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rating = 2.0f;
+        
     }
 
     // Update is called once per frame
@@ -26,6 +26,11 @@ public class Score_Controller : MonoBehaviour
             _onscreen = 5.0f;
         }
         _ratingText.text = "Score: " + _onscreen.ToString("F1");
+
+        if (_rating <= 0 )
+        {
+            //Trigger GameOver
+        }
     }
 
     public void inc_rating(float reward)

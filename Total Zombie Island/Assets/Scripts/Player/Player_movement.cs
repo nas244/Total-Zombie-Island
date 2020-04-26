@@ -11,7 +11,7 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
-    private float _health = 100;
+    private float _health;
 
     private bool _isDead = false;
 
@@ -31,7 +31,7 @@ public class Player_movement : MonoBehaviour
 
     private vehicle_controller _vehicleCtrl;
 
-    private float _stamina = 100f;
+    private float _stamina;
 
     private bool _reloading;
 
@@ -47,7 +47,12 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private GameObject _vehicle;
 
-    public int _currentObjective = 0;
+    public int _currentObjective;
+
+    [SerializeField]
+    private GameObject _scoreObj;
+
+    private Score_Controller _scoreCtrl;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +62,17 @@ public class Player_movement : MonoBehaviour
         _playerCamera.gameObject.gameObject.SetActive(true);
         _carCamera.gameObject.gameObject.SetActive(false);
         _character = GameObject.Find("SA_Char_Survivor_HoodedMan");
+        _scoreCtrl = _scoreObj.GetComponent<Score_Controller>();
         _inVehicle = false;
+
+        _characterController.enabled = false;
+        _health = State_Data.Instance._health;
+        _stamina = State_Data.Instance._stamina;
+        Main_Character.transform.position = State_Data.Instance._position;
+        Main_Character.transform.rotation = State_Data.Instance._rotation;
+        _currentObjective = State_Data.Instance._currentObjective;
+        _scoreCtrl._rating = State_Data.Instance._score;
+        _characterController.enabled = true;
 
         _weapons = new List<GameObject>();
         _weapons.Add(Instantiate(_weaponPrefabs[0], _weaponRoot.transform));
@@ -211,6 +226,10 @@ public class Player_movement : MonoBehaviour
                     {
                         _weaponCtrl.Refill();
                     }
+                    if (collider.CompareTag("Health"))
+                    {
+                        Heal();
+                    }
                 
                     var car = collider.GetComponent<vehicle_controller>();
                     if(car != null)
@@ -221,7 +240,6 @@ public class Player_movement : MonoBehaviour
                         _character.SetActive(false);
                         _vehicleCtrl = car;
                         _inVehicle = true;
-                        //Main_Character.t
                     }
                 }
             }
@@ -284,5 +302,29 @@ public class Player_movement : MonoBehaviour
     public float GetStamina()
     {
         return _stamina;
+    }
+
+    public void Save_Data()
+    {
+        State_Data.Instance._health = _health;
+        State_Data.Instance._stamina = _stamina;
+        State_Data.Instance._position = Main_Character.transform.position;
+        State_Data.Instance._rotation = Main_Character.transform.rotation;
+        State_Data.Instance._currentObjective = _currentObjective;
+        State_Data.Instance._score = _scoreCtrl._rating;
+    }
+
+    public void Reset_Data()
+    {
+        State_Data.Instance._health = 100f;
+        State_Data.Instance._stamina = 50f;
+        State_Data.Instance._position = new Vector3(0, 0, -5.42f);
+        State_Data.Instance._rotation = new Quaternion(0, 0, 0, 0);
+        State_Data.Instance._currentObjective = -1;
+    }
+
+    private void Heal()
+    {
+        _health = 100;
     }
 }

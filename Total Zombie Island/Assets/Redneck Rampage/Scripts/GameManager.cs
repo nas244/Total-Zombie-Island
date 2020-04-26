@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 10,
             health: 100,
-            limit: 20,
+            limit: 10,
             delay: 3.0f,
             wave: 1
         );
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 15,
             health: 120,
-            limit: 30,
+            limit: 15,
             delay: 3.0f,
             wave: 2
         );
@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour
         // setup the spawners
         spawner.GetComponent<Spawning>().Setup(
             damage: 20,
-            health: 150,
-            limit: 40,
+            health: 120,
+            limit: 20,
             delay: 3.0f,
             wave: 3
         );
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
     }
 
     // function called when the game is over
-    public void GameOver(bool victory)
+    public IEnumerator GameOver(bool victory)
     {
         // disable player control
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().gameover = true;
@@ -142,6 +142,9 @@ public class GameManager : MonoBehaviour
         // if the player won, log to console victory
         if (victory) StartCoroutine(Victory());
         else StartCoroutine(Loss());
+
+        yield return new WaitForSeconds(3);
+        ReturnToLevel();
     }
 
     IEnumerator Victory()
@@ -153,6 +156,8 @@ public class GameManager : MonoBehaviour
         mainUI.SetActive(false);
         winUI.SetActive(true);
         gameOverUI.SetActive(true);
+        State_Data.Instance._currentObjective += 1;
+        State_Data.Instance._score += 1;
     }
 
     IEnumerator Loss()
@@ -164,6 +169,7 @@ public class GameManager : MonoBehaviour
         mainUI.SetActive(false);
         lossUI.SetActive(true);
         gameOverUI.SetActive(true);
+        State_Data.Instance._score -= .5f;
     }
 
     public void ReturnToLevel()

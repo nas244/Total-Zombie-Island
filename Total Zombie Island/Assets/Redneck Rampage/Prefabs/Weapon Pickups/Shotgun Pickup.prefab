@@ -608,4 +608,4 @@ MonoBehaviour:
   outlineMaterial: {fileID: 2100000, guid: f7d743d0f86a77d4fb66df66a54958fa, type: 2}
   weaponType: Shotgun
   ammo: 10
-  damage: 60
+  damage: 100
