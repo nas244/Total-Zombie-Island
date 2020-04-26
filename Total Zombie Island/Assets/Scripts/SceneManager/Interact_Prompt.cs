@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Interact_Prompt : MonoBehaviour
 {
@@ -20,8 +21,14 @@ public class Interact_Prompt : MonoBehaviour
     private GameObject[] _interactPrefabs;
 
     private bool _show;
+    private bool _showobj;
 
     private Player_movement _playerCtrl;
+
+    [SerializeField]
+    private GameObject[] _objectivePrefabs;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +51,37 @@ public class Interact_Prompt : MonoBehaviour
             
         }
 
-        if(_show && !_playerCtrl._inVehicle)
+        
+
+        _origin = _objectivePrefabs[_playerCtrl._currentObjective].transform.position;
+        float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
+        Debug.Log(objdist);
+        if (objdist <= _promptDist)
         {
-            _interactprompt.text = "Press 'e' to interact!";
+            _showobj = true;
         }
-        else
+
+        if ( !_playerCtrl._inVehicle)
         {
-            _interactprompt.text = "";
+            if (_showobj)
+            {
+                _interactprompt.text = "Press 'f' to start minigame!";
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    SceneManager.LoadScene("Sniping");
+                }
+            }
+            else if (_show)
+            {
+                _interactprompt.text = "Press 'e' to interact!";
+            }
+            else
+            {
+                _interactprompt.text = "";
+            }
         }
+        
         _show = false;
+        _showobj = false;
     }
 }

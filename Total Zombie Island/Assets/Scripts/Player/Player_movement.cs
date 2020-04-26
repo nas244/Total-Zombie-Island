@@ -47,6 +47,8 @@ public class Player_movement : MonoBehaviour
     [SerializeField]
     private GameObject _vehicle;
 
+    public int _currentObjective = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,10 +91,7 @@ public class Player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            SceneManager.LoadScene("Sniping");
-        }
+        
         if (Input.GetKey("escape"))
         {
             Application.Quit();
