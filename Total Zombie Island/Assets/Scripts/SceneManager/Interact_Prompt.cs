@@ -21,10 +21,12 @@ public class Interact_Prompt : MonoBehaviour
 
     private bool _show;
 
+    private Player_movement _playerCtrl;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        _playerCtrl = _Mainchar.GetComponent<Player_movement>();
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class Interact_Prompt : MonoBehaviour
             
         }
 
-        if(_show)
+        if(_show && !_playerCtrl._inVehicle)
         {
             _interactprompt.text = "Press 'e' to interact!";
         }

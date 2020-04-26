@@ -9,12 +9,16 @@ public class vehicle_controller : MonoBehaviour
     private GameObject[] _wheel;
     [SerializeField]
     private WheelCollider[] _wheelColliders;
+    [SerializeField]
+    private GameObject _mainChar;
+
+    private Player_movement _playerCtrl;
 
     private List<WheelCollider> _wheelcollider;
 
-    private float _topSpeed = 250f;
-    private float _maxTorque = 200f;
-    private float _maxSteerAngle = 45f;
+    private float _topSpeed = 400f;
+    private float _maxTorque = 400f;
+    private float _maxSteerAngle = 60f;
     private float _maxBrakeTorque = 2200f;
 
     private float _forward;
@@ -34,56 +38,64 @@ public class vehicle_controller : MonoBehaviour
         {
             _wheelcollider.Add(wheel.GetComponent<WheelCollider>());
         }
+
+        _playerCtrl = _mainChar.GetComponent<Player_movement>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        _forward = Input.GetAxis("Vertical");
-        _turn = Input.GetAxis("Horizontal");
-        _brake = Input.GetAxis("Jump");
-
-        _wheelcollider[2].steerAngle = _maxSteerAngle * _turn;
-        _wheelcollider[3].steerAngle = _maxSteerAngle * _turn;
-
-        float currentSpeed = 2 * 22 / 7 * _wheelcollider[0].radius * _wheelcollider[0].rpm * 60 / 1000;
-
-        if(currentSpeed < _topSpeed)
+        if (_playerCtrl._inVehicle)
         {
-            _wheelcollider[0].motorTorque = _maxTorque * _forward;
-            _wheelcollider[1].motorTorque = _maxTorque * _forward;
-        }
+            _forward = Input.GetAxis("Vertical");
+            _turn = Input.GetAxis("Horizontal");
+            _brake = Input.GetAxis("Jump");
 
-        _wheelcollider[0].brakeTorque = _maxBrakeTorque * _brake;
-        _wheelcollider[1].brakeTorque = _maxBrakeTorque * _brake;
-        _wheelcollider[2].brakeTorque = _maxBrakeTorque * _brake;
-        _wheelcollider[3].brakeTorque = _maxBrakeTorque * _brake;
+            _wheelcollider[2].steerAngle = _maxSteerAngle * _turn;
+            _wheelcollider[3].steerAngle = _maxSteerAngle * _turn;
+
+            float currentSpeed = 2 * 22 / 7 * _wheelcollider[0].radius * _wheelcollider[0].rpm * 60 / 1000;
+
+            if (currentSpeed < _topSpeed)
+            {
+                _wheelcollider[0].motorTorque = _maxTorque * _forward;
+                _wheelcollider[1].motorTorque = _maxTorque * _forward;
+            }
+
+            _wheelcollider[0].brakeTorque = _maxBrakeTorque * _brake;
+            _wheelcollider[1].brakeTorque = _maxBrakeTorque * _brake;
+            _wheelcollider[2].brakeTorque = _maxBrakeTorque * _brake;
+            _wheelcollider[3].brakeTorque = _maxBrakeTorque * _brake;
+        }
     }
 
     void Update()
     {
-        Quaternion flq;
-        Vector3 flv;
-        _wheelcollider[2].GetWorldPose(out flv, out flq);
-        _wheel[2].transform.position = flv;
-        _wheel[2].transform.rotation = flq;
+        if (_playerCtrl._inVehicle)
+        {
+            Quaternion flq;
+            Vector3 flv;
+            _wheelcollider[2].GetWorldPose(out flv, out flq);
+            _wheel[2].transform.position = flv;
+            _wheel[2].transform.rotation = flq;
 
-        Quaternion blq;
-        Vector3 blv;
-        _wheelcollider[0].GetWorldPose(out blv, out blq);
-        _wheel[0].transform.position = blv;
-        _wheel[0].transform.rotation = blq;
+            Quaternion blq;
+            Vector3 blv;
+            _wheelcollider[0].GetWorldPose(out blv, out blq);
+            _wheel[0].transform.position = blv;
+            _wheel[0].transform.rotation = blq;
 
-        Quaternion frq;
-        Vector3 frv;
-        _wheelcollider[3].GetWorldPose(out frv, out frq);
-        _wheel[3].transform.position = frv;
-        _wheel[3].transform.rotation = frq;
+            Quaternion frq;
+            Vector3 frv;
+            _wheelcollider[3].GetWorldPose(out frv, out frq);
+            _wheel[3].transform.position = frv;
+            _wheel[3].transform.rotation = frq;
 
-        Quaternion brq;
-        Vector3 brv;
-        _wheelcollider[1].GetWorldPose(out brv, out brq);
-        _wheel[1].transform.position = brv;
-        _wheel[1].transform.rotation = brq;
+            Quaternion brq;
+            Vector3 brv;
+            _wheelcollider[1].GetWorldPose(out brv, out brq);
+            _wheel[1].transform.position = brv;
+            _wheel[1].transform.rotation = brq;
+        }
     }
 }

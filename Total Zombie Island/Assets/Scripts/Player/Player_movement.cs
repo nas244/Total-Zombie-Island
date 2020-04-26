@@ -41,6 +41,12 @@ public class Player_movement : MonoBehaviour
     private Camera _carCamera;
 
     private GameObject _character;
+
+    public bool _inVehicle;
+
+    [SerializeField]
+    private GameObject _vehicle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +55,7 @@ public class Player_movement : MonoBehaviour
         _playerCamera.gameObject.gameObject.SetActive(true);
         _carCamera.gameObject.gameObject.SetActive(false);
         _character = GameObject.Find("SA_Char_Survivor_HoodedMan");
+        _inVehicle = false;
 
         _weapons = new List<GameObject>();
         _weapons.Add(Instantiate(_weaponPrefabs[0], _weaponRoot.transform));
@@ -209,10 +216,12 @@ public class Player_movement : MonoBehaviour
                     var car = collider.GetComponent<vehicle_controller>();
                     if(car != null)
                     {
+                        _characterController.enabled = false;
                         _playerCamera.gameObject.SetActive(false);
                         _carCamera.gameObject.SetActive(true);
                         _character.SetActive(false);
                         _vehicleCtrl = car;
+                        _inVehicle = true;
                         //Main_Character.t
                     }
                 }
@@ -220,8 +229,15 @@ public class Player_movement : MonoBehaviour
         }
         else
         {
+            Vector3 teleport = new Vector3(_vehicle.transform.position.x + 3, _vehicle.transform.position.y, _vehicle.transform.position.z);
+            this.transform.position = teleport;
             if(Input.GetKeyDown(KeyCode.E))
             {
+                _characterController.enabled = true;
+                _inVehicle = false;
+                _playerCamera.gameObject.SetActive(true);
+                _carCamera.gameObject.SetActive(false);
+                _character.SetActive(true);
                 _vehicleCtrl = null;
             }
         }
