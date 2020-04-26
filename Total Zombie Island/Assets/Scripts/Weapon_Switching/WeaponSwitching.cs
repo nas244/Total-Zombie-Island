@@ -14,11 +14,13 @@ public class WeaponSwitching : MonoBehaviour
         {
             if (SlowDownGame)
             {
+                Cursor.lockState = CursorLockMode.Locked;
                 Resume();
 
             }
             else
             {
+                Cursor.lockState = CursorLockMode.None;
                 SlowDown();
             }
         }
@@ -26,6 +28,7 @@ public class WeaponSwitching : MonoBehaviour
 
     void Resume()
     {
+        
         WeaponWheelUI.SetActive(false);
         Time.timeScale = 1f;
         SlowDownGame = false;

@@ -101,6 +101,8 @@ public class Player_movement : MonoBehaviour
         _weaponCtrl.SetActive(true);
 
         _reloading = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -178,7 +180,7 @@ public class Player_movement : MonoBehaviour
         
         movement.y -= 20.0f * Time.deltaTime;
 
-        Main_Character.transform.Rotate(0, Input.GetAxis("Horizontal") * turningspeed * Time.deltaTime, 0);
+        Main_Character.transform.Rotate(0, Input.GetAxis("Mouse X") * speed, 0);
 
 
         
