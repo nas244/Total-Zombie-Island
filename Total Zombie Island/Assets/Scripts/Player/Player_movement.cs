@@ -54,6 +54,11 @@ public class Player_movement : MonoBehaviour
 
     private Score_Controller _scoreCtrl;
 
+    [SerializeField]
+    private GameObject _weaponwheel;
+
+    private WeaponSwitching _wheelCtrl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +69,7 @@ public class Player_movement : MonoBehaviour
         _character = GameObject.Find("SA_Char_Survivor_HoodedMan");
         _scoreCtrl = _scoreObj.GetComponent<Score_Controller>();
         _inVehicle = false;
+        _wheelCtrl = _weaponwheel.GetComponent<WeaponSwitching>();
 
         _characterController.enabled = false;
         _health = State_Data.Instance._health;
@@ -115,7 +121,10 @@ public class Player_movement : MonoBehaviour
         }
         if (_vehicleCtrl == null)
         {
-            Movement();
+            if(!_wheelCtrl.SlowDownGame)
+            {
+                Movement();
+            }
             Weapons();
             WeaponSwitch();
         }

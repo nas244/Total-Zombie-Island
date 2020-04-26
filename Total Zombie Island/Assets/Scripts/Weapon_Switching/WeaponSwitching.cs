@@ -6,7 +6,7 @@ public class WeaponSwitching : MonoBehaviour
 {
     public GameObject WeaponWheelUI;
 
-    public static bool SlowDownGame = false;
+    public bool SlowDownGame = false;
 
     private void Update()
     {
