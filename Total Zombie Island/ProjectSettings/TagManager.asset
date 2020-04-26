@@ -10,6 +10,9 @@ TagManager:
   - zombie
   - drivable
   - WeaponSpawner
+  - Obstacle
+  - Building
+  - Ammo_Box
   layers:
   - Default
   - TransparentFX

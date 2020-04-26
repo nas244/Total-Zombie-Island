@@ -17,8 +17,6 @@ public class Player_movement : MonoBehaviour
 
     private CharacterController _characterController;
 
-    private Camera _mainCamera;
-
     public GameObject Main_Character;
 
     [SerializeField]
@@ -36,14 +34,21 @@ public class Player_movement : MonoBehaviour
     private float _stamina = 100f;
 
     private bool _reloading;
-    
 
+    [SerializeField]
+    private Camera _playerCamera;
+    [SerializeField]
+    private Camera _carCamera;
+
+    private GameObject _character;
     // Start is called before the first frame update
     void Start()
     {
         _animator = this.GetComponent<Animator>();
         _characterController = this.GetComponent<CharacterController>();
-        _mainCamera = Camera.main;
+        _playerCamera.gameObject.gameObject.SetActive(true);
+        _carCamera.gameObject.gameObject.SetActive(false);
+        _character = GameObject.Find("SA_Char_Survivor_HoodedMan");
 
         _weapons = new List<GameObject>();
         _weapons.Add(Instantiate(_weaponPrefabs[0], _weaponRoot.transform));
@@ -91,7 +96,7 @@ public class Player_movement : MonoBehaviour
             Weapons();
             WeaponSwitch();
         }
-        vehicleupdate();
+        InteractUpdate();
     }
 
     private void Movement()
@@ -187,19 +192,26 @@ public class Player_movement : MonoBehaviour
         }
     }
 
-    private void vehicleupdate()
+    private void InteractUpdate()
     {
         if(_vehicleCtrl == null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            var colliders = Physics.OverlapSphere(Main_Character.transform.position, 5f);
+            foreach (var collider in colliders)
             {
-                var colliders = Physics.OverlapSphere(Main_Character.transform.position, 2f);
-                foreach( var collider in colliders)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
+                    if (collider.CompareTag("Ammo_Box"))
+                    {
+                        _weaponCtrl.Refill();
+                    }
+                
                     var car = collider.GetComponent<vehicle_controller>();
-
                     if(car != null)
                     {
+                        _playerCamera.gameObject.SetActive(false);
+                        _carCamera.gameObject.SetActive(true);
+                        _character.SetActive(false);
                         _vehicleCtrl = car;
                         //Main_Character.t
                     }
@@ -212,7 +224,6 @@ public class Player_movement : MonoBehaviour
             {
                 _vehicleCtrl = null;
             }
-            Debug.Log("In car");
         }
     }
 

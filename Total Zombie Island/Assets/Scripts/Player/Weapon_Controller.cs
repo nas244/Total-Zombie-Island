@@ -215,5 +215,10 @@ public class Weapon_Controller : MonoBehaviour
         }
 
     }
+
+    public void Refill()
+    {
+        _currentClipNum = _clipNum;
+    }
 }
 
