@@ -50,8 +50,8 @@ public class SpawnArea : MonoBehaviour
     void Update()
     {
         // check if the player is in the spawn area
-        if (playerDetected)
-        {
+        //if (playerDetected)
+        //{
             // check if the spawnDelay has passed
             if (CheckSpawnDelay())
             {
@@ -62,7 +62,7 @@ public class SpawnArea : MonoBehaviour
                     Spawn();
                 }
             }
-        }
+        //}
     }
 
     // function called when something sets off the trigger
