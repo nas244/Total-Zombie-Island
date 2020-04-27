@@ -1,0 +1,1280 @@
+fileFormatVersion: 2
+guid: b4c907fbcb677e94b8fba030d5bcdce6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9093273705802770609
+    second: Hunting Rifle
+  - first:
+      213: 2117489211698851079
+    second: Auto Pistol
+  - first:
+      213: 7094600638735437519
+    second: Auto Shotgun
+  - first:
+      213: 2270249575438168023
+    second: Assault Rifle
+  - first:
+      213: -8667287385637334772
+    second: Sniper Rifle
+  - first:
+      213: 8977982697921789372
+    second: kindpng_15186_5
+  - first:
+      213: -7735266160797395229
+    second: kindpng_15186_6
+  - first:
+      213: 7423304882143723918
+    second: kindpng_15186_7
+  - first:
+      213: -6028653088520048409
+    second: Rocket Launcher
+  - first:
+      213: -5996964842326499666
+    second: kindpng_15186_9
+  - first:
+      213: -1163240203873603388
+    second: kindpng_15186_10
+  - first:
+      213: -4058061462888759339
+    second: kindpng_15186_11
+  - first:
+      213: 1436833356012518497
+    second: kindpng_15186_12
+  - first:
+      213: -2817725670804463882
+    second: SMG
+  - first:
+      213: -9186427752268495951
+    second: kindpng_15186_14
+  - first:
+      213: -5198023501386714162
+    second: kindpng_15186_15
+  - first:
+      213: 8245869991642256560
+    second: kindpng_15186_16
+  - first:
+      213: -6085779695514110657
+    second: kindpng_15186_17
+  - first:
+      213: 3292297093817887131
+    second: kindpng_15186_18
+  - first:
+      213: -8698972028917257434
+    second: kindpng_15186_19
+  - first:
+      213: -7829219780933813575
+    second: kindpng_15186_20
+  - first:
+      213: -7645927467620391697
+    second: MiniGun
+  - first:
+      213: -3392495607480999861
+    second: Heavy Sniper Rifle
+  - first:
+      213: -2333532050685169505
+    second: Anti Material Rifle
+  - first:
+      213: 4391212582607603348
+    second: kindpng_15186_24
+  - first:
+      213: -3554105803989868138
+    second: kindpng_15186_25
+  - first:
+      213: -666699827673246021
+    second: kindpng_15186_26
+  - first:
+      213: -4681300010383232022
+    second: kindpng_15186_27
+  - first:
+      213: -2201693315476795971
+    second: Grenade Launcher
+  - first:
+      213: 1965874325129439207
+    second: kindpng_15186_29
+  - first:
+      213: -1636233234536223168
+    second: kindpng_15186_30
+  - first:
+      213: 7394160658716582457
+    second: Pistol
+  - first:
+      213: -6791037134504128578
+    second: RPG
+  - first:
+      213: -6891764739210765756
+    second: kindpng_15186_33
+  - first:
+      213: -1367820878488494781
+    second: kindpng_15186_34
+  - first:
+      213: -3806212279175809206
+    second: kindpng_15186_35
+  - first:
+      213: -4769839218258454852
+    second: kindpng_15186_36
+  - first:
+      213: -4638752182782202211
+    second: kindpng_15186_37
+  - first:
+      213: 3325010709520880768
+    second: kindpng_15186_38
+  - first:
+      213: -6927639435613416515
+    second: kindpng_15186_39
+  - first:
+      213: 1333342381248586102
+    second: kindpng_15186_40
+  - first:
+      213: 2872359038488358333
+    second: kindpng_15186_41
+  - first:
+      213: 7829720967430273406
+    second: kindpng_15186_42
+  - first:
+      213: 7448053960466643461
+    second: kindpng_15186_43
+  - first:
+      213: 5972893163450214878
+    second: kindpng_15186_44
+  - first:
+      213: 8779343577209304723
+    second: kindpng_15186_45
+  - first:
+      213: 7372212164052013833
+    second: kindpng_15186_46
+  - first:
+      213: 7661037834776419608
+    second: kindpng_15186_47
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hunting Rifle
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 494
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b826c7d14cc13e70800000000000000
+      internalID: 9093273705802770609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Auto Pistol
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 484
+        width: 66
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70d28071835d26d10800000000000000
+      internalID: 2117489211698851079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Auto Shotgun
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 484
+        width: 124
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcec51f21b5157260800000000000000
+      internalID: 7094600638735437519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Assault Rifle
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 488
+        width: 128
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7df2977e5fb818f10800000000000000
+      internalID: 2270249575438168023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sniper Rifle
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 486
+        width: 128
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01dcd44b0c97b780800000000000000
+      internalID: -8667287385637334772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_5
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 498
+        width: 120
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd3b3542b3389c70800000000000000
+      internalID: 8977982697921789372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_6
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 488
+        width: 114
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e65292f860d6a490800000000000000
+      internalID: -7735266160797395229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 414
+        width: 122
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81899fb570e40760800000000000000
+      internalID: 7423304882143723918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket Launcher
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 418
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e073b805fbe55ca0800000000000000
+      internalID: -6028653088520048409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_9
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 406
+        width: 90
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae5f9acf3086cca0800000000000000
+      internalID: -5996964842326499666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_10
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 406
+        width: 112
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c039ab92375bdfe0800000000000000
+      internalID: -1163240203873603388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_11
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 418
+        width: 118
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df30db999edea7c0800000000000000
+      internalID: -4058061462888759339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_12
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 414
+        width: 128
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16cfe8a1358a0f310800000000000000
+      internalID: 1436833356012518497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SMG
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 400
+        width: 102
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe533d6e6d65e8d0800000000000000
+      internalID: -2817725670804463882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_14
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 332
+        width: 54
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b30f3f81a0438080800000000000000
+      internalID: -9186427752268495951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_15
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 338
+        width: 128
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec376b17a29ecd7b0800000000000000
+      internalID: -5198023501386714162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_16
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 330
+        width: 128
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4d3e3a1173f6270800000000000000
+      internalID: 8245869991642256560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_17
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 314
+        width: 106
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35b89b5c97fa8ba0800000000000000
+      internalID: -6085779695514110657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_18
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 330
+        width: 128
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b99e01473c690bd20800000000000000
+      internalID: 3292297093817887131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_19
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 326
+        width: 128
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62be351670b074780800000000000000
+      internalID: -8698972028917257434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_20
+      rect:
+        serializedVersion: 2
+        x: 887
+        y: 328
+        width: 88
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ba7af81716095390800000000000000
+      internalID: -7829219780933813575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MiniGun
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 256
+        width: 128
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe4a5126a7534e590800000000000000
+      internalID: -7645927467620391697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heavy Sniper Rifle
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 250
+        width: 128
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40a50e183f6be0d0800000000000000
+      internalID: -3392495607480999861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Anti Material Rifle
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 248
+        width: 128
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90fbe6a6f0ad9fd0800000000000000
+      internalID: -2333532050685169505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_24
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 244
+        width: 128
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4964d870498b0fc30800000000000000
+      internalID: 4391212582607603348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_25
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 240
+        width: 116
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691a70b0a974daec0800000000000000
+      internalID: -3554105803989868138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_26
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 258
+        width: 128
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6d8bff9086fb6f0800000000000000
+      internalID: -666699827673246021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_27
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 238
+        width: 62
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae33312717ea80fb0800000000000000
+      internalID: -4681300010383232022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grenade Launcher
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 168
+        width: 128
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd47aa38930271e0800000000000000
+      internalID: -2201693315476795971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_29
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 168
+        width: 102
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7a6667840384b10800000000000000
+      internalID: 1965874325129439207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_30
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 180
+        width: 128
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ea7c5da8eea49e0800000000000000
+      internalID: -1636233234536223168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pistol
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 164
+        width: 70
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93268f271f55d9660800000000000000
+      internalID: 7394160658716582457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 174
+        width: 128
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebf0565e4b361c1a0800000000000000
+      internalID: -6791037134504128578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_33
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 166
+        width: 80
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a97cbdb788b50a0800000000000000
+      internalID: -6891764739210765756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_34
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 166
+        width: 68
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d94557826840de0800000000000000
+      internalID: -1367820878488494781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_35
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 94
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47fef7291e9d2bc0800000000000000
+      internalID: -3806212279175809206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_36
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 98
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb65affa0802ecdb0800000000000000
+      internalID: -4769839218258454852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_37
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 84
+        width: 122
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ee2388777df9fb0800000000000000
+      internalID: -4638752182782202211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_38
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 84
+        width: 84
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0849c57af9fc42e20800000000000000
+      internalID: 3325010709520880768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_39
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 92
+        width: 128
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3564433a41cdf90800000000000000
+      internalID: -6927639435613416515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_40
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 86
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671ab46d4dbf08210800000000000000
+      internalID: 1333342381248586102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_41
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 78
+        width: 128
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd2b7cb35bacd720800000000000000
+      internalID: 2872359038488358333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_42
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 14
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79fb1a7cb1c8ac60800000000000000
+      internalID: 7829720967430273406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_43
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 12
+        width: 128
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a3e859d9dcc5760800000000000000
+      internalID: 7448053960466643461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_44
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 0
+        width: 104
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed92fc8bfaaf3e250800000000000000
+      internalID: 5972893163450214878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_45
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 6
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396faa0f77e76d970800000000000000
+      internalID: 8779343577209304723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_46
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 10
+        width: 128
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903522f47eb5f4660800000000000000
+      internalID: 7372212164052013833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kindpng_15186_47
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 10
+        width: 122
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d1da02259715a60800000000000000
+      internalID: 7661037834776419608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
