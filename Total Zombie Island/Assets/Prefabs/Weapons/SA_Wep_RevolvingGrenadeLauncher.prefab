@@ -299,20 +299,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _fireRate: 1
-  _range: 50
-  _impactForce: 50
+  _range: 200
+  _impactForce: 75
   _shotLocation: {fileID: 4131636490256213139}
   _shotAnimDelayTime: 0.09
   _muzzleFlash: {fileID: 0}
   _flashLight: {fileID: 0}
   _muzzleFlashLight: {fileID: 0}
-  _bloodSplatter: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
+  _bloodSplatter: {fileID: 191186, guid: 3ada67b7fad601e498038e8679ab5aac, type: 3}
   _impactSpark: {fileID: 191186, guid: 3ada67b7fad601e498038e8679ab5aac, type: 3}
   _gunShot: {fileID: 1451942132441487905}
   _weaponAnim: 1
   _fullAuto: 0
   _clipSize: 5
   _clipNum: 1
+  _currentAmmo: 0
+  _currentClipNum: 0
   _lineRenderer: {fileID: 2792186260874685016}
 --- !u!1001 &9202761749677635686
 PrefabInstance:

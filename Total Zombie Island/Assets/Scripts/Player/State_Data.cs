@@ -32,7 +32,7 @@ public class State_Data : MonoBehaviour
          _stamina = 50f;
         _position = new Vector3 (0,0, -5.42f);
         _rotation = new Quaternion(0,0,0,0);
-        _currentObjective = -1;
+        _currentObjective = 0;
     }
 
     // Update is called once per frame

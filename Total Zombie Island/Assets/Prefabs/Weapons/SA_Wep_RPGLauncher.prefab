@@ -14,20 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 100
   _fireRate: 2
-  _range: 100
-  _impactForce: 50
+  _range: 250
+  _impactForce: 75
   _shotLocation: {fileID: 1933026662172615249}
   _shotAnimDelayTime: 0.09
   _muzzleFlash: {fileID: 0}
   _flashLight: {fileID: 0}
   _muzzleFlashLight: {fileID: 0}
-  _bloodSplatter: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
-  _impactSpark: {fileID: 191186, guid: 079954accd64b32419ec069129c81273, type: 3}
+  _bloodSplatter: {fileID: 191186, guid: 3ada67b7fad601e498038e8679ab5aac, type: 3}
+  _impactSpark: {fileID: 191186, guid: 3ada67b7fad601e498038e8679ab5aac, type: 3}
   _gunShot: {fileID: 5526330721330984427}
   _weaponAnim: 1
-  _fullAuto: 1
+  _fullAuto: 0
   _clipSize: 1
   _clipNum: 5
+  _currentAmmo: 0
+  _currentClipNum: 0
   _lineRenderer: {fileID: 1862976234458468392}
 --- !u!1 &6879430288827928496
 GameObject:

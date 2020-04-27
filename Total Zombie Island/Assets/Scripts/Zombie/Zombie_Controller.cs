@@ -153,6 +153,12 @@ public class Zombie_Controller : MonoBehaviour
                         {
                             StartCoroutine(_playerCtrl.Damage(_attackDamage));
                         }
+                        float playerhealth = _playerCtrl.GetHealth();
+                        
+                        if(playerhealth <= -10)
+                        {
+                            _animator.Play("Zombie_Eating");
+                        }
                     }
                 }
                 else if (playerDist > _chaseLookRadius)
