@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponWheelUI: {fileID: 4570384691621890862}
+  SlowDownGame: 0
 --- !u!1 &4570384691621890862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1815,9 +1816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 2b379d4ba65164b4daf87f68eee27183, type: 3}
-  m_Color: {r: 0.4339623, g: 0.0020469967, b: 0.10729653, a: 1}
-  m_RaycastTarget: 1
+  m_Material: {fileID: 2100000, guid: 4beb055f07aaff244873dec698d0363e, type: 3}
+  m_Color: {r: 0.4433962, g: 0, b: 0.104802854, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
