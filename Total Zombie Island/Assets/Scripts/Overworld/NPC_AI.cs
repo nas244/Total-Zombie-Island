@@ -34,6 +34,7 @@ public class NPC_AI : MonoBehaviour
         anim = GetComponent<Animator>();
         System = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueSystem>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        PlayerMov = PlayerObject.GetComponent<Player_movement>();
 
         iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
         iconObject.SetActive(false);

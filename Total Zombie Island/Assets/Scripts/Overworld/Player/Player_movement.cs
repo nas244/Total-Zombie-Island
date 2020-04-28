@@ -98,6 +98,7 @@ public class Player_movement : MonoBehaviour
 
         int index = 0;
 
+        // disable audio
         foreach (GameObject weapon in _weapons)
         {
             Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
@@ -107,6 +108,8 @@ public class Player_movement : MonoBehaviour
             ctrl.SetActive(false);
             index += 1;
         }
+
+        // re enable audio
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);

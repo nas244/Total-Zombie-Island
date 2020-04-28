@@ -45,7 +45,7 @@ public class GameHandler : MonoBehaviour
     private void Start()
     {
         music = GetComponent<AudioSource>();
-        PlayerMov = PlayerObject.GetComponent<Player_movement>();
+        //PlayerMov = PlayerObject.GetComponent<Player_movement>();
 
         instance = this;
 
