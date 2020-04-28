@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
-    public enum Sound { Shot, Music, Hurt, Start, Finished, Dead, Countdown, Headshot, Beep, Win, Fail, Reload, Misc }
+    public enum Sound { Shot, Music, Hurt, Start, Finished, Dead, Countdown, Headshot, Beep, Win, Fail, Reload, Misc, Jump }
 
     static SoundManager instance;
 
@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
         GameObject soundGameObject = new GameObject("Sound");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(GetAudioClip(sound));
+        Destroy(soundGameObject, 3);
     }
 
     public static void FadeAudio(AudioSource audioSource, float duration, float targetVolume)
@@ -43,6 +44,17 @@ public class SoundManager : MonoBehaviour
 
             case "Boss Battle Minigame":
                 foreach (BattleSystem.SoundAudioClip soundAudioClip in BattleSystem.instance.soundAudioClipArray)
+                {
+                    if (soundAudioClip.sound == sound)
+                    {
+                        return soundAudioClip.audioClip;
+                    }
+                }
+                Debug.LogError("Sound" + sound + " not found!");
+                return null;
+
+            case "Overworld":
+                foreach (Player_movement.SoundAudioClip soundAudioClip in Player_movement.instance.soundAudioClipArray)
                 {
                     if (soundAudioClip.sound == sound)
                     {

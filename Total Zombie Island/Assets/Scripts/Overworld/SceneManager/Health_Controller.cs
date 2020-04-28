@@ -14,6 +14,7 @@ public class Health_Controller : MonoBehaviour
 
     public TextMeshProUGUI nameText;
     public Slider hpSlider;
+    public Slider staminaSlider;
     public Gradient gradient;
     public Image fill;
     public bool isSet = false;
@@ -37,21 +38,29 @@ public class Health_Controller : MonoBehaviour
         _health = _playerCtrl.GetHealth();
         _stamina = _playerCtrl.GetStamina();
         //Debug.Log(_health);
-        if (!isSet) { setHUD(_health); isSet = true; }
-        else { SetHP(_health); }
+        if (!isSet) { setHUD(_health, _stamina); isSet = true; }
+        else { SetHP(_health); setStamina(_stamina); }
         //_healthText.text = "Health: " + _health.ToString() + "\n" + "Stamina: " + _stamina.ToString("0");
     }
 
-    public void setHUD(float health)
+    public void setHUD(float health, float stamina)
     {
         hpSlider.maxValue = health;
         hpSlider.value = health;
         fill.color = gradient.Evaluate(1f);
+
+        staminaSlider.maxValue = stamina;
+        staminaSlider.value = stamina;
     }
 
     public void SetHP(float hp)
     {
         hpSlider.value = hp;
         fill.color = gradient.Evaluate(hpSlider.normalizedValue);
+    }
+
+    public void setStamina(float stam)
+    {
+        staminaSlider.value = stam;
     }
 }

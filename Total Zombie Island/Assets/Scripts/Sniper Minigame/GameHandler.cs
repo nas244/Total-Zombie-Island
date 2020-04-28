@@ -89,14 +89,11 @@ public class GameHandler : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
-            Destroy(GameObject.Find("Sound"));
-
             startTime--;
         }
 
         music.Play();
         SoundManager.PlaySound(SoundManager.Sound.Start);
-        Destroy(GameObject.Find("Sound"), 1);
 
         StartTimerHUD.SetActive(false);
 
@@ -120,7 +117,6 @@ public class GameHandler : MonoBehaviour
     {
         music.Stop();
         SoundManager.PlaySound(SoundManager.Sound.Finished);
-        Destroy(GameObject.Find("Sound"), 2);
 
         TimerHUD.SetActive(false);
         ScopeHUD.SetActive(false);
@@ -162,13 +158,11 @@ public class GameHandler : MonoBehaviour
         if (finalScore >= 2000)
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
-            Destroy(GameObject.Find("Sound"), 3);
         }
 
         else
         {
             SoundManager.PlaySound(SoundManager.Sound.Fail);
-            Destroy(GameObject.Find("Sound"), 2);
         }
 
         yield return new WaitForSeconds(2f);

@@ -41,8 +41,8 @@ public class Weapon_Controller : MonoBehaviour
     private bool _fullAuto = false;
     private Animator _animator;
 
-    [SerializeField]
-    private int _clipSize;
+    public int _clipSize;
+
     [SerializeField]
     private int _clipNum;
     public int _currentAmmo;
@@ -53,7 +53,7 @@ public class Weapon_Controller : MonoBehaviour
 
     private int _weaponIndex;
 
-
+    bool isReloading = false;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +77,8 @@ public class Weapon_Controller : MonoBehaviour
     public IEnumerator Fire(Vector3 direction)
     {
         if (Time.time < _nextShotTime) yield break;
+
+        if (isReloading) yield break;
 
         _nextShotTime = Time.time + _fireRate;
         _animator.SetBool("Shoot_b", true);
@@ -206,11 +208,27 @@ public class Weapon_Controller : MonoBehaviour
     {
         if(_currentClipNum > 0)
         {
+            isReloading = true;
+
             _animator.SetBool("Reload_b", true);
+
+            // Changed how this works so you don't lose ammo on reload
+            while (_currentAmmo < _clipSize)
+            {
+                if (_currentClipNum == 0) { break; }
+
+                _currentAmmo++;
+                _currentClipNum --;
+            }
+
             yield return new WaitForSeconds(1);
-            _currentAmmo = _clipSize;
-            _currentClipNum -= 1;
+
+            //_currentAmmo = _clipSize;
+            //_currentClipNum -= 1;
             _animator.SetBool("Reload_b", false);
+
+            yield return new WaitForSeconds(0.75f);
+            isReloading = false;
             yield break;
         }
 

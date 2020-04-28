@@ -214,13 +214,19 @@ PrefabInstance:
     - target: {fileID: 4837507237000874581, guid: 7c0922489226a8a44aa4a7b63311f0e9,
         type: 3}
       propertyPath: _clipNum
-      value: 2
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4837507237000874581, guid: 7c0922489226a8a44aa4a7b63311f0e9,
         type: 3}
       propertyPath: _fullAuto
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4837507237000874581, guid: 7c0922489226a8a44aa4a7b63311f0e9,
+        type: 3}
+      propertyPath: _Reload
+      value: 
+      objectReference: {fileID: 5905823656657491036, guid: 05765cb5938888343bdd17ca88580085,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0922489226a8a44aa4a7b63311f0e9, type: 3}
 --- !u!4 &8977226732352558618 stripped

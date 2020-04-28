@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Ammo_Display_Controller : MonoBehaviour
 {
     [SerializeField]
     private GameObject character;
     private Player_movement _playerCtrl;
+    Player_movement Weapon;
 
     [SerializeField]
-    private Text _ammoText;
+    private TextMeshProUGUI _ammoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class Ammo_Display_Controller : MonoBehaviour
 
         int ammo = _playerCtrl._weaponCtrl._currentAmmo;
         int clipnum = _playerCtrl._weaponCtrl._currentClipNum;
-        _ammoText.text = "Current Clip: " + ammo.ToString() + "\n" + "Number of Clips:" + clipnum.ToString();
+        //int maxClip = _playerCtrl._weaponCtrl._clipSize;
+        _ammoText.text = ammo.ToString() + " / " + clipnum.ToString();
     }
 }

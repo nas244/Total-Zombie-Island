@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class Player_movement : MonoBehaviour
 {
+    public static Player_movement instance;
+    bool canBePlayed = true;
+
     [SerializeField]
     private Animator _animator;
 
@@ -62,9 +65,18 @@ public class Player_movement : MonoBehaviour
     public DialogueSystem System;
     //PauseMenu pauseMenu;
 
+    public SoundAudioClip[] soundAudioClipArray;
+    [System.Serializable]
+    public class SoundAudioClip
+    {
+        public SoundManager.Sound sound;
+        public AudioClip audioClip;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         //pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
 
         _animator = this.GetComponent<Animator>();
@@ -178,12 +190,14 @@ public class Player_movement : MonoBehaviour
 
         if (Input.GetButton("Jump"))
         {
+            if (canBePlayed) { canBePlayed = false; SoundManager.PlaySound(SoundManager.Sound.Jump); }
             movement.y = jumping;
             _animator.SetBool("Jump_b", true);
         }
         else
         {
             _animator.SetBool("Jump_b", false);
+            canBePlayed = true;
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && _stamina > 0)
@@ -196,19 +210,15 @@ public class Player_movement : MonoBehaviour
             movement *= speed;
             if (_stamina < 100f)
             {
-                _stamina += .05f;
+                _stamina += .25f;
             }
         }
         
         movement.y -= 20.0f * Time.deltaTime;
 
-        Main_Character.transform.Rotate(0, Input.GetAxis("Mouse X") * speed, 0);
+        Main_Character.transform.Rotate(0, Input.GetAxis("Mouse X") * speed, 0);       
 
-
-        
-
-
-        _characterController.Move(movement * Time.deltaTime);
+        _characterController.Move(movement * Time.deltaTime);       
     }
 
     private void Weapons()
@@ -220,6 +230,7 @@ public class Player_movement : MonoBehaviour
                 if (_reloading)
                 {
                     _reloading = false;
+                    SoundManager.PlaySound(SoundManager.Sound.Reload);
                     StartCoroutine(_weaponCtrl.Reload());
                 }
                 

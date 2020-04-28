@@ -151,10 +151,13 @@ MonoBehaviour:
   _bloodSplatter: {fileID: 194062, guid: bb954c7832c9a9845b017b284d33fbc8, type: 3}
   _impactSpark: {fileID: 191114, guid: 48a83667d6d13e14ab5bc0aefb0a6a07, type: 3}
   _gunShot: {fileID: 310135589402068225}
+  _Reload: {fileID: 5905823656657491036, guid: 05765cb5938888343bdd17ca88580085, type: 3}
   _weaponAnim: 1
   _fullAuto: 0
   _clipSize: 20
-  _clipNum: 5
+  _clipNum: 100
+  _currentAmmo: 0
+  _currentClipNum: 0
   _lineRenderer: {fileID: 5871263338190749093}
 --- !u!1001 &6407295846811767928
 PrefabInstance:
