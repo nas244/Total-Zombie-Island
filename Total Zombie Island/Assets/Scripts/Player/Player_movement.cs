@@ -299,7 +299,7 @@ public class Player_movement : MonoBehaviour
 
             _isDead = true;
 
-            SceneManager.LoadScene("Overworld");
+            SceneManager.LoadScene("GameOver");
         }
 
         yield break;
