@@ -38,6 +38,7 @@ public class Countdown : MonoBehaviour
             Smoke.gameObject.SetActive(true);
             Character.gameObject.SetActive(false);
             GameOver.SetTrigger("start");
+            
     
 
         }
@@ -49,7 +50,7 @@ public class Countdown : MonoBehaviour
     
     public void BackToOverworld()
     {
-        SceneManager.LoadScene("Overworld");
+        //Level.LoadLevel("Overworld");
     }
 
 }

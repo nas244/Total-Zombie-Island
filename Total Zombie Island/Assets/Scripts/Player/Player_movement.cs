@@ -62,6 +62,11 @@ public class Player_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (State_Data.Instance.Hasdied == true )
+        {
+            State_Data.Instance.Hasdied = false;
+            Reset_Data();
+        }
         _animator = this.GetComponent<Animator>();
         _characterController = this.GetComponent<CharacterController>();
         _playerCamera.gameObject.gameObject.SetActive(true);

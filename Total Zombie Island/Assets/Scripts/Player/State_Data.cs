@@ -12,6 +12,7 @@ public class State_Data : MonoBehaviour
     public Quaternion _rotation;
     public int _currentObjective;
     public float _score;
+    public bool Hasdied = false;
 
     void Awake()
     {
@@ -38,6 +39,6 @@ public class State_Data : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+   
     }
 }
