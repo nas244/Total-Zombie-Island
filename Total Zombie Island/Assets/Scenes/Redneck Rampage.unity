@@ -1049,6 +1049,12 @@ MonoBehaviour:
   _rotation: {x: 0, y: 0, z: 0, w: 0}
   _currentObjective: 0
   _score: 2
+  _scoreCap: 2
+  _spawnLimit: 0
+  _spawnDelay: 0
+  _MG1Complete: 0
+  _MG2Complete: 0
+  _MG3Complete: 0
 --- !u!4 &61733184
 Transform:
   m_ObjectHideFlags: 0
@@ -19992,6 +19998,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transitionObject
+      value: 
+      objectReference: {fileID: 1502412061}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1502412060}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e941805e086fb5449ead22e9804b7c8, type: 3}
 --- !u!114 &1502412059 stripped
@@ -20006,6 +20022,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047fdc3b2ac2fa94180f90a45eb8be3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1502412060 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676226, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1502412058}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1502412061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676233, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1502412058}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1503450769
 PrefabInstance:
   m_ObjectHideFlags: 0

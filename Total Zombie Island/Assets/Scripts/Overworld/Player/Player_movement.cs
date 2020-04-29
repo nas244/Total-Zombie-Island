@@ -351,6 +351,7 @@ public class Player_movement : MonoBehaviour
 
     public IEnumerator Damage(float damage)
     {
+        if (canBePlayed) { canBePlayed = false; SoundManager.PlaySound(SoundManager.Sound.Hurt); }
         _health -= damage;
 
         if (_health <= 0)

@@ -12052,6 +12052,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4753224714897686375, guid: a2262f7049424894d970fd125763791a,
+        type: 3}
+      propertyPath: weaponWheel
+      value: 
+      objectReference: {fileID: 1721714511}
+    - target: {fileID: 4753224714897686375, guid: a2262f7049424894d970fd125763791a,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1721714513}
     - target: {fileID: 4753224715294199190, guid: a2262f7049424894d970fd125763791a,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -36265,6 +36275,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9814db2919daf4297a182a6698f2b2, type: 3}
+--- !u!1 &1721714511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676233, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8339095213334816429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1721714513 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676226, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8339095213334816429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1723223109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48099,6 +48121,21 @@ PrefabInstance:
       propertyPath: Score
       value: 
       objectReference: {fileID: 544899731}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: idle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: lookRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: interactRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5031425236506529139, guid: 9f1067bfb5a4af5469531bafe9434209,
         type: 3}
       propertyPath: m_LocalRotation.x

@@ -435,6 +435,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047fdc3b2ac2fa94180f90a45eb8be3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &929716536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676233, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1856226377}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &929716537 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676226, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1856226377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692992185
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +585,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 929716537}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transitionObject
+      value: 
+      objectReference: {fileID: 929716536}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e941805e086fb5449ead22e9804b7c8, type: 3}
 --- !u!4 &1868179680 stripped

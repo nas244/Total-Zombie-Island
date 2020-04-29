@@ -439,6 +439,8 @@ MonoBehaviour:
   _currentObjective: 0
   _score: 2
   _scoreCap: 2
+  _spawnLimit: 0
+  _spawnDelay: 0
   _MG1Complete: 0
   _MG2Complete: 0
   _MG3Complete: 0
@@ -1781,6 +1783,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transitionObject
+      value: 
+      objectReference: {fileID: 1999874043}
+    - target: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1999874042}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e941805e086fb5449ead22e9804b7c8, type: 3}
 --- !u!114 &1999874041 stripped
@@ -1795,6 +1807,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047fdc3b2ac2fa94180f90a45eb8be3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1999874042 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676226, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999874040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1999874043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796688323078676233, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999874040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029395295
 PrefabInstance:
   m_ObjectHideFlags: 0
