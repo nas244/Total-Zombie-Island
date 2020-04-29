@@ -14,22 +14,27 @@ public class EndGameSequence : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Fuck Unity");
         System = System.GetComponent<DialogueSystem>();
 
         DialogueHUD.SetActive(false);
 
         if (State_Data.Instance._currentObjective == 3)
         {
+            Debug.Log("Fuck Unity + 1");
             Theme.DisableAll();
             Theme.SetTheme();
 
             AudioListener.pause = true;
             StartCoroutine(EndSequence());
         }
+
+        Debug.Log("Fuck Unity + 2");
     }
 
     IEnumerator EndSequence()
     {
+        Debug.Log("End Sequence");
         yield return new WaitForSeconds(1);
 
         string[] sentence = new string[]

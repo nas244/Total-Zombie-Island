@@ -13,6 +13,8 @@ public class State_Data : MonoBehaviour
     public int _currentObjective;
     public float _score;
     public float _scoreCap = 2;
+    public int _spawnLimit;
+    public float _spawnDelay;
     // new stuff
     public bool _MG1Complete = false, _MG2Complete = false, _MG3Complete = false;
 
@@ -35,7 +37,7 @@ public class State_Data : MonoBehaviour
          _stamina = 50f;
         _position = new Vector3 (0,0, -5.42f);
         _rotation = new Quaternion(0,0,0,0);
-        _currentObjective = 0;
+        //_currentObjective = 0;
     }
 
     // Update is called once per frame

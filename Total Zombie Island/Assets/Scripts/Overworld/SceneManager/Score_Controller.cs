@@ -35,6 +35,7 @@ public class Score_Controller : MonoBehaviour
 
         if (_rating <= 0 )
         {
+            _rating = 0;
             //Trigger GameOver
         }
     }

@@ -29,6 +29,9 @@ public class SpawnArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        localSpawnLimit = State_Data.Instance._spawnLimit;
+        spawnDelay = State_Data.Instance._spawnDelay;
+
         // grab all of the children spawners to this SpawnArea
         spawners = GetComponentsInChildren<ZombieSpawner>();
         if (spawners.Length <= 0) Debug.LogError("No spawners found in \"" + this.name + "\". Spawning won't work!");

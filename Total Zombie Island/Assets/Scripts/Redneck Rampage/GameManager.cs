@@ -174,14 +174,15 @@ public class GameManager : MonoBehaviour
             State_Data.Instance._currentObjective += 1;
             State_Data.Instance._scoreCap += 2;
             State_Data.Instance._score += 1;
-            yield break;
+            State_Data.Instance._spawnLimit += 4;
+            //yield break;
         }
 
         else if (State_Data.Instance._MG2Complete)
         {
             Debug.Log("Completed again");
             State_Data.Instance._score += 0.25f;
-            yield break;
+            //yield break;
         }
 
     }

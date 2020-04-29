@@ -35,7 +35,7 @@ public class NPC_AI : MonoBehaviour
     GameObject iconObject;
 
     public LevelLoader Loader;
-
+    public Score_Controller Score;
     public DialogueSystem System;
     bool needsResponse = false;
     bool isLocked;
@@ -50,6 +50,7 @@ public class NPC_AI : MonoBehaviour
         anim = GetComponent<Animator>();
         PlayerMov = PlayerObject.GetComponent<Player_movement>();
         System = System.GetComponent<DialogueSystem>();
+        Score = Score.GetComponent<Score_Controller>();
 
         iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
         iconObject.name = NPC_name + " icon";
@@ -113,8 +114,9 @@ public class NPC_AI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
-        Debug.Log(State_Data.Instance._score + "\t" + requiredVal);
-        if (State_Data.Instance._score < requiredVal)
+        //Debug.Log(State_Data.Instance._score + "\t" + requiredVal);
+        Debug.Log(Score._rating);
+        if (Score._rating < requiredVal)
         {
             Debug.Log("Case 0");
 

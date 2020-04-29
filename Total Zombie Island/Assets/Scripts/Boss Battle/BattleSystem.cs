@@ -736,6 +736,8 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("Completed first time");
                 State_Data.Instance._MG3Complete = true;
                 State_Data.Instance._currentObjective += 1;
+                State_Data.Instance._spawnLimit += 3;
+                //State_Data.Instance._spawnDelay -= 1;
                 //State_Data.Instance._scoreCap += 1;
                 State_Data.Instance._score += 1;
             }

@@ -8333,7 +8333,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -11006,11 +11006,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _stamina: 100
-  _position: {x: 146.2, y: 0, z: 102.1}
+  _position: {x: -46.9, y: 0, z: -61.9}
   _rotation: {x: 0, y: 0, z: 0, w: 0}
-  _currentObjective: 3
+  _currentObjective: 0
   _score: 0
   _scoreCap: 2
+  _spawnLimit: 3
+  _spawnDelay: 3
   _MG1Complete: 0
   _MG2Complete: 0
   _MG3Complete: 0
@@ -12602,7 +12604,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -31507,7 +31509,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -47563,6 +47565,11 @@ PrefabInstance:
       propertyPath: requiredVal
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4062686875802785544, guid: 8af42cd224a6c1e42847a477ca162172,
+        type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 544899731}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8af42cd224a6c1e42847a477ca162172, type: 3}
 --- !u!1001 &3075911574731094434
@@ -47957,6 +47964,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
         type: 3}
+      propertyPath: notHighEnoughDialouge.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
       propertyPath: Icon
       value: 
       objectReference: {fileID: 3831112671353469599, guid: ec2a81ae7c63bb4469f3922b3c523b20,
@@ -48072,6 +48084,21 @@ PrefabInstance:
       propertyPath: Panel
       value: 
       objectReference: {fileID: 6750898735611839799}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: notHighEnoughDialouge.Array.data[0]
+      value: Just a Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: requiredVal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
+        type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 544899731}
     - target: {fileID: 5031425236506529139, guid: 9f1067bfb5a4af5469531bafe9434209,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -49187,6 +49214,11 @@ PrefabInstance:
       propertyPath: requiredVal
       value: 4.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5665604456628377199, guid: fff412569e638624aa8d6485abe4a562,
+        type: 3}
+      propertyPath: Score
+      value: 
+      objectReference: {fileID: 544899731}
     - target: {fileID: 5665604457191751374, guid: fff412569e638624aa8d6485abe4a562,
         type: 3}
       propertyPath: m_LocalPosition.x
