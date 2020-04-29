@@ -26,10 +26,13 @@ public class Player_movement : MonoBehaviour
     private GameObject _weaponRoot;
     [SerializeField]
     private GameObject[] _weaponPrefabs;
+    [SerializeField]
+    private GameObject[] _handHeld;
 
     private List<GameObject> _weapons;
     private int _currentWeapon = 0;
     public int _nextWeapon = 0;
+    private int _vehicleWep = 0;
     public Weapon_Controller _weaponCtrl;
 
     private vehicle_controller _vehicleCtrl;
@@ -308,7 +311,9 @@ public class Player_movement : MonoBehaviour
                     var car = collider.GetComponent<vehicle_controller>();
                     if(car != null)
                     {
-                        _weaponCtrl.SetActive(false);
+                        
+                        _handHeld[_currentWeapon].gameObject.SetActive(false);
+                        _weapons[_currentWeapon].gameObject.SetActive(false);
                         _characterController.enabled = false;
                         _playerCamera.gameObject.SetActive(false);
                         _carCamera.gameObject.SetActive(true);
@@ -321,11 +326,12 @@ public class Player_movement : MonoBehaviour
         }
         else
         {
-            Vector3 teleport = new Vector3(_vehicle.transform.position.x + 3, _vehicle.transform.position.y, _vehicle.transform.position.z);
+            Vector3 teleport = new Vector3(_vehicle.transform.position.x + 5, _vehicle.transform.position.y, _vehicle.transform.position.z);
             this.transform.position = teleport;
             if(Input.GetKeyDown(KeyCode.E))
             {
-                _weaponCtrl.SetActive(true);
+                _handHeld[_currentWeapon].gameObject.SetActive(true);
+                _weapons[_currentWeapon].gameObject.SetActive(true);
                 _characterController.enabled = true;
                 _inVehicle = false;
                 _playerCamera.gameObject.SetActive(true);
