@@ -48065,8 +48065,8 @@ PrefabInstance:
     - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
         type: 3}
       propertyPath: initialDialogue.Array.data[3]
-      value: 'Old Man: If you can get a score of 2500 or higher, i bet your rating
-        will go up.'
+      value: 'Old Man: If you can get a score of 2500, i bet your rating will go
+        up.'
       objectReference: {fileID: 0}
     - target: {fileID: 5031425235824602500, guid: 9f1067bfb5a4af5469531bafe9434209,
         type: 3}
