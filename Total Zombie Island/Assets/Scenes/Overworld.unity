@@ -2349,6 +2349,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5665604457149840607}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &122762610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 570994148816689820, guid: 4316165a0c8dab347a9e7e3f57bc8958,
+    type: 3}
+  m_PrefabInstance: {fileID: 570994148905758702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &122762611 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 570994148816689821, guid: 4316165a0c8dab347a9e7e3f57bc8958,
@@ -21023,6 +21029,10 @@ MonoBehaviour:
   System: {fileID: 4205927993918941775}
   Theme: {fileID: 32606764}
   DialogueHUD: {fileID: 4205927993918941774}
+  CountdownHUD: {fileID: 122762610}
+  ObjectiveHUD: {fileID: 1343006006}
+  ScoreHUD: {fileID: 544899730}
+  count: 120
 --- !u!4 &968359686
 Transform:
   m_ObjectHideFlags: 0
@@ -28820,6 +28830,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9814db2919daf4297a182a6698f2b2, type: 3}
+--- !u!1 &1343006006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8588687680348282979, guid: cfe7cbb4038cc8741a2357a95b0b5c6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 124018298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1346471882
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,27 +9,27 @@ public class EndGameSequence : MonoBehaviour
     public ThemeManager Theme;
 
     [SerializeField]
-    GameObject DialogueHUD;
+    GameObject DialogueHUD, CountdownHUD, ObjectiveHUD, ScoreHUD;
+
+    [SerializeField]
+    int count = 120;
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Fuck Unity");
         System = System.GetComponent<DialogueSystem>();
 
         DialogueHUD.SetActive(false);
+        CountdownHUD.SetActive(false);
 
         if (State_Data.Instance._currentObjective == 3)
         {
-            Debug.Log("Fuck Unity + 1");
             Theme.DisableAll();
             Theme.SetTheme();
 
             AudioListener.pause = true;
             StartCoroutine(EndSequence());
         }
-
-        Debug.Log("Fuck Unity + 2");
     }
 
     IEnumerator EndSequence()
@@ -56,6 +56,22 @@ public class EndGameSequence : MonoBehaviour
 
         AudioListener.pause = false;
         DialogueHUD.SetActive(false);
+        ObjectiveHUD.SetActive(false);
+        ScoreHUD.SetActive(false);
+        CountdownHUD.SetActive(true);
+    }
+
+    IEnumerator Countdown()
+    {
+        while (count > 0)
+        {
+            // if player has reached goal yield break
+            // else
+            yield return new WaitForSeconds(1);
+            count--;
+        }
+
+        // trigger game over
     }
 
 }
