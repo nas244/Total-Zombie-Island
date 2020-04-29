@@ -11014,7 +11014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 100
   _stamina: 100
-  _position: {x: -46.9, y: 0, z: -61.9}
+  _position: {x: -46.9, y: 132, z: -61.9}
   _rotation: {x: 0, y: 0, z: 0, w: 0}
   _currentObjective: 0
   _score: 0
