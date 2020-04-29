@@ -185,11 +185,12 @@ public class NPC_AI : MonoBehaviour
 
             //Time.timeScale = 0f;
             // waits until player chooses option before continuing
+            Debug.Log("Option = " + option);
             while (option == 0)
             {
                 yield return null;
             }
-            Debug.Log("option: " + option);
+            Debug.Log("Picked");
             //Time.timeScale = 1f;
 
             Panel.SetTrigger("Panel");
@@ -204,11 +205,8 @@ public class NPC_AI : MonoBehaviour
         pickingOption = false;
         NPC_Response();
 
-        if (repeating) { yield break; }
-        else
-        {
-            if (isLocked) { Cursor.lockState = CursorLockMode.Locked; }
-        }
+
+        if (isLocked) { Cursor.lockState = CursorLockMode.Locked; }
 
         //repeating = false;
     }
@@ -225,6 +223,7 @@ public class NPC_AI : MonoBehaviour
 
     public void OnOptionButton(int choice)
     {
+        Debug.Log("Picked Option " + choice);
         //SoundManager.PlaySound(SoundManager.Sound.Beep);
         option = choice;
     }
@@ -244,6 +243,7 @@ public class NPC_AI : MonoBehaviour
 
                         PlayerMov.Save_Data();
 
+                        Debug.Log("Loading " + level);
                         Loader.LoadLevel(level);
                         break;
 
@@ -262,6 +262,7 @@ public class NPC_AI : MonoBehaviour
 
                         PlayerMov.Save_Data();
 
+                        //Debug.Log("Loading " + level);
                         Loader.LoadLevel(level);
                         break;
 

@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private WeaponSpawner parentWeaponSpawner;
     [System.NonSerialized] public bool gameover = false;
 
+    private bool stopUpdating = false;
+
     // slots for gun sounds
     [SerializeField] private GameObject audioSource;
     [SerializeField] private AudioClip shotgunShot;
@@ -84,46 +86,49 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if gameover, disable all input and udpates
-        if (gameover) return;
-
-        // get input from the player
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        // check if the player is attacking
-        if (Input.GetMouseButton(0) && weaponType != weaponTypes.NONE && ammo > 0) attackCalled = true;
-
-        // update the UI
-        UpdateUI();
-
-        // if the player is hurt, flash the player red
-        if (isHurt)
+        if (!stopUpdating)
         {
-            SkinnedMeshRenderer skinMesh = skin.GetComponent<SkinnedMeshRenderer>();
-            float t = (Time.time - hurtTime);
-            skinMesh.material.color = Color.Lerp(Color.white, Color.red, t);
-            skinMesh.material.color = Color.Lerp(Color.red, Color.white, t);
-            if (skinMesh.material.color == Color.white)
+            // if gameover, disable all input and udpates
+            if (gameover) return;
+
+            // get input from the player
+            horizontalInput = Input.GetAxis("Horizontal");
+
+            // check if the player is attacking
+            if (Input.GetMouseButton(0) && weaponType != weaponTypes.NONE && ammo > 0) attackCalled = true;
+
+            // update the UI
+            UpdateUI();
+
+            // if the player is hurt, flash the player red
+            if (isHurt)
             {
-                isHurt = false;
+                SkinnedMeshRenderer skinMesh = skin.GetComponent<SkinnedMeshRenderer>();
+                float t = (Time.time - hurtTime);
+                skinMesh.material.color = Color.Lerp(Color.white, Color.red, t);
+                skinMesh.material.color = Color.Lerp(Color.red, Color.white, t);
+                if (skinMesh.material.color == Color.white)
+                {
+                    isHurt = false;
+                }
             }
-        }
 
-        // check if the player is dead
-        if (health <= 0)
-        {
-            // set gameover so this doesn't repeat
-            gameover = true;
+            // check if the player is dead
+            if (health <= 0)
+            {
+                // set gameover so this doesn't repeat
+                gameover = true;
 
-            // play the death animation
-            animator.SetBool("Death_b", true);
+                // play the death animation
+                animator.SetBool("Death_b", true);
 
-            // freeze the player model in place so the zombies don't push him around
-            rb.isKinematic = true;
+                // freeze the player model in place so the zombies don't push him around
+                rb.isKinematic = true;
 
-            // call game over
-            StartCoroutine(gameManager.GameOver(false));
-        }
+                // call game over
+                StartCoroutine(gameManager.GameOver(false));
+            }
+        }     
     }
 
     // FixedUpdate is called once every fixedDeltaTime

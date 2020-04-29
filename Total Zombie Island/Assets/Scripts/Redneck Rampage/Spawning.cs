@@ -20,7 +20,7 @@ public class Spawning : MonoBehaviour
     private int zombiesReamaining;
     private float lastSpawnTime;
     private int wave;
-    private bool gameover = false;
+    private bool stopUpdating = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,38 +38,40 @@ public class Spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if spawndelay time has passed
-        if ((Time.time - lastSpawnTime) >= spawnDelay)
+        if (!stopUpdating)
         {
-            // make sure the spawn limit hasn't been reached
-            if (spawnCount < spawnLimit)
+            // if spawndelay time has passed
+            if ((Time.time - lastSpawnTime) >= spawnDelay)
             {
-                Spawn();
+                // make sure the spawn limit hasn't been reached
+                if (spawnCount < spawnLimit)
+                {
+                    Spawn();
+                }
+            }
+
+            // update the UI
+            UpdateUI();
+
+            // if no more zombies remain, move to next round or game over
+            if (zombiesReamaining <= 0)
+            {
+                switch (wave)
+                {
+                    case 1:
+                        gameManager.Wave2();
+                        break;
+                    case 2:
+                        gameManager.Wave3();
+                        break;
+                    case 3:
+                        stopUpdating = true;
+                        StartCoroutine(gameManager.GameOver(true));
+                        break;
+                }
             }
         }
 
-        // update the UI
-        UpdateUI();
-
-        // if no more zombies remain, move to next round or game over
-        if (zombiesReamaining <= 0)
-        {
-            switch (wave)
-            {
-                case 1:
-                    gameManager.Wave2();
-                    break;
-                case 2:
-                    gameManager.Wave3();
-                    break;
-                case 3:
-                    gameover = true;
-                    break;
-            }
-        }
-
-        // if game over, call game over
-        if (gameover) StartCoroutine(gameManager.GameOver(true));
     }
 
     // sets this instance of spawning to the specified values and resets all counters
@@ -78,14 +80,14 @@ public class Spawning : MonoBehaviour
         // setup specified values
         zombieDamage = damage;
         zombieHealth = health;
-        spawnLimit = limit;
+        spawnLimit = 1;//limit;
         spawnDelay = delay;
 
         // reset counters
         spawnCount = 0;
         zombiesReamaining = limit;
         lastSpawnTime = Time.time;
-        this.wave = wave;
+        this.wave = 3;//wave;
 
         Debug.Log("Spawning reset.");
     }

@@ -68,7 +68,7 @@ public class DialogueSystem : MonoBehaviour
 
     public void NextSentence()
     {
-        Debug.Log("Next Sentence");
+        //Debug.Log("Next Sentence");
         source.Play();
         continueButton.SetActive(false);
 

@@ -17,9 +17,13 @@ public class GameManager : MonoBehaviour
     private GameObject[] weaponSpawners;
     [System.NonSerialized] public bool canPause;
 
+    public LevelLoader Loader;
+
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         // grab the spawner GameObject
         spawner = GameObject.FindGameObjectWithTag("SpawnerController");
 
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public IEnumerator HowToPlay()
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 10,
             health: 100,
-            limit: 10,
+            limit: 1,//10,
             delay: 3.0f,
             wave: 1
         );
@@ -99,7 +103,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 15,
             health: 120,
-            limit: 15,
+            limit: 1,//15,
             delay: 3.0f,
             wave: 2
         );
@@ -119,7 +123,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 20,
             health: 120,
-            limit: 20,
+            limit: 1,//20,
             delay: 3.0f,
             wave: 3
         );
@@ -144,8 +148,10 @@ public class GameManager : MonoBehaviour
         if (victory) StartCoroutine(Victory());
         else StartCoroutine(Loss());
 
-        yield return new WaitForSeconds(3);
-        ReturnToLevel();
+        yield break;
+
+        //yield return new WaitForSeconds(3);
+        //ReturnToLevel();
     }
 
     IEnumerator Victory()
@@ -157,8 +163,25 @@ public class GameManager : MonoBehaviour
         mainUI.SetActive(false);
         winUI.SetActive(true);
         gameOverUI.SetActive(true);
-        State_Data.Instance._currentObjective += 1;
-        State_Data.Instance._score += 1;
+
+        Debug.Log(State_Data.Instance._MG2Complete);
+        //yield break;
+        if (!State_Data.Instance._MG2Complete)
+        {
+            Debug.Log("Completed first time");
+            State_Data.Instance._MG2Complete = true;
+            State_Data.Instance._currentObjective += 1;
+            State_Data.Instance._score += 1;
+            yield break;
+        }
+
+        else if (State_Data.Instance._MG2Complete)
+        {
+            Debug.Log("Completed again");
+            State_Data.Instance._score += 0.25f;
+            yield break;
+        }
+
     }
 
     IEnumerator Loss()
@@ -166,6 +189,7 @@ public class GameManager : MonoBehaviour
         // wait for 3 seconds
         yield return new WaitForSeconds(3);
 
+        Debug.Log(State_Data.Instance._MG2Complete);
         // display game over screen
         mainUI.SetActive(false);
         lossUI.SetActive(true);
@@ -178,11 +202,11 @@ public class GameManager : MonoBehaviour
         // reset time scale if needed
         Time.timeScale = 1;
 
-        SceneManager.LoadScene("Overworld");
+        Loader.LoadLevel("Overworld");
     }
 
     public void ReplayScene()
     {
-        SceneManager.LoadScene("Redneck Rampage");
+        Loader.LoadLevel("Redneck Rampage");
     }
 }
