@@ -136,7 +136,7 @@ public class Player_movement : MonoBehaviour
     {
         if (!PauseMenu.isPaused)
         {
-            if (!System.isTyping)
+            if (!System.isTyping && !NPC_AI.pickingOption)
             {
                 if (Input.GetKey("escape"))
                 {

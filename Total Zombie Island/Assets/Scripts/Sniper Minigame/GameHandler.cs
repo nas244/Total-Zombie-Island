@@ -145,19 +145,20 @@ public class GameHandler : MonoBehaviour
 
         bonus = GetBonus();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         finalScoreText.text = "FINAL SCORE: " + finalScore + " X BONUS";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         finalScore *= bonus;
 
         finalScoreText.text = "FINAL SCORE: " + (int)finalScore;
 
-        if (finalScore >= 2000)
+        if (finalScore >= 2500)
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
+            State_Data.Instance._score += 1;
         }
 
         else

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScenePrompt_Controller : MonoBehaviour
 {
     [SerializeField]
-    private Text _scenePrompt;
+    private TextMeshProUGUI _scenePrompt;
     [SerializeField]
     private GameObject _mainChar;
 

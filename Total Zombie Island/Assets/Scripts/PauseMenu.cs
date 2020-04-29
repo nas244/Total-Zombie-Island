@@ -8,8 +8,10 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool isPaused = false;
     public bool canBeReloaded;
+    bool isLocked;
 
     public GameObject pauseMenuUI;
+    public GameObject weaponWheel;
 
     public Animator anim;
 
@@ -53,7 +55,17 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
 
-        if (SceneManager.GetActiveScene().name == "Overworld") { Cursor.lockState = CursorLockMode.Locked; }
+        if (isLocked)
+        {
+            isLocked = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        /*if (SceneManager.GetActiveScene().name == "Overworld")
+        {
+            //if (weaponWheel.activeSelf)
+            Cursor.lockState = CursorLockMode.Locked;
+        }*/
     }
 
     public void Retry()
@@ -73,6 +85,8 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator Pause()
     {
+        if (Cursor.lockState == CursorLockMode.Locked) { isLocked = true; }
+
         Cursor.lockState = CursorLockMode.None;
 
         pauseMenuUI.SetActive(true);

@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NPC_AI : MonoBehaviour
 {
     Animator anim;
+
+    [SerializeField]
+    Animator Panel;
 
     [SerializeField]
     GameObject PlayerObject;
@@ -12,40 +16,50 @@ public class NPC_AI : MonoBehaviour
     Player_movement PlayerMov;
 
     [SerializeField]
-    int idle, talking, lookRadius, interactRadius, conversation = 1;
+    int idle, talking, lookRadius, interactRadius, option, conversation = 1;
 
     [SerializeField]
-    string[] initialDialogue, wonDialogue, lostDialogue;
+    string[] initialDialogue, regDialogue, wonDialogue, lostDialogue;
 
-    public string level;
+    [SerializeField]
+    TextMeshProUGUI optionText1, optionText2;
 
-    public GameObject Icon;
-    public GameObject DialogueHUD;
+    [SerializeField]
+    string level, NPC_name, option1, option2;
+
+    [SerializeField]
+    GameObject OptionPanel, Icon, DialogueHUD;
+ 
     GameObject iconObject;
 
     public LevelLoader Loader;
 
-    Transform target;
-
-    DialogueSystem System;
+    public DialogueSystem System;
+    bool needsResponse = false;
+    bool isLocked;
+    bool repeating;
+    public static bool pickingOption = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        System = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<DialogueSystem>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         PlayerMov = PlayerObject.GetComponent<Player_movement>();
+        System = System.GetComponent<DialogueSystem>();
 
-        iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
+        iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
+        iconObject.name = NPC_name + " icon";
         iconObject.SetActive(false);
         DialogueHUD.SetActive(false);
+        OptionPanel.SetActive(false);
 
         anim.SetInteger("Animation_int", idle);
     }
 
-    private void Update()
+    void Update()
     {
         TriggerRange();
+        Debug.Log("Conversation: " + conversation);
+        //Debug.Log("Option: " + option);
     }
 
     private void OnDrawGizmosSelected()
@@ -59,24 +73,25 @@ public class NPC_AI : MonoBehaviour
 
     void TriggerRange()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
-
         // Gives enemy a range that will cause it to move once the player enters it
-        if (distance <= lookRadius)
+        if ((PlayerObject.transform.position - transform.position).sqrMagnitude < lookRadius * lookRadius)
         {
+            //Debug.Log("within range");
             iconObject.SetActive(true);
 
-            // Rotate the enemy too always face the player. Locks every axis except Y so that it only rotates on Y axis. Change this for 3D sections
-            Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            // Rotate the enemy too always face the player.
+            Vector3 targetPosition = new Vector3(PlayerObject.transform.position.x, transform.position.y, PlayerObject.transform.position.z);
             transform.LookAt(targetPosition);
             iconObject.transform.LookAt(targetPosition);
 
-            if (distance <= interactRadius)
+            if ((PlayerObject.transform.position - transform.position).sqrMagnitude < interactRadius * interactRadius)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (!System.isTyping)
                     {
+                        if (Cursor.lockState == CursorLockMode.Locked) { isLocked = true; }
+
                         // Start conversation
                         StartCoroutine(SetDialogue());
                         Debug.Log("start conversation");
@@ -84,20 +99,28 @@ public class NPC_AI : MonoBehaviour
                 }
             }
         }
+
         else { iconObject.SetActive(false); }
     }
 
     IEnumerator SetDialogue()
     {
+        Cursor.lockState = CursorLockMode.None;
+
+        repeating = false;
+
         switch (conversation)
         {
             case 1:
+                //update this so different dialogue if you have completed previous objective needed first
+                //conversation = 2;               
+                needsResponse = true;
                 System.sentenceArray.Add(initialDialogue);
 
                 DialogueHUD.SetActive(true);
                 System.StartDialogue();
 
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
 
                 while (System.isTyping)
                 {
@@ -107,12 +130,13 @@ public class NPC_AI : MonoBehaviour
                 break;
 
             case 2:
-                System.sentenceArray.Add(wonDialogue);
+                needsResponse = true;
+                System.sentenceArray.Add(regDialogue);
 
                 DialogueHUD.SetActive(true);
                 System.StartDialogue();
 
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
 
                 while (System.isTyping)
                 {
@@ -122,12 +146,27 @@ public class NPC_AI : MonoBehaviour
                 break;
 
             case 3:
+                System.sentenceArray.Add(wonDialogue);
+
+                DialogueHUD.SetActive(true);
+                System.StartDialogue();
+
+                //Cursor.lockState = CursorLockMode.None;
+
+                while (System.isTyping)
+                {
+                    yield return null;
+                }
+
+                break;
+
+            case 4:
                 System.sentenceArray.Add(lostDialogue);
 
                 DialogueHUD.SetActive(true);
                 System.StartDialogue();
 
-                Cursor.lockState = CursorLockMode.None;
+                //Cursor.lockState = CursorLockMode.None;
 
                 while (System.isTyping)
                 {
@@ -138,11 +177,99 @@ public class NPC_AI : MonoBehaviour
         }
 
         DialogueHUD.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
 
-        PlayerMov.Save_Data();
+        if (needsResponse)
+        {
+            pickingOption = true;
+            SelectOption();
 
-        Loader.LoadLevel(level);
+            //Time.timeScale = 0f;
+            // waits until player chooses option before continuing
+            while (option == 0)
+            {
+                yield return null;
+            }
+            Debug.Log("option: " + option);
+            //Time.timeScale = 1f;
+
+            Panel.SetTrigger("Panel");
+
+            yield return new WaitForSeconds(0.5f);
+
+            OptionPanel.SetActive(false);
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        pickingOption = false;
+        NPC_Response();
+
+        if (repeating) { yield break; }
+        else
+        {
+            if (isLocked) { Cursor.lockState = CursorLockMode.Locked; }
+        }
+
+        //repeating = false;
     }
 
+    void SelectOption()
+    {
+        needsResponse = false;
+        DialogueHUD.SetActive(false);
+        OptionPanel.SetActive(true);
+
+        optionText1.text = option1;
+        optionText2.text = option2;
+    }
+
+    public void OnOptionButton(int choice)
+    {
+        //SoundManager.PlaySound(SoundManager.Sound.Beep);
+        option = choice;
+    }
+
+    void UpdateConversation(int num) { conversation = num; }
+
+    void NPC_Response()
+    {
+        // put enemy responses
+        switch (conversation)
+        {
+            case 1:
+                switch (option)
+                {
+                    case 1:
+                        option = 0;
+
+                        PlayerMov.Save_Data();
+
+                        Loader.LoadLevel(level);
+                        break;
+
+                    case 2:
+                        option = 0;
+                        //UpdateConversation(2);
+                        break;
+                }
+                break;
+
+            case 2:
+                switch (option)
+                {
+                    case 1:
+                        option = 0;
+
+                        PlayerMov.Save_Data();
+
+                        Loader.LoadLevel(level);
+                        break;
+
+                    case 2: 
+                        option = 0;
+                        break;
+                }
+                break;
+        }
+    }
 }

@@ -21,7 +21,7 @@ public class Score_Controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        _rating -= 0.00001f;
+        _rating -= 0.0001f;
         _onscreen = _rating;
         if (_onscreen > 5.0f)
         {

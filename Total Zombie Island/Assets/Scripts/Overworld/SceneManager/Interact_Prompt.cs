@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Interact_Prompt : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class Interact_Prompt : MonoBehaviour
     private Vector3 _origin;
 
     [SerializeField]
-    private Text _interactprompt;
+    private TextMeshProUGUI _interactprompt; //update this
+
+    [SerializeField]
+    string Objective1, Objective2, Objective3, Objective4;
 
     [SerializeField]
     private GameObject[] _interactPrefabs;
@@ -25,27 +29,32 @@ public class Interact_Prompt : MonoBehaviour
 
     private Player_movement _playerCtrl;
 
-    [SerializeField]
+    /*[SerializeField]
     private GameObject[] _objectivePrefabs;
     [SerializeField]
-    private GameObject[] _objectiveMarkers;
+    private GameObject[] _objectiveMarkers;*/
 
-
+    public GameObject Icon;
+    GameObject iconObject;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerCtrl = _Mainchar.GetComponent<Player_movement>();
 
+        iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        iconObject.SetActive(false);
+
         for(int i = 0; i < 3; i++)
         {
             if(i == _playerCtrl._currentObjective)
             {
-                _objectiveMarkers[i].SetActive(true);
+                // Set next objective
+                //_objectiveMarkers[i].SetActive(true);
             }
             else
             {
-                _objectiveMarkers[i].SetActive(false);
+                //_objectiveMarkers[i].SetActive(false);
             }
         }
     }
@@ -59,6 +68,7 @@ public class Interact_Prompt : MonoBehaviour
             float dist = Vector3.Distance(_origin, _Mainchar.transform.position);
             if (dist <= _promptDist)
             {
+                //iconObject.transform.position = new Vector3(_origin.x, _origin.y + 3, _origin.z);
                 _show = true;
               
             }
@@ -67,12 +77,12 @@ public class Interact_Prompt : MonoBehaviour
 
         
 
-        _origin = _objectivePrefabs[_playerCtrl._currentObjective].transform.position;
-        float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
-        if (objdist <= _promptDist)
+        //_origin = _objectivePrefabs[_playerCtrl._currentObjective].transform.position;
+        //float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
+        /*if (objdist <= _promptDist)
         {
             _showobj = true;
-        }
+        }*/
 
         if ( !_playerCtrl._inVehicle)
         {
@@ -103,10 +113,13 @@ public class Interact_Prompt : MonoBehaviour
             }
             else if (_show)
             {
+                //iconObject.transform.position = new Vector3(_origin.x, _origin.y + 3, _origin.z);
+                //iconObject.SetActive(true);
                 _interactprompt.text = "Press 'e' to interact!";
             }
             else
             {
+                //iconObject.SetActive(false);
                 _interactprompt.text = "";
             }
         }
