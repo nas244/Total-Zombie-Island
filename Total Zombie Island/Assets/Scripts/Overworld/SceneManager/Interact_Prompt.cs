@@ -46,7 +46,14 @@ public class Interact_Prompt : MonoBehaviour
         foreach (GameObject interact in _interactPrefabs)
         {
             GameObject iconObject = new GameObject(interact.name + " icon");
-            iconObject = Instantiate(Icon, new Vector3(interact.transform.position.x, interact.transform.position.y + 3, interact.transform.position.z), Quaternion.identity);
+            if (interact.gameObject.tag == "drivable")
+            {
+                iconObject = Instantiate(Icon, new Vector3(interact.transform.position.x, interact.transform.position.y + 5, interact.transform.position.z), Quaternion.identity);
+            }
+            else
+            {
+                iconObject = Instantiate(Icon, new Vector3(interact.transform.position.x, interact.transform.position.y + 3, interact.transform.position.z), Quaternion.identity);
+            }
             iconObject.name = interact.name + " Icon";
             iconObject.transform.SetParent(interact.transform);
             iconObject.SetActive(false);
@@ -75,8 +82,16 @@ public class Interact_Prompt : MonoBehaviour
             float dist = Vector3.Distance(_origin, _Mainchar.transform.position);
             if (dist <= _promptDist)
             {
-                interact.transform.GetChild(0).gameObject.SetActive(true);
-                interact.transform.GetChild(0).LookAt(new Vector3(_Mainchar.transform.position.x, interact.transform.position.y, _Mainchar.transform.position.z));
+                if (interact.gameObject.tag == "drivable")
+                {
+                    interact.transform.GetChild(10).gameObject.SetActive(true);
+                    interact.transform.GetChild(10).LookAt(new Vector3(_Mainchar.transform.position.x, interact.transform.position.y, _Mainchar.transform.position.z));
+                }
+                else
+                {
+                    interact.transform.GetChild(0).gameObject.SetActive(true);
+                    interact.transform.GetChild(0).LookAt(new Vector3(_Mainchar.transform.position.x, interact.transform.position.y, _Mainchar.transform.position.z));
+                }
                 _show = true;
               
             }

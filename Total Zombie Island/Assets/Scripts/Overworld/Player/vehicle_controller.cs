@@ -33,6 +33,7 @@ public class vehicle_controller : MonoBehaviour
     void Start()
     {
         _body = this.GetComponent<Rigidbody>();
+        //_body.isKinematic = true;
         _wheelcollider = new List<WheelCollider>();
         foreach (WheelCollider wheel in _wheelColliders)
         {
@@ -45,8 +46,10 @@ public class vehicle_controller : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (_playerCtrl._inVehicle)
         {
+            //_body.isKinematic = false;
             _forward = Input.GetAxis("Vertical");
             _turn = Input.GetAxis("Horizontal");
             _brake = Input.GetAxis("Jump");
@@ -67,6 +70,7 @@ public class vehicle_controller : MonoBehaviour
             _wheelcollider[2].brakeTorque = _maxBrakeTorque * _brake;
             _wheelcollider[3].brakeTorque = _maxBrakeTorque * _brake;
         }
+        //_body.isKinematic = true;
     }
 
     void Update()
