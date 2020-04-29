@@ -63,6 +63,8 @@ public class vehicle_controller : MonoBehaviour
             {
                 _wheelcollider[0].motorTorque = _maxTorque * _forward;
                 _wheelcollider[1].motorTorque = _maxTorque * _forward;
+                _wheelcollider[2].motorTorque = _maxTorque * _forward;
+                _wheelcollider[3].motorTorque = _maxTorque * _forward;
             }
 
             _wheelcollider[0].brakeTorque = _maxBrakeTorque * _brake;
