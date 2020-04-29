@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Zombie_Controller : MonoBehaviour
 {
@@ -53,6 +54,10 @@ public class Zombie_Controller : MonoBehaviour
 
     public Score_Controller _scoreCtrl;
 
+    // zombie sounds
+    public AudioSource _audioSrc;
+    public AudioClip[] _audioClips;
+
     enum ZombieState
     {
         Patrol,
@@ -83,6 +88,9 @@ public class Zombie_Controller : MonoBehaviour
         _targetPos = this.transform.position;
 
         if (!_agent.isOnNavMesh) Destroy(this.gameObject);
+
+        // kick off the sound coroutine
+        StartCoroutine(Audio());
     }
 
     // Update is called once per frame
@@ -94,6 +102,24 @@ public class Zombie_Controller : MonoBehaviour
     private void FixedUpdate()
     {
         Despawn();
+    }
+
+    public IEnumerator Audio()
+    {
+        // pick a random time delay to play sound
+        yield return new WaitForSeconds(Random.Range(3, 16));
+
+        // if this zombie isn't dead
+        if (!_dead)
+        {
+            Debug.Log("Playing zombie sound!");
+
+            // play a random sound
+            _audioSrc.PlayOneShot(_audioClips[Random.Range(0, _audioClips.Length - 1)]);
+
+            // call this coroutine again to keep the sounds going
+            StartCoroutine(Audio());
+        }
     }
 
     private void Movement()
