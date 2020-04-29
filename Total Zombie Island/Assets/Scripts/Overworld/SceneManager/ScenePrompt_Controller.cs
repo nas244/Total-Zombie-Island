@@ -23,11 +23,11 @@ public class ScenePrompt_Controller : MonoBehaviour
     {
         if(_playerCtrl._currentObjective == 0)
         {
-            _scenePrompt.text = "Look for the skyscaper marked with flares to find a sniping spot.";
+            _scenePrompt.text = "Look for the old man near the hospital to get started!";
         }
         else if (_playerCtrl._currentObjective == 1)
         {
-            _scenePrompt.text = "Look for the marked spot in the trailer park on the edge of the city and help thin the herds.";
+            _scenePrompt.text = "Look for the football player in the trailer park on the edge of the city and help thin the herds.";
         }
         else if(_playerCtrl._currentObjective == 2)
         {
