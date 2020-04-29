@@ -112,8 +112,6 @@ public class Zombie_Controller : MonoBehaviour
         // if this zombie isn't dead
         if (!_dead)
         {
-            Debug.Log("Playing zombie sound!");
-
             // play a random sound
             _audioSrc.PlayOneShot(_audioClips[Random.Range(0, _audioClips.Length - 1)]);
 
