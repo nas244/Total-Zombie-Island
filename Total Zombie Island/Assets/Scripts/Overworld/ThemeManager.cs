@@ -16,29 +16,7 @@ public class ThemeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            SetTheme();
-            Theme1.SetActive(true);
-        }
 
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            SetTheme();
-            Theme2.SetActive(true);
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            SetTheme();
-            Theme3.SetActive(true);
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            SetTheme();
-            EscapeTheme.SetActive(true);
-        }*/
     }
 
     public void SetTheme()
@@ -73,5 +51,13 @@ public class ThemeManager : MonoBehaviour
                 EscapeTheme.SetActive(true);
                 break;
         }
+    }
+
+    public void DisableAll()
+    {
+        Theme2.SetActive(false);
+        Theme3.SetActive(false);
+        EscapeTheme.SetActive(false);
+        Theme1.SetActive(false);
     }
 }

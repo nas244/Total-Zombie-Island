@@ -116,6 +116,7 @@ public class BattleSystem : MonoBehaviour
     {
         // Spawn player
         GameObject playerGO = Instantiate(playerPrefab, playerStation);
+        //GameObject playerGO = Instantiate(Player_Manager.instance.Main_Character, playerStation);
         playerUnit = playerGO.GetComponent<Unit>();
 
         // Spawn enemy

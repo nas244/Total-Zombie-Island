@@ -76,7 +76,8 @@ public class Player_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Theme.SetTheme();
+        if (State_Data.Instance._currentObjective < 3) { Theme.SetTheme(); }
+        //Theme.SetTheme();
         instance = this;
         //pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
 
@@ -137,6 +138,20 @@ public class Player_movement : MonoBehaviour
 
     IEnumerator ReenableAudio()
     {
+        /*if (State_Data.Instance._currentObjective == 3)
+        {
+            //while (State_Data.Instance._currentObjective != 4) yield return null;
+            yield return new WaitForSeconds(5f);
+
+            while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
+        }
+        else
+        {
+            yield return new WaitForSeconds(2f);
+
+            while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
+        }*/
+
         yield return new WaitForSeconds(2f);
 
         while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
