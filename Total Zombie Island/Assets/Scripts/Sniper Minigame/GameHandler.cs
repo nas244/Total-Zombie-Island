@@ -159,6 +159,7 @@ public class GameHandler : MonoBehaviour
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
             State_Data.Instance._score += 1;
+            State_Data.Instance._currentObjective += 1;
         }
 
         else

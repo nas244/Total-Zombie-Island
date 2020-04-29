@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Warning_Prompt : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Warning_Prompt : MonoBehaviour
     private GameObject _mainChar;
 
     [SerializeField]
-    private Text _warningPrompt;
+    private TextMeshProUGUI _warningPrompt;
 
     [SerializeField]
     private float _warningDist = 190;

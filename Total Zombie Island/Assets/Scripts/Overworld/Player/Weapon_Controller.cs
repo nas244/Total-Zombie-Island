@@ -85,7 +85,7 @@ public class Weapon_Controller : MonoBehaviour
 
         yield return new WaitForSeconds(_shotAnimDelayTime);
 
-        _gunShot.PlayOneShot(_gunShot.clip, 0.5f);
+        _gunShot.PlayOneShot(_gunShot.clip, 0.5f); // Not the culprit . . . 
 
         RaycastHit hit;
 
@@ -236,6 +236,7 @@ public class Weapon_Controller : MonoBehaviour
 
     public void Refill()
     {
+        Debug.Log("Refill Called");
         _currentClipNum = _clipNum;
     }
 }

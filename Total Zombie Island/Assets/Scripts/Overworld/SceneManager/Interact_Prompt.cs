@@ -35,17 +35,24 @@ public class Interact_Prompt : MonoBehaviour
     private GameObject[] _objectiveMarkers;*/
 
     public GameObject Icon;
-    GameObject iconObject;
+    //GameObject iconObject;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerCtrl = _Mainchar.GetComponent<Player_movement>();
 
-        iconObject = Instantiate(Icon, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        iconObject.SetActive(false);
+        // Add the interact icon to each interacable item
+        foreach (GameObject interact in _interactPrefabs)
+        {
+            GameObject iconObject = new GameObject(interact.name + " icon");
+            iconObject = Instantiate(Icon, new Vector3(interact.transform.position.x, interact.transform.position.y + 3, interact.transform.position.z), Quaternion.identity);
+            iconObject.name = interact.name + " Icon";
+            iconObject.transform.SetParent(interact.transform);
+            iconObject.SetActive(false);
+        }
 
-        for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
         {
             if(i == _playerCtrl._currentObjective)
             {
@@ -68,10 +75,13 @@ public class Interact_Prompt : MonoBehaviour
             float dist = Vector3.Distance(_origin, _Mainchar.transform.position);
             if (dist <= _promptDist)
             {
-                //iconObject.transform.position = new Vector3(_origin.x, _origin.y + 3, _origin.z);
+                interact.transform.GetChild(0).gameObject.SetActive(true);
+                interact.transform.GetChild(0).LookAt(new Vector3(_Mainchar.transform.position.x, interact.transform.position.y, _Mainchar.transform.position.z));
                 _show = true;
               
             }
+
+            else { interact.transform.GetChild(0).gameObject.SetActive(false); }
             
         }
 
@@ -88,7 +98,7 @@ public class Interact_Prompt : MonoBehaviour
         {
             if (_showobj)
             {
-                _interactprompt.text = "Press 'f' to start minigame!";
+                //_interactprompt.text = "Press 'f' to start minigame!";
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     _playerCtrl.Save_Data();
@@ -113,14 +123,11 @@ public class Interact_Prompt : MonoBehaviour
             }
             else if (_show)
             {
-                //iconObject.transform.position = new Vector3(_origin.x, _origin.y + 3, _origin.z);
-                //iconObject.SetActive(true);
-                _interactprompt.text = "Press 'e' to interact!";
+                //_interactprompt.text = "Press 'e' to interact!";
             }
             else
             {
-                //iconObject.SetActive(false);
-                _interactprompt.text = "";
+                //_interactprompt.text = "";
             }
         }
         

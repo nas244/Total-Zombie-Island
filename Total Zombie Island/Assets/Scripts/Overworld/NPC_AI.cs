@@ -58,7 +58,7 @@ public class NPC_AI : MonoBehaviour
     void Update()
     {
         TriggerRange();
-        Debug.Log("Conversation: " + conversation);
+        //Debug.Log("Conversation: " + conversation);
         //Debug.Log("Option: " + option);
     }
 

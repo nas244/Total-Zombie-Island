@@ -63,7 +63,7 @@ public class Player_movement : MonoBehaviour
     private WeaponSwitching _wheelCtrl;
 
     public DialogueSystem System;
-    //PauseMenu pauseMenu;
+    public ThemeManager Theme;
 
     public SoundAudioClip[] soundAudioClipArray;
     [System.Serializable]
@@ -76,6 +76,7 @@ public class Player_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Theme.SetTheme();
         instance = this;
         //pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu").GetComponent<PauseMenu>();
 
@@ -111,6 +112,8 @@ public class Player_movement : MonoBehaviour
         int index = 0;
 
         // disable audio
+        AudioListener.volume = 0;
+
         foreach (GameObject weapon in _weapons)
         {
             Weapon_Controller ctrl = weapon.GetComponent<Weapon_Controller>();
@@ -122,6 +125,7 @@ public class Player_movement : MonoBehaviour
         }
 
         // re enable audio
+        StartCoroutine(ReenableAudio());
 
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
@@ -129,6 +133,13 @@ public class Player_movement : MonoBehaviour
         _reloading = true;       
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    IEnumerator ReenableAudio()
+    {
+        yield return new WaitForSeconds(2f);
+
+        while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
     }
 
     // Update is called once per frame
@@ -255,14 +266,27 @@ public class Player_movement : MonoBehaviour
             var colliders = Physics.OverlapSphere(Main_Character.transform.position, 5f);
             foreach (var collider in colliders)
             {
+                if (collider.CompareTag("Ammo_Box"))
+                {
+                    Debug.Log("in range of ammo");
+                    //_weaponCtrl.Refill();
+                }
+                if (collider.CompareTag("Health"))
+                {
+                    Debug.Log("in range of health");
+                    //Heal();
+                }
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (collider.CompareTag("Ammo_Box"))
                     {
+                        collider.gameObject.SetActive(false);
                         _weaponCtrl.Refill();
                     }
                     if (collider.CompareTag("Health"))
                     {
+                        collider.gameObject.SetActive(false);
                         Heal();
                     }
                 
