@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &262889324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7589205650335201312, guid: 176d12a8df24bbe4ab7d7e613279698c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5479604886357296853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287177909
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +435,11 @@ PrefabInstance:
       propertyPath: IbnSina.Array.data[6]
       value: 
       objectReference: {fileID: 5479604886357296854}
+    - target: {fileID: 5988650867763733469, guid: c9c6c34c7e34ada4a9a8a8c90b181880,
+        type: 3}
+      propertyPath: Logo
+      value: 
+      objectReference: {fileID: 262889324}
     - target: {fileID: 8019067044024616781, guid: c9c6c34c7e34ada4a9a8a8c90b181880,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -507,6 +518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125987061069927482, guid: 176d12a8df24bbe4ab7d7e613279698c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1559488553330617839, guid: 176d12a8df24bbe4ab7d7e613279698c,
         type: 3}
@@ -632,6 +648,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589500047384831902, guid: 176d12a8df24bbe4ab7d7e613279698c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 176d12a8df24bbe4ab7d7e613279698c, type: 3}

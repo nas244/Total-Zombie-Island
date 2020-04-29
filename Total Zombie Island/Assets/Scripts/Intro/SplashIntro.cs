@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SplashIntro : MonoBehaviour
 {
     [SerializeField]
     GameObject[] Team, IbnSina;
 
+    public GameObject Logo;
+
     // Start is called before the first frame update
     void Start()
     {
-    
+
+        Logo.SetActive(false);
+
         foreach (GameObject letter in Team)
         {
             letter.SetActive(false);
@@ -51,6 +56,14 @@ public class SplashIntro : MonoBehaviour
         {
             letter.GetComponent<Animator>().SetTrigger("Swell");
         }
+
+        yield return new WaitForSeconds(2);
+
+        Logo.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        SceneManager.LoadScene("Start");
     }
 
 
