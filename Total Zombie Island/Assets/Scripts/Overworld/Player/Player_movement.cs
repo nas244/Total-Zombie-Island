@@ -308,6 +308,7 @@ public class Player_movement : MonoBehaviour
                     var car = collider.GetComponent<vehicle_controller>();
                     if(car != null)
                     {
+                        _weaponCtrl.SetActive(false);
                         _characterController.enabled = false;
                         _playerCamera.gameObject.SetActive(false);
                         _carCamera.gameObject.SetActive(true);
@@ -324,6 +325,7 @@ public class Player_movement : MonoBehaviour
             this.transform.position = teleport;
             if(Input.GetKeyDown(KeyCode.E))
             {
+                _weaponCtrl.SetActive(true);
                 _characterController.enabled = true;
                 _inVehicle = false;
                 _playerCamera.gameObject.SetActive(true);
