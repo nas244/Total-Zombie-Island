@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Boss Battle Minigame.unity
     guid: 905a006b702c4634483e07a377344860
+  - enabled: 1
+    path: Assets/Minigame Scenes/Winner.unity
+    guid: 700a4cf8b3866264a92ff7b6dc2aa5d9
+  - enabled: 1
+    path: Assets/Minigame Scenes/GameOver.unity
+    guid: 0d78300b11139d743ac7af391ed8f568
   m_configObjects: {}
