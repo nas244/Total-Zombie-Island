@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //_scoreCtrl = GameObject.GetComponent<Score_Controller>();
         Cursor.lockState = CursorLockMode.None;
 
         // grab the spawner GameObject
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Completed first time");
             State_Data.Instance._MG2Complete = true;
             State_Data.Instance._currentObjective += 1;
+            State_Data.Instance._scoreCap += 2;
             State_Data.Instance._score += 1;
             yield break;
         }

@@ -155,11 +155,25 @@ public class GameHandler : MonoBehaviour
 
         finalScoreText.text = "FINAL SCORE: " + (int)finalScore;
 
-        if (finalScore >= 2500)
+        if (finalScore >= 500)
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
-            State_Data.Instance._score += 1;
-            State_Data.Instance._currentObjective += 1;
+            if (!State_Data.Instance._MG1Complete)
+            {
+                Debug.Log("Completed first time");
+                State_Data.Instance._MG1Complete = true;
+                State_Data.Instance._currentObjective += 1;
+                State_Data.Instance._scoreCap += 1;
+                State_Data.Instance._score += 1;
+                //yield break;
+            }
+
+            else if (State_Data.Instance._MG1Complete)
+            {
+                Debug.Log("Completed again");
+                State_Data.Instance._score += 0.25f;
+                //yield break;
+            }
         }
 
         else

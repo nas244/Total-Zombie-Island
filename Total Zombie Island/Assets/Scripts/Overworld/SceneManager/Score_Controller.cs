@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Score_Controller : MonoBehaviour
 {
     public float _rating;
+    //public float _ratingCap = 2f;
     private float _onscreen;
 
     public Slider scoreSlider;
@@ -16,6 +17,7 @@ public class Score_Controller : MonoBehaviour
     void Start()
     {
         //scoreSlider.maxValue = 5f;
+        Debug.Log("Rating Cap: " + State_Data.Instance._scoreCap);
     }
 
     // Update is called once per frame
@@ -23,9 +25,9 @@ public class Score_Controller : MonoBehaviour
     {
         _rating -= 0.0001f;
         _onscreen = _rating;
-        if (_onscreen > 5.0f)
+        if (_onscreen > State_Data.Instance._scoreCap)
         {
-            _onscreen = 5.0f;
+            _onscreen = State_Data.Instance._scoreCap;
         }
 
         setScore(_onscreen);

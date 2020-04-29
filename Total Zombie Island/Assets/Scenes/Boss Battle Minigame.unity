@@ -437,6 +437,10 @@ MonoBehaviour:
   _rotation: {x: 0, y: 0, z: 0, w: 0}
   _currentObjective: 0
   _score: 2
+  _scoreCap: 2
+  _MG1Complete: 0
+  _MG2Complete: 0
+  _MG3Complete: 0
 --- !u!4 &559791043
 Transform:
   m_ObjectHideFlags: 0
@@ -823,6 +827,11 @@ PrefabInstance:
       propertyPath: soundAudioClipArray.Array.data[1].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 1932b15516020394c8bf18e9c0cca2ef, type: 3}
+    - target: {fileID: 5031716863385116727, guid: 97859babf0a39de4b82c2bbbf72edc98,
+        type: 3}
+      propertyPath: Loader
+      value: 
+      objectReference: {fileID: 1999874041}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97859babf0a39de4b82c2bbbf72edc98, type: 3}
 --- !u!114 &882985344 stripped
@@ -1760,6 +1769,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e941805e086fb5449ead22e9804b7c8, type: 3}
+--- !u!114 &1999874041 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7879724695145439037, guid: 9e941805e086fb5449ead22e9804b7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1999874040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047fdc3b2ac2fa94180f90a45eb8be3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2029395295
 PrefabInstance:
   m_ObjectHideFlags: 0

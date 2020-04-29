@@ -12,6 +12,7 @@ public class State_Data : MonoBehaviour
     public Quaternion _rotation;
     public int _currentObjective;
     public float _score;
+    public float _scoreCap = 2;
     // new stuff
     public bool _MG1Complete = false, _MG2Complete = false, _MG3Complete = false;
 

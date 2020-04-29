@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public bool canBeReloaded;
     bool isLocked;
+    bool canPause = false;
 
     public GameObject pauseMenuUI;
     public GameObject weaponWheel;
@@ -18,22 +19,26 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         pauseMenuUI.SetActive(false);
+        StartCoroutine(PauseDelay());
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (canPause)
         {
-            if (isPaused)
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                StartCoroutine(Resume());
-            }
+                if (isPaused)
+                {
+                    StartCoroutine(Resume());
+                }
 
-            else
-            {
-                StartCoroutine(Pause());
+                else
+                {
+                    StartCoroutine(Pause());
+                }
             }
-        }
+        }      
     }
 
     public void OnResumeButton()
@@ -99,5 +104,11 @@ public class PauseMenu : MonoBehaviour
 
         isPaused = true;
         Time.timeScale = 0f;
+    }
+
+    IEnumerator PauseDelay()
+    {
+        yield return new WaitForSeconds(2);
+        canPause = true;
     }
 }

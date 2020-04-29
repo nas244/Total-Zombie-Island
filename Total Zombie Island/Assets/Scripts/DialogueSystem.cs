@@ -38,6 +38,7 @@ public class DialogueSystem : MonoBehaviour
         // delay the text displaying for the special dialogue
         if (specialFade && oneTime) { yield return new WaitForSeconds(3); oneTime = false; }
 
+        //Debug.Log("Array: " + array + "\t Index: " + index);
         foreach (char letter in sentenceArray[array][index].ToCharArray())
         {
             if (specialFade)

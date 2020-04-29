@@ -210,7 +210,7 @@ public class Zombie_Controller : MonoBehaviour
         {
             _dead = true;
             EnableRagdoll();
-            _scoreCtrl.inc_rating(0.1f);
+            _scoreCtrl.inc_rating(0.5f);
         }
     }
 

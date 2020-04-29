@@ -16,10 +16,12 @@ public class NPC_AI : MonoBehaviour
     Player_movement PlayerMov;
 
     [SerializeField]
-    int idle, talking, lookRadius, interactRadius, option, conversation = 1;
+    int idle, talking, lookRadius, interactRadius, option;
+
+    int conversation = 1;
 
     [SerializeField]
-    string[] initialDialogue, regDialogue, wonDialogue, lostDialogue;
+    string[] initialDialogue, regDialogue, wonDialogue, lostDialogue, notHighEnoughDialouge;
 
     [SerializeField]
     TextMeshProUGUI optionText1, optionText2;
@@ -37,8 +39,11 @@ public class NPC_AI : MonoBehaviour
     public DialogueSystem System;
     bool needsResponse = false;
     bool isLocked;
-    bool repeating;
+    bool canBePressed = true;
     public static bool pickingOption = false;
+
+    [SerializeField]
+    float requiredVal;
 
     void Start()
     {
@@ -86,12 +91,13 @@ public class NPC_AI : MonoBehaviour
 
             if ((PlayerObject.transform.position - transform.position).sqrMagnitude < interactRadius * interactRadius)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && canBePressed)
                 {
                     if (!System.isTyping)
                     {
                         if (Cursor.lockState == CursorLockMode.Locked) { isLocked = true; }
 
+                        canBePressed = false;
                         // Start conversation
                         StartCoroutine(SetDialogue());
                         Debug.Log("start conversation");
@@ -107,74 +113,140 @@ public class NPC_AI : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
-        repeating = false;
-
-        switch (conversation)
+        Debug.Log(State_Data.Instance._score + "\t" + requiredVal);
+        if (State_Data.Instance._score < requiredVal)
         {
-            case 1:
-                //update this so different dialogue if you have completed previous objective needed first
-                //conversation = 2;               
-                needsResponse = true;
-                System.sentenceArray.Add(initialDialogue);
+            Debug.Log("Case 0");
 
-                DialogueHUD.SetActive(true);
-                System.StartDialogue();
+            int length = notHighEnoughDialouge.Length;
+            int index = 0;
+            Debug.Log("Dialogue Length: " + length);
+            string[] sentence = new string[length];
 
-                //Cursor.lockState = CursorLockMode.None;
+            while (index != length)
+            {
+                sentence[index] = notHighEnoughDialouge[index];
+                index++;
+            }
 
-                while (System.isTyping)
-                {
-                    yield return null;
-                }
+            System.sentenceArray.Add(sentence);
 
-                break;
+            DialogueHUD.SetActive(true);
+            System.StartDialogue();
 
-            case 2:
-                needsResponse = true;
-                System.sentenceArray.Add(regDialogue);
+            while (System.isTyping)
+            {
+                yield return null;
+            }
+            System.array++;
 
-                DialogueHUD.SetActive(true);
-                System.StartDialogue();
-
-                //Cursor.lockState = CursorLockMode.None;
-
-                while (System.isTyping)
-                {
-                    yield return null;
-                }
-
-                break;
-
-            case 3:
-                System.sentenceArray.Add(wonDialogue);
-
-                DialogueHUD.SetActive(true);
-                System.StartDialogue();
-
-                //Cursor.lockState = CursorLockMode.None;
-
-                while (System.isTyping)
-                {
-                    yield return null;
-                }
-
-                break;
-
-            case 4:
-                System.sentenceArray.Add(lostDialogue);
-
-                DialogueHUD.SetActive(true);
-                System.StartDialogue();
-
-                //Cursor.lockState = CursorLockMode.None;
-
-                while (System.isTyping)
-                {
-                    yield return null;
-                }
-
-                break;
+            //yield break;
         }
+
+        else
+        {
+            switch (conversation)
+            {
+                case 1:
+                    Debug.Log("Case 1");
+                    //update this so different dialogue if you have completed previous objective needed first          
+                    needsResponse = true;
+                    //System.sentenceArray[0] = initialDialogue;
+                    //int index = 0;
+                    //foreach (char letter in initialDialogue[letter].ToCharArray())
+
+                    int length = initialDialogue.Length;
+                    int index = 0;
+                    Debug.Log("Dialogue Length: " + length);
+                    string[] sentence = new string[length]; //{ initialDialogue[] };
+
+                    while (index != length)
+                    {
+                        sentence[index] = initialDialogue[index];
+                        index++;
+                    }
+                    //string[] sentence = initialDialogue;
+
+                    //System.sentenceArray.Add(initialDialogue);
+                    System.sentenceArray.Add(sentence);
+                    //System.array++;
+
+                    DialogueHUD.SetActive(true);
+                    System.StartDialogue();
+                    //System.array++;
+
+                    //Cursor.lockState = CursorLockMode.None;
+
+                    while (System.isTyping)
+                    {
+                        yield return null;
+                    }
+                    System.array++;
+
+                    break;
+
+                case 2:
+                    Debug.Log("Case 2");
+                    needsResponse = true;
+
+                    int length2 = regDialogue.Length;
+                    int index2 = 0;
+                    Debug.Log("Dialogue Length: " + length2);
+                    //string[] sentence2 = new string[] { regDialogue };
+                    string[] sentence2 = new string[length2];
+
+                    while (index2 != length2)
+                    {
+                        sentence2[index2] = regDialogue[index2];
+                        index2++;
+                    }
+                    //System.sentenceArray[0] = regDialogue;
+                    System.sentenceArray.Add(sentence2);
+                    //System.array++;
+
+                    DialogueHUD.SetActive(true);
+                    System.StartDialogue();
+
+                    while (System.isTyping)
+                    {
+                        yield return null;
+                    }
+                    System.array++;
+
+                    break;
+
+                case 3:
+                    System.sentenceArray.Add(wonDialogue);
+
+                    DialogueHUD.SetActive(true);
+                    System.StartDialogue();
+
+                    //Cursor.lockState = CursorLockMode.None;
+
+                    while (System.isTyping)
+                    {
+                        yield return null;
+                    }
+
+                    break;
+
+                case 4:
+                    System.sentenceArray.Add(lostDialogue);
+
+                    DialogueHUD.SetActive(true);
+                    System.StartDialogue();
+
+                    //Cursor.lockState = CursorLockMode.None;
+
+                    while (System.isTyping)
+                    {
+                        yield return null;
+                    }
+
+                    break;
+            }
+        }
+        
 
         DialogueHUD.SetActive(false);
 
@@ -185,12 +257,12 @@ public class NPC_AI : MonoBehaviour
 
             //Time.timeScale = 0f;
             // waits until player chooses option before continuing
-            Debug.Log("Option = " + option);
+            //Debug.Log("Option = " + option);
             while (option == 0)
             {
                 yield return null;
             }
-            Debug.Log("Picked");
+            //Debug.Log("Picked");
             //Time.timeScale = 1f;
 
             Panel.SetTrigger("Panel");
@@ -208,7 +280,8 @@ public class NPC_AI : MonoBehaviour
 
         if (isLocked) { Cursor.lockState = CursorLockMode.Locked; }
 
-        //repeating = false;
+        yield return new WaitForSeconds(1);
+        canBePressed = true;
     }
 
     void SelectOption()
@@ -223,12 +296,10 @@ public class NPC_AI : MonoBehaviour
 
     public void OnOptionButton(int choice)
     {
-        Debug.Log("Picked Option " + choice);
+        //Debug.Log("Picked Option " + choice);
         //SoundManager.PlaySound(SoundManager.Sound.Beep);
         option = choice;
     }
-
-    void UpdateConversation(int num) { conversation = num; }
 
     void NPC_Response()
     {
@@ -249,6 +320,8 @@ public class NPC_AI : MonoBehaviour
 
                     case 2:
                         option = 0;
+                        conversation = 2;
+                        //System.array++;
                         //UpdateConversation(2);
                         break;
                 }
@@ -262,12 +335,13 @@ public class NPC_AI : MonoBehaviour
 
                         PlayerMov.Save_Data();
 
-                        //Debug.Log("Loading " + level);
+                        Debug.Log("Loading " + level);
                         Loader.LoadLevel(level);
                         break;
 
                     case 2: 
                         option = 0;
+                        //System.array++;
                         break;
                 }
                 break;

@@ -68,6 +68,8 @@ public class BattleSystem : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         music = GetComponent<AudioSource>();
         sadMusic = fadeObject.GetComponent<AudioSource>();
         victoryMusic1 = victoryObject1.GetComponent<AudioSource>();
@@ -187,7 +189,7 @@ public class BattleSystem : MonoBehaviour
         Player.isDefending = true;
 
         playerUnit.defense = 0.75f;
-        dialogueText.text = "You hear the cries of hell so you decide to defend.";
+        dialogueText.text = "You hear boss music so you decide to defend.";
 
         yield return new WaitForSeconds(2f);
 
@@ -717,16 +719,32 @@ public class BattleSystem : MonoBehaviour
             {
                 victoryMusic2.Play();
                 dialogueText.text = "You convinced Dave to stop fighting!";
+                // add something to trigger different end sequence
+                // also make it so you can't do the battle again
             }
 
             else
             {
                 victoryMusic1.Play();
                 dialogueText.text = "WOW! You actually won. I always believed in you bro!";
-            }            
+                // add something to trigger different end sequence
+            }
 
-            //PlayerPrefs.SetInt("Scene", PlayerPrefs.GetInt("Scene") + 1);
-            //SceneManager.LoadScene(PlayerPrefs.GetInt("Scene"));
+            if (!State_Data.Instance._MG3Complete)
+            {
+                Debug.Log("Completed first time");
+                State_Data.Instance._MG3Complete = true;
+                State_Data.Instance._currentObjective += 1;
+                //State_Data.Instance._scoreCap += 1;
+                State_Data.Instance._score += 1;
+            }
+
+            else if (State_Data.Instance._MG3Complete) // get rid of this because you shouldn't be able to battle again if you win
+            {
+                Debug.Log("Completed again");
+                State_Data.Instance._score += 0.25f;
+            }
+
         } else if (state == BattleStates.LOST)
         {
             dialogueText.text = "Aww you're dead bro. Hate to see it...";
