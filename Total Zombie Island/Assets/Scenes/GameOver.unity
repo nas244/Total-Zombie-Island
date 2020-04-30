@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bd836b153c65b4b95cf06c8edc5fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timestart: 10
+  timestart: 3
   countdown: {fileID: 396164817}
   Explosion: {fileID: 1966189986}
   Character: {fileID: 530827223}

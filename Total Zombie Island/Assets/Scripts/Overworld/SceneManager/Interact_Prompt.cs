@@ -29,6 +29,9 @@ public class Interact_Prompt : MonoBehaviour
 
     private Player_movement _playerCtrl;
 
+    [SerializeField]
+    LevelLoader Loader;
+
     /*[SerializeField]
     private GameObject[] _objectivePrefabs;
     [SerializeField]
@@ -102,21 +105,24 @@ public class Interact_Prompt : MonoBehaviour
 
         
 
-        //_origin = _objectivePrefabs[_playerCtrl._currentObjective].transform.position;
-        //float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
-        /*if (objdist <= _promptDist)
+        _origin = _interactPrefabs[10].transform.position;
+        float objdist = Vector3.Distance(_origin, _Mainchar.transform.position);
+        if (objdist <= _promptDist)
         {
             _showobj = true;
-        }*/
+        }
 
         if ( !_playerCtrl._inVehicle)
         {
             if (_showobj)
             {
                 //_interactprompt.text = "Press 'f' to start minigame!";
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    _playerCtrl.Save_Data();
+                    // win game
+                    //Loader.LoadLevel("Winner");
+                    
+                    /*_playerCtrl.Save_Data();
                     if (_playerCtrl._currentObjective == 0)
                     {
                         SceneManager.LoadScene("Sniper Minigame");
@@ -132,7 +138,7 @@ public class Interact_Prompt : MonoBehaviour
                     else
                     {
                         //GameOver
-                    }
+                    }*/
                     
                 }
             }

@@ -66,6 +66,7 @@ public class Player_movement : MonoBehaviour
 
     public DialogueSystem System;
     public ThemeManager Theme;
+    public LevelLoader Loader;
 
     public SoundAudioClip[] soundAudioClipArray;
     [System.Serializable]
@@ -293,7 +294,12 @@ public class Player_movement : MonoBehaviour
                     Debug.Log("in range of health");
                     //Heal();
                 }
-                
+                if (collider.CompareTag("End"))
+                {
+                    Debug.Log("in range of FUCK UNITY");
+                    //Heal();
+                }
+
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (collider.CompareTag("Ammo_Box"))
@@ -305,6 +311,11 @@ public class Player_movement : MonoBehaviour
                     {
                         collider.gameObject.SetActive(false);
                         Heal();
+                    }
+                    if (collider.CompareTag("End"))
+                    {
+                        Loader.LoadLevel("Winner");
+                        //yield break;
                     }
                 
                     var car = collider.GetComponent<vehicle_controller>();
