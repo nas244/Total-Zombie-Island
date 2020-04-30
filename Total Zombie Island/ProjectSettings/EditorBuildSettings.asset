@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 4185162512065e74b87fee44eb09ad94
   - enabled: 1
+    path: Assets/Scenes/Hector.unity
+    guid: 90e295d40b509ce4990dd4b04ca21b64
+  - enabled: 1
     path: Assets/Scenes/Overworld.unity
     guid: 307a4a8b0741e534c9167a5dc5f72b91
   - enabled: 1
@@ -29,7 +32,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 0d78300b11139d743ac7af391ed8f568
-  - enabled: 1
-    path: Assets/Scenes/Hector.unity
-    guid: 90e295d40b509ce4990dd4b04ca21b64
   m_configObjects: {}

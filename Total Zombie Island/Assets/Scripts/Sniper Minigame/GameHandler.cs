@@ -155,7 +155,7 @@ public class GameHandler : MonoBehaviour
 
         finalScoreText.text = "FINAL SCORE: " + (int)finalScore;
 
-        if (finalScore >= 500)
+        if (finalScore >= 2500)
         {
             SoundManager.PlaySound(SoundManager.Sound.Win);
             if (!State_Data.Instance._MG1Complete)

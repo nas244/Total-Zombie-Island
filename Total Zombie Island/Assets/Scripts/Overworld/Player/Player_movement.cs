@@ -232,14 +232,14 @@ public class Player_movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && _stamina > 0)
         {
             movement *= running;
-            _stamina -= .5f;
+            _stamina -= .05f;
         }
         else
         {
             movement *= speed;
             if (_stamina < 100f)
             {
-                _stamina += .25f;
+                _stamina += .025f;
             }
         }
         

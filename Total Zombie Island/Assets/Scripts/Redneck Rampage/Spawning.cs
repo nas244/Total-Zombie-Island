@@ -80,14 +80,14 @@ public class Spawning : MonoBehaviour
         // setup specified values
         zombieDamage = damage;
         zombieHealth = health;
-        spawnLimit = 1;//limit;
+        spawnLimit = limit;
         spawnDelay = delay;
 
         // reset counters
         spawnCount = 0;
         zombiesReamaining = limit;
         lastSpawnTime = Time.time;
-        this.wave = 3;//wave;
+        this.wave = wave;
 
         Debug.Log("Spawning reset.");
     }

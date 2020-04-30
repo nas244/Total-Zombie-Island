@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 10,
             health: 100,
-            limit: 1,//10,
+            limit: 10,
             delay: 3.0f,
             wave: 1
         );
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 15,
             health: 120,
-            limit: 1,//15,
+            limit: 15,
             delay: 3.0f,
             wave: 2
         );
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
         spawner.GetComponent<Spawning>().Setup(
             damage: 20,
             health: 120,
-            limit: 1,//20,
+            limit: 20,
             delay: 3.0f,
             wave: 3
         );
