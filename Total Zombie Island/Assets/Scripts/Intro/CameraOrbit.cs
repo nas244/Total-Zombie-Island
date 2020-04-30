@@ -5,10 +5,13 @@ using UnityEngine;
 public class CameraOrbit : MonoBehaviour
 {
     public Transform target;
- 
+
+    [SerializeField]
+    float speed;
+
     void Update()
     {
         transform.LookAt(target);
-        transform.Translate(Vector3.right * (Time.deltaTime* 10));
+        transform.Translate(Vector3.right * (Time.deltaTime* speed));
     }
 }

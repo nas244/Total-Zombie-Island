@@ -167,6 +167,7 @@ public class GameHandler : MonoBehaviour
                 State_Data.Instance._score += 1;
                 State_Data.Instance._spawnLimit += 3;
                 State_Data.Instance._spawnDelay -= 1;
+                State_Data.Instance._setHector = true;
                 //yield break;
             }
 

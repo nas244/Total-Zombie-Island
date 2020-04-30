@@ -173,7 +173,7 @@ public class Zombie_Controller : MonoBehaviour
                     if (Time.time > _nextAttackTime)
                     {
                         _nextAttackTime = Time.time + _attackDelay;
-                        if(!_playerCtrl._inVehicle)
+                        if(!_playerCtrl._inVehicle && State_Data.Instance._canBeHit)
                         {
                             StartCoroutine(_playerCtrl.Damage(_attackDamage));
                         }

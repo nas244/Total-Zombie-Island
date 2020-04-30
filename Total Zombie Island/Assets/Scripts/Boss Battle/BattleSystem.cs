@@ -740,6 +740,7 @@ public class BattleSystem : MonoBehaviour
                 //State_Data.Instance._spawnDelay -= 1;
                 //State_Data.Instance._scoreCap += 1;
                 State_Data.Instance._score += 1;
+                //State_Data.Instance._setHector = true;
             }
 
             else if (State_Data.Instance._MG3Complete) // get rid of this because you shouldn't be able to battle again if you win

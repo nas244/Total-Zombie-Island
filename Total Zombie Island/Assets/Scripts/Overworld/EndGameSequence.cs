@@ -12,7 +12,7 @@ public class EndGameSequence : MonoBehaviour
     public LevelLoader Loader;
 
     [SerializeField]
-    GameObject DialogueHUD, CountdownHUD, ObjectiveHUD, ScoreHUD, EndObject, PlayerObject;
+    GameObject DialogueHUD, CountdownHUD, ObjectiveHUD, ScoreHUD, EndObject, PlayerObject, SpotLight;
 
     Transform EndLocation;
 
@@ -30,6 +30,7 @@ public class EndGameSequence : MonoBehaviour
 
         DialogueHUD.SetActive(false);
         CountdownHUD.SetActive(false);
+        SpotLight.SetActive(false);
 
         if (State_Data.Instance._currentObjective == 3)
         {
@@ -60,20 +61,9 @@ public class EndGameSequence : MonoBehaviour
                     Debug.Log("Fuuuuuuuuuuck .... UNITY");
 
                     Loader.LoadLevel("Winner");
-                    /*if (!System.isTyping)
-                    {
-                        if (Cursor.lockState == CursorLockMode.Locked) { isLocked = true; }
-
-                        //canBePressed = false;
-                        // Start conversation
-                        StartCoroutine(SetDialogue());
-                        Debug.Log("start conversation");
-                    }*/
                 }
             }
         }
-
-        else { /*iconObject.SetActive(false);*/ }
     }
 
     IEnumerator EndSequence()
@@ -103,6 +93,7 @@ public class EndGameSequence : MonoBehaviour
         ObjectiveHUD.SetActive(false);
         ScoreHUD.SetActive(false);
         CountdownHUD.SetActive(true);
+        SpotLight.SetActive(true);
 
         StartCoroutine(Countdown());
     }
