@@ -736,11 +736,8 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("Completed first time");
                 State_Data.Instance._MG3Complete = true;
                 State_Data.Instance._currentObjective += 1;
-                State_Data.Instance._spawnLimit += 3;
-                //State_Data.Instance._spawnDelay -= 1;
-                //State_Data.Instance._scoreCap += 1;
+                State_Data.Instance._spawnLimit += 1;
                 State_Data.Instance._score += 1;
-                //State_Data.Instance._setHector = true;
             }
 
             else if (State_Data.Instance._MG3Complete) // get rid of this because you shouldn't be able to battle again if you win
@@ -754,7 +751,7 @@ public class BattleSystem : MonoBehaviour
             dialogueText.text = "Aww you're dead bro. Hate to see it...";
         }
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7.5f);
 
         Loader.LoadLevel("Overworld");
     }

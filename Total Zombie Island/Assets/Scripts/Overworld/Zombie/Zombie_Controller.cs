@@ -89,6 +89,11 @@ public class Zombie_Controller : MonoBehaviour
 
         if (!_agent.isOnNavMesh) Destroy(this.gameObject);
 
+        if (State_Data.Instance._currentObjective == 3)
+        {
+            _walkSpeed = 4.0f;
+        }
+
         // kick off the sound coroutine
         StartCoroutine(Audio());
     }
@@ -129,6 +134,11 @@ public class Zombie_Controller : MonoBehaviour
         switch(_currentState)
         {
             case ZombieState.Patrol:
+                if (State_Data.Instance._currentObjective == 3)
+                {
+                    _currentState = ZombieState.Attacking;
+                    break;
+                }
                 float targetDist = Vector3.Distance(this.transform.position, _targetPos);
 
                 if (targetDist <= _agent.stoppingDistance)
@@ -185,7 +195,7 @@ public class Zombie_Controller : MonoBehaviour
                         }
                     }
                 }
-                else if (playerDist > _chaseLookRadius)
+                else if (playerDist > _chaseLookRadius + 3)
                 {
                     _currentState = ZombieState.Patrol;
                     _agent.speed = _walkSpeed;

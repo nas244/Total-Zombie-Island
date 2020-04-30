@@ -363,22 +363,25 @@ public class Player_movement : MonoBehaviour
 
     public IEnumerator Damage(float damage)
     {
-        if (canBePlayed) { canBePlayed = false; SoundManager.PlaySound(SoundManager.Sound.Hurt); }
-        _health -= damage;
-
-        if (_health <= 0)
+        if (State_Data.Instance._canBeHit)
         {
-            this.enabled = false;
-            _animator.SetBool("Death_b", true);
+            if (canBePlayed) { canBePlayed = false; SoundManager.PlaySound(SoundManager.Sound.Hurt); }
+            _health -= damage;
 
-            yield return new WaitForSeconds(5.0f);
+            if (_health <= 0)
+            {
+                this.enabled = false;
+                _animator.SetBool("Death_b", true);
 
-            _isDead = true;
+                yield return new WaitForSeconds(5.0f);
 
-            SceneManager.LoadScene("Overworld");
+                _isDead = true;
+
+                SceneManager.LoadScene("Overworld");
+            }
+
+            yield break;
         }
-
-        yield break;
     }
 
     public float GetHealth()

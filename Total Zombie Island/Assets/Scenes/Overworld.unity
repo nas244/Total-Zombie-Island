@@ -48446,7 +48446,7 @@ MonoBehaviour:
   fadeDisplay: {fileID: 0}
   index: 0
   array: 0
-  typingSpeed: 0.03
+  typingSpeed: 0.003
   isTyping: 0
   specialFade: 0
   continueButton: {fileID: 7638895659189992619}

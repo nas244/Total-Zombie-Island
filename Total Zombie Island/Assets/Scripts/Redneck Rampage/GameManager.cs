@@ -174,8 +174,10 @@ public class GameManager : MonoBehaviour
             State_Data.Instance._currentObjective += 1;
             State_Data.Instance._scoreCap += 2;
             State_Data.Instance._score += 1;
-            State_Data.Instance._spawnLimit += 4;
+            State_Data.Instance._spawnLimit += 2;
 
+            gameOverUI.SetActive(false);
+            yield return new WaitForSeconds(2);
             Loader.LoadLevel("Hector");
             //State_Data.Instance._setHector = true;
             //yield break;

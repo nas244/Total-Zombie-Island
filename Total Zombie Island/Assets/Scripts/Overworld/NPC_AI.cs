@@ -63,7 +63,10 @@ public class NPC_AI : MonoBehaviour
 
     void Update()
     {
-        TriggerRange();
+        if (State_Data.Instance._currentObjective != 3)
+        {
+            TriggerRange();
+        }
         //Debug.Log("Conversation: " + conversation);
         //Debug.Log("Option: " + option);
     }

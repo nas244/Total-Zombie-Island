@@ -32,6 +32,7 @@ public class DialogueSystem : MonoBehaviour
 
     IEnumerator Type()
     {
+        State_Data.Instance._canBeHit = false;
         Cursor.lockState = CursorLockMode.None;
 
         textDisplay.text = "";
@@ -89,7 +90,7 @@ public class DialogueSystem : MonoBehaviour
 
             textDisplay.text = "";
             continueButton.SetActive(false);
-
+            State_Data.Instance._canBeHit = true;
             //Cursor.lockState = CursorLockMode.Locked;
         }
     }
