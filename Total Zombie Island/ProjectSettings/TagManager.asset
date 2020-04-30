@@ -19,6 +19,9 @@ TagManager:
   - Head
   - Manager
   - Health
+  - PauseMenu
+  - Dialogue
+  - End
   layers:
   - Default
   - TransparentFX
