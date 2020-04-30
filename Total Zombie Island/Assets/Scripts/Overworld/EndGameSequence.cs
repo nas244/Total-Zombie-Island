@@ -73,9 +73,19 @@ public class EndGameSequence : MonoBehaviour
 
         string[] sentence = new string[]
         {
-            "Announcer: Seems you have reached the end",
-            "Announcer: . . .",
-            "Announcer: Awesome! Begin Ending"
+            "Hector: . . .",
+            "Hector: I - I don't believe it!",
+            "Hector: (this wasn't supposed to happen)",
+            "Hector: *ahem* This is an unexpected turn of events folks",
+            "Hector: Who would have thought Dave could ever be defeated like that?",
+            "Hector: I surely didn't!",
+            "Hector: Ugh, well we are out of minigames...",
+            "Hector: I must commend the contestant,",
+            "Hector: You vastly exceeded my expectations",
+            "Hector: How bout we up the ante a bit eh folks?",
+            "Hector: If you can make it to the lighthouse before you explode . . .",
+            "Hector: We'll take you off the island! Sound fair?",
+            "Hector: No? Well I've already made up my mind. BEGIN COUNTDOWN!"
         };
 
         System.sentenceArray.Add(sentence);

@@ -167,7 +167,7 @@ public class GameHandler : MonoBehaviour
                 State_Data.Instance._score += 1;
                 State_Data.Instance._spawnLimit += 3;
                 State_Data.Instance._spawnDelay -= 1;
-                State_Data.Instance._setHector = true;
+                //State_Data.Instance._setHector = true;
                 //yield break;
             }
 
@@ -186,7 +186,7 @@ public class GameHandler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        Loader.LoadLevel("Overworld");
+        Loader.LoadLevel("Hector");
     }
 
     float GetBonus()

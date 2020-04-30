@@ -9,7 +9,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnStartButton()
     {
-        Loader.LoadLevel("Overworld");
+        Loader.LoadLevel("Hector");
     }
 
     public void OnQuitButton()

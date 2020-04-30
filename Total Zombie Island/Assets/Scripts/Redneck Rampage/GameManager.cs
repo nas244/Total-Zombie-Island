@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
             State_Data.Instance._scoreCap += 2;
             State_Data.Instance._score += 1;
             State_Data.Instance._spawnLimit += 4;
-            State_Data.Instance._setHector = true;
+            //State_Data.Instance._setHector = true;
             //yield break;
         }
 
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         // reset time scale if needed
         Time.timeScale = 1;
 
-        Loader.LoadLevel("Overworld");
+        Loader.LoadLevel("Hector");
     }
 
     public void ReplayScene()
