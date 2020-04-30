@@ -32,6 +32,8 @@ public class DialogueSystem : MonoBehaviour
 
     IEnumerator Type()
     {
+        Cursor.lockState = CursorLockMode.None;
+
         textDisplay.text = "";
         isTyping = true;
 
@@ -87,6 +89,8 @@ public class DialogueSystem : MonoBehaviour
 
             textDisplay.text = "";
             continueButton.SetActive(false);
+
+            //Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

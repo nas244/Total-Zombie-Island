@@ -48446,7 +48446,7 @@ MonoBehaviour:
   fadeDisplay: {fileID: 0}
   index: 0
   array: 0
-  typingSpeed: 0.01
+  typingSpeed: 0.03
   isTyping: 0
   specialFade: 0
   continueButton: {fileID: 7638895659189992619}
@@ -49965,6 +49965,16 @@ PrefabInstance:
     - target: {fileID: 5930067293513063102, guid: 48b9d27507cbebb40b55f4811500ff08,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930067293513063103, guid: 48b9d27507cbebb40b55f4811500ff08,
+        type: 3}
+      propertyPath: _position.y
+      value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930067293513063103, guid: 48b9d27507cbebb40b55f4811500ff08,
+        type: 3}
+      propertyPath: _currentObjective
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -112,8 +112,6 @@ public class EndGameSequence : MonoBehaviour
     {
         while (count != 0)
         {
-            // if player has reached goal yield break
-            // else
             count--;
             countdownText.text = "TIME UNTIL DETONATION: " + count;
             yield return new WaitForSeconds(1);

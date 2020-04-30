@@ -441,6 +441,8 @@ MonoBehaviour:
   _scoreCap: 2
   _spawnLimit: 0
   _spawnDelay: 0
+  _canBeHit: 1
+  _hectorDialogue: 0
   _MG1Complete: 0
   _MG2Complete: 0
   _MG3Complete: 0
@@ -1014,7 +1016,7 @@ PrefabInstance:
     - target: {fileID: 4318422839011185441, guid: 08999246cf3f7cf439924beee892af5a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 96
+      value: 95.32
       objectReference: {fileID: 0}
     - target: {fileID: 4318422839011185441, guid: 08999246cf3f7cf439924beee892af5a,
         type: 3}

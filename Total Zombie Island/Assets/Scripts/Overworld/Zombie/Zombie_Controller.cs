@@ -211,7 +211,7 @@ public class Zombie_Controller : MonoBehaviour
 
         if (_health <= 0 && dist >= _deadDespawnRange) Destroy(this.gameObject);
 
-        else if (dist >= _despawnRange) Destroy(this.gameObject);
+        //else if (dist >= _despawnRange) Destroy(this.gameObject);
     }
 
     public void Damage(float damage)

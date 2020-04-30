@@ -38,7 +38,7 @@ public class State_Data : MonoBehaviour
     {
         _health = 100f;
          _stamina = 50f;
-        _position = new Vector3 (0,0, -5.42f);
+        _position = new Vector3 (0,132, -5.42f);
         _rotation = new Quaternion(0,0,0,0);
         //_currentObjective = 0;
     }

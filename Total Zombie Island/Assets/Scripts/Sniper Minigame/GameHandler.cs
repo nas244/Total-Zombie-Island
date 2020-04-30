@@ -140,7 +140,7 @@ public class GameHandler : MonoBehaviour
 
             yield return new WaitForSeconds(scoreTimer);
 
-            finalScore++;
+            finalScore+=2;
         }
 
         bonus = GetBonus();
@@ -165,12 +165,10 @@ public class GameHandler : MonoBehaviour
                 State_Data.Instance._currentObjective += 1;
                 State_Data.Instance._scoreCap += 1;
                 State_Data.Instance._score += 1;
-                State_Data.Instance._spawnLimit += 3;
+                State_Data.Instance._spawnLimit += 2;
                 State_Data.Instance._spawnDelay -= 1;
                 Loader.LoadLevel("Hector");
-                yield break;
-                //State_Data.Instance._setHector = true;
-                //yield break;
+                yield return new WaitForSeconds(4);
             }
 
             else if (State_Data.Instance._MG1Complete)
@@ -186,7 +184,7 @@ public class GameHandler : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.Fail);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         Loader.LoadLevel("Overworld");
     }

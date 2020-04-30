@@ -113,6 +113,11 @@ public class Player_movement : MonoBehaviour
         _weapons.Add(Instantiate(_weaponPrefabs[7], _weaponRoot.transform));
         _weapons.Add(Instantiate(_weaponPrefabs[8], _weaponRoot.transform));
 
+        if (transform.position.y > 10)
+        {
+            _animator.SetBool("Grounded", false);
+        }
+
         int index = 0;
 
         // disable audio
@@ -134,27 +139,13 @@ public class Player_movement : MonoBehaviour
         _weaponCtrl = _weapons[_nextWeapon].GetComponent<Weapon_Controller>();
         _weaponCtrl.SetActive(true);
 
-        _reloading = true;       
+        _reloading = true;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        if (State_Data.Instance._currentObjective < 3) { Cursor.lockState = CursorLockMode.Locked; }
     }
 
     IEnumerator ReenableAudio()
     {
-        /*if (State_Data.Instance._currentObjective == 3)
-        {
-            //while (State_Data.Instance._currentObjective != 4) yield return null;
-            yield return new WaitForSeconds(5f);
-
-            while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
-        }
-        else
-        {
-            yield return new WaitForSeconds(2f);
-
-            while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
-        }*/
-
         yield return new WaitForSeconds(2f);
 
         while (AudioListener.volume != 1) { AudioListener.volume++; yield return new WaitForSeconds(0.25f); }
@@ -182,6 +173,10 @@ public class Player_movement : MonoBehaviour
                 }
                 InteractUpdate();
             }
+        }
+        if (transform.position.y < 10)
+        {
+            _animator.SetBool("Grounded", true);
         }
     }
 
