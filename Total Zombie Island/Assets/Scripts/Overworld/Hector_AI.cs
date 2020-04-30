@@ -99,7 +99,7 @@ public class Hector_AI : MonoBehaviour
                 System.array++;
                 break;
 
-            case 3:
+            case 2:
                 Debug.Log("beat second minigame");
                 // begginning of game dialogue
                 int length3 = obj2CompleteDialogue.Length;
