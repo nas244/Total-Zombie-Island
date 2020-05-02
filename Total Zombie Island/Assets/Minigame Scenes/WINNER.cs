@@ -22,6 +22,7 @@ public class WINNER : MonoBehaviour
         winnercountdown.text = winnertimestart.ToString();
 
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame

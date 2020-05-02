@@ -15,7 +15,6 @@ public class State_Data : MonoBehaviour
     public float _scoreCap = 2;
     public int _spawnLimit;
     public float _spawnDelay;
-    //public bool _setHector;
     public bool _canBeHit = true;
     public int _hectorDialogue = 0;
     // new stuff

@@ -64,6 +64,7 @@ public class PauseMenu : MonoBehaviour
         {
             isLocked = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         /*if (SceneManager.GetActiveScene().name == "Overworld")
@@ -93,6 +94,7 @@ public class PauseMenu : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked) { isLocked = true; }
 
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         pauseMenuUI.SetActive(true);
 

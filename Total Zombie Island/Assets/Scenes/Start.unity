@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &66512374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1344916172704862856, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 8123272418965882035}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &69054766
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Loader: {fileID: 550841129}
+  Tutorial: {fileID: 66512374}
 --- !u!1 &501315252
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +712,71 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1164408619684751084, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164408619684751084, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164408619684751084, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164408619684751084, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374892282379893978, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 358128831}
+    - target: {fileID: 2374892282379893978, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnStartButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374892282379893978, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2374892282379893978, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345557979184332555, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345557979184332555, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345557979184332555, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345557979184332555, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345557979184332555, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8123272418688606152, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
         type: 3}
       propertyPath: m_Name
@@ -853,7 +925,7 @@ PrefabInstance:
     - target: {fileID: 8123272418849285531, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnStartButton
+      value: OpenTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 8123272418849285531, guid: 0ab63d70d9aa11148b3cc32307a0a7d9,
         type: 3}

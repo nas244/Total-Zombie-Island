@@ -45,7 +45,6 @@ public class GameHandler : MonoBehaviour
     private void Start()
     {
         music = GetComponent<AudioSource>();
-        //PlayerMov = PlayerObject.GetComponent<Player_movement>();
 
         instance = this;
 
@@ -165,7 +164,6 @@ public class GameHandler : MonoBehaviour
                 State_Data.Instance._currentObjective += 1;
                 State_Data.Instance._scoreCap += 1;
                 State_Data.Instance._score += 1;
-                State_Data.Instance._spawnLimit += 2;
                 State_Data.Instance._spawnDelay -= 1;
                 yield return new WaitForSeconds(4);
                 Loader.LoadLevel("Hector");

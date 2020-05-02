@@ -79,6 +79,7 @@ public class Player_movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
         if (State_Data.Instance._currentObjective < 3) { Theme.SetTheme(); }
         //Theme.SetTheme();
         instance = this;
@@ -141,7 +142,7 @@ public class Player_movement : MonoBehaviour
 
         _reloading = true;
 
-        if (State_Data.Instance._currentObjective < 3) { Cursor.lockState = CursorLockMode.Locked; }
+        if (State_Data.Instance._currentObjective < 3) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
     }
 
     IEnumerator ReenableAudio()
@@ -372,6 +373,7 @@ public class Player_movement : MonoBehaviour
             {
                 this.enabled = false;
                 _animator.SetBool("Death_b", true);
+                State_Data.Instance._score -= 0.75f;
 
                 yield return new WaitForSeconds(5.0f);
 

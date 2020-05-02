@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         //_scoreCtrl = GameObject.GetComponent<Score_Controller>();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         // grab the spawner GameObject
         spawner = GameObject.FindGameObjectWithTag("SpawnerController");
@@ -174,7 +175,7 @@ public class GameManager : MonoBehaviour
             State_Data.Instance._currentObjective += 1;
             State_Data.Instance._scoreCap += 2;
             State_Data.Instance._score += 1;
-            State_Data.Instance._spawnLimit += 2;
+            State_Data.Instance._spawnLimit += 1;
 
             gameOverUI.SetActive(false);
             yield return new WaitForSeconds(2);

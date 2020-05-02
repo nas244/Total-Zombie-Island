@@ -722,7 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   startWaitTime: 3
-  lookRadius: 20
+  lookRadius: 10
   deathEffect: {fileID: 194062, guid: bb954c7832c9a9845b017b284d33fbc8, type: 3}
   hitEffect: {fileID: 2220159898958276041, guid: f9fab009228cfa8458d23779532984b5,
     type: 3}
@@ -11719,6 +11719,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5634049693476459654, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049693491640357, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049693560934826, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049693645430533, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5634049693839162872, guid: 77d53c4a0b237de46aa0d048f28d959a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11778,6 +11798,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: City
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049694004333728, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049694895828014, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049695128866180, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634049695423092572, guid: 77d53c4a0b237de46aa0d048f28d959a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d53c4a0b237de46aa0d048f28d959a, type: 3}
@@ -11892,6 +11932,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927988891714660440, guid: 51dcc0cefd9deea46816862439eab7e8,
+        type: 3}
+      propertyPath: speedH
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927988891714660440, guid: 51dcc0cefd9deea46816862439eab7e8,
+        type: 3}
+      propertyPath: speedV
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5927988891714660446, guid: 51dcc0cefd9deea46816862439eab7e8,
         type: 3}

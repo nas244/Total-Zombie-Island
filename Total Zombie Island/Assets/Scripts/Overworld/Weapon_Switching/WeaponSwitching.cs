@@ -15,12 +15,14 @@ public class WeaponSwitching : MonoBehaviour
             if (SlowDownGame)
             {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Resume();
 
             }
             else
             {
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 SlowDown();
             }
         }

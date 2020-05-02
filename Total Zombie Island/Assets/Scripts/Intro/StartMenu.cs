@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     public LevelLoader Loader;
+    public GameObject Tutorial;
 
+    private void Start()
+    {
+        Cursor.visible = true;
+        Tutorial.SetActive(false);
+    }
 
     public void OnStartButton()
     {
@@ -16,5 +22,10 @@ public class StartMenu : MonoBehaviour
     public void OnQuitButton()
     {
         Application.Quit();
+    }
+
+    public void OpenTutorial()
+    {
+        Tutorial.SetActive(true);
     }
 }

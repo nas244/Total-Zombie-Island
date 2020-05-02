@@ -89,9 +89,13 @@ public class Zombie_Controller : MonoBehaviour
 
         if (!_agent.isOnNavMesh) Destroy(this.gameObject);
 
-        if (State_Data.Instance._currentObjective == 3)
+        if (State_Data.Instance._currentObjective >= 2)
         {
-            _walkSpeed = 4.0f;
+            _walkSpeed += 1.0f;
+            _lookRadius += 5f;
+            _chaseLookRadius += 5f;
+            _runSpeed += 1;
+            _health += 10;
         }
 
         // kick off the sound coroutine
@@ -134,17 +138,20 @@ public class Zombie_Controller : MonoBehaviour
         switch(_currentState)
         {
             case ZombieState.Patrol:
-                if (State_Data.Instance._currentObjective == 3)
+                if ((State_Data.Instance._currentObjective == 3 || State_Data.Instance._currentObjective == 2) && playerDist < _lookRadius)
                 {
                     _currentState = ZombieState.Attacking;
+                    _agent.SetDestination(_playerPos.position);
+                    _agent.speed = _runSpeed;
                     break;
                 }
+
                 float targetDist = Vector3.Distance(this.transform.position, _targetPos);
 
                 if (targetDist <= _agent.stoppingDistance)
                 {
-                    float newX = Random.Range(-_lookRadius, _lookRadius);
-                    float newZ = Random.Range(-_lookRadius, _lookRadius);
+                    float newX = Random.Range(-_lookRadius - 5, _lookRadius - 5);
+                    float newZ = Random.Range(-_lookRadius - 5, _lookRadius - 5);
 
                     _targetPos.x += newX;
                     _targetPos.y = this.transform.position.y;
@@ -172,13 +179,16 @@ public class Zombie_Controller : MonoBehaviour
             case ZombieState.Attacking:
                 _agent.SetDestination(_playerPos.position);
 
-                playerDist = Vector3.Distance(this.transform.position, _playerPos.position);
+                //playerDist = Vector3.Distance(this.transform.position, _playerPos.position);
+                playerDist = Vector3.Distance(transform.position, _playerPos.position);
 
                 if (playerDist <= _agent.stoppingDistance)
                 {
-                    Vector3 direction = (_playerPos.position - this.transform.position).normalized;
+                    //Vector3 direction = (_playerPos.position - this.transform.position).normalized;
+                    Vector3 direction = (_playerPos.position - transform.position).normalized;
                     Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                    this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+                    //this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
 
                     if (Time.time > _nextAttackTime)
                     {
@@ -200,8 +210,8 @@ public class Zombie_Controller : MonoBehaviour
                     _currentState = ZombieState.Patrol;
                     _agent.speed = _walkSpeed;
 
-                    float newX = Random.Range(-_lookRadius, _lookRadius);
-                    float newZ = Random.Range(-_lookRadius, _lookRadius);
+                    float newX = Random.Range(-_lookRadius - 5, _lookRadius - 5);
+                    float newZ = Random.Range(-_lookRadius - 5, _lookRadius - 5);
 
                     _targetPos.x += newX;
                     _targetPos.y = this.transform.position.y;

@@ -69,6 +69,7 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         music = GetComponent<AudioSource>();
         sadMusic = fadeObject.GetComponent<AudioSource>();
@@ -736,7 +737,6 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("Completed first time");
                 State_Data.Instance._MG3Complete = true;
                 State_Data.Instance._currentObjective += 1;
-                State_Data.Instance._spawnLimit += 1;
                 State_Data.Instance._score += 1;
             }
 

@@ -23,6 +23,7 @@ public class Countdown : MonoBehaviour
     {
         countdown.text = timestart.ToString();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
         // Update is called once per frame

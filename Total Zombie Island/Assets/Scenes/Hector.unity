@@ -525,7 +525,7 @@ MonoBehaviour:
   fadeDisplay: {fileID: 0}
   index: 0
   array: 0
-  typingSpeed: 0.02
+  typingSpeed: 0.01
   isTyping: 0
   specialFade: 0
   continueButton: {fileID: 340046785}
@@ -616,7 +616,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593352464}
   m_LocalRotation: {x: 0.7627973, y: -0.15260153, z: 0.13665748, w: 0.61333334}
-  m_LocalPosition: {x: 307.2, y: 39.55, z: -157.91}
+  m_LocalPosition: {x: 311.2, y: 39.55, z: -160.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1095,7 +1095,7 @@ PrefabInstance:
     - target: {fileID: 7972730514685433962, guid: 3902f3c65a4724e459f7aba91bda79c8,
         type: 3}
       propertyPath: obj1CompleteDialogue.Array.data[2]
-      value: 'Hector: However, for this nex game you must use these "legally" provided
+      value: 'Hector: However, for this next game you must use these "legally" provided
         weapons and shoot as many zombies as possible'
       objectReference: {fileID: 0}
     - target: {fileID: 7972730514685433962, guid: 3902f3c65a4724e459f7aba91bda79c8,
@@ -1157,6 +1157,16 @@ PrefabInstance:
         type: 3}
       propertyPath: obj3CompleteDialogue.Array.data[8]
       value: 'Hector: Ugh, well we are out of minigames...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972730514685433962, guid: 3902f3c65a4724e459f7aba91bda79c8,
+        type: 3}
+      propertyPath: initialDialogue.Array.data[4]
+      value: 'Hector: I am your host, Hector Mcain'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972730514685433962, guid: 3902f3c65a4724e459f7aba91bda79c8,
+        type: 3}
+      propertyPath: initialDialogue.Array.data[5]
+      value: 'Hector: We are currently awaiting the arrival of our guest of honor'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3902f3c65a4724e459f7aba91bda79c8, type: 3}

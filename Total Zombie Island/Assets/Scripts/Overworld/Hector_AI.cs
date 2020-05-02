@@ -24,17 +24,9 @@ public class Hector_AI : MonoBehaviour
         cam = camObject.GetComponent<Camera>();
         System = System.GetComponent<DialogueSystem>();
 
+        Cursor.visible = true;
+
         StartCoroutine(HectorDialogue());
-
-        //DialogueHUD.SetActive(false);
-
-        /*if (State_Data.Instance._setHector)
-        {
-            Debug.Log("tis true");
-            State_Data.Instance._setHector = false;
-            StartCoroutine(HectorDialogue());
-        }
-        else { camObject.SetActive(false); DialogueHUD.SetActive(false); }*/
     }
 
     // Update is called once per frame
@@ -45,7 +37,6 @@ public class Hector_AI : MonoBehaviour
 
     IEnumerator HectorDialogue()
     {
-        //State_Data.Instance._canBeHit = false;
 
         switch (State_Data.Instance._hectorDialogue)
         {

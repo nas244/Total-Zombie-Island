@@ -46,20 +46,14 @@ public class EndGameSequence : MonoBehaviour
     {
         if ((EndLocation.transform.position - PlayerObject.transform.position).sqrMagnitude < lookRadius * lookRadius)
         {
-            //Debug.Log("within range");
-            //iconObject.SetActive(true);
 
             // Rotate the enemy too always face the player.
             Vector3 targetPosition = new Vector3(PlayerObject.transform.position.x, EndLocation.transform.position.y, EndLocation.transform.position.z);
-            //transform.LookAt(targetPosition);
-            //iconObject.transform.LookAt(targetPosition);
 
             if ((EndLocation.transform.position - PlayerObject.transform.position).sqrMagnitude < interactRadius * interactRadius)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log("Fuuuuuuuuuuck .... UNITY");
-
                     Loader.LoadLevel("Winner");
                 }
             }
@@ -68,20 +62,15 @@ public class EndGameSequence : MonoBehaviour
 
     IEnumerator EndSequence()
     {
-        Debug.Log("End Sequence");
         yield return new WaitForSeconds(1);
 
         string[] sentence = new string[]
         {
-            "Hector: . . .",
             "Hector: I - I don't believe it!",
-            "Hector: (this wasn't supposed to happen)",
             "Hector: *ahem* This is an unexpected turn of events folks",
             "Hector: Who would have thought Dave could ever be defeated like that?",
-            "Hector: I surely didn't!",
             "Hector: Ugh, well we are out of minigames...",
-            "Hector: I must commend the contestant,",
-            "Hector: You vastly exceeded my expectations",
+            "Hector: I must commend the contestant, that was unexpected",
             "Hector: How bout we up the ante a bit eh folks?",
             "Hector: If you can make it to the lighthouse before you explode . . .",
             "Hector: We'll take you off the island! Sound fair?",
@@ -118,7 +107,6 @@ public class EndGameSequence : MonoBehaviour
         }
 
         Loader.LoadLevel("GameOver");
-        // trigger game over
     }
 
 }

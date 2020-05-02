@@ -116,6 +116,7 @@ public class NPC_AI : MonoBehaviour
     IEnumerator SetDialogue()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         //Debug.Log(State_Data.Instance._score + "\t" + requiredVal);
         Debug.Log(Score._rating);
@@ -283,7 +284,7 @@ public class NPC_AI : MonoBehaviour
         NPC_Response();
 
 
-        if (isLocked) { Cursor.lockState = CursorLockMode.Locked; }
+        if (isLocked) { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
 
         yield return new WaitForSeconds(1);
         canBePressed = true;
